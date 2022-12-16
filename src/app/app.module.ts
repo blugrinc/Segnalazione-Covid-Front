@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SurveyComponent } from './components/survey/survey.component';
 import { PathComponent } from './components/path/path.component';
-import { ExportPageComponent } from './components/exportPage/export-page/export-page.component';
+import { ExportPageComponent } from './components/export-page/export-page.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 @NgModule({
