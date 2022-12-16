@@ -1,45 +1,45 @@
-<form action="">
-    <div>
-        <label for="tipoTest">Selezionare la tipologia di test</label>
-        <select name="tipoTest" id="tipoTest">
-          <option value="null"> </option>
-          <option value="molecolare">Test molecolare</option>
-          <option value="rapido">Tampone rapido (test antigenico)</option>
-      </select>
-    </div>
-    <div>
-        <label for="dataTest">Data in cui il test è stato effettuato</label>
-        <input type="date" name="" id="dataTest">
-    </div>
-    <div>
-        <label for="dataPresenza">Data ultima presenza in sede/ufficio</label>
-        <input type="date" name="" id="dataPresenza">
-    </div>
-    <div>
-        <label for="sintomi">Sei sintomatico?</label>
-        <select name="" id="sintomi">
-          <option value="null">   </option>
-          <option value="si">Si</option>
-          <option value="no">No</option>
-      </select>
-    </div>
-    <!--Da mostrare solo se si risponde si alla domanda sopra-->
-    <div>
-        <label for="dataSintomi">Data inizio sintomi</label>
-        <input type="date" name="" id="dataSintomi">
-    </div>
-    <div>
-        <label for="sintomi">Indica di seguito i sintomi</label><br>
-        <textarea name="" id="sintomi" cols="30" rows="10"></textarea>
-    </div>
-    <!------------------------------------------------------------->
-    <div>
-        <label for="variante">Il tuo è un caso sospetto o confermato di variante?</label>
-        <select name="" id="variante">
-          <option value="null">       </option>
-          <option value="si">Si</option>
-          <option value="no">No</option>
-      </select>
-        <h6>Rispondi si solo in caso di sequenziamento genomico che ha rilevato variante DIVERSA da Delta e Omicron</h6>
-    </div>
+<form class="container" action="">
+  <div>
+    <label class="bg-red" for="tipoTest">Selezionare la tipologia di test</label>
+    <select name="tipoTest" id="tipoTest">
+      <option value="null"> </option>
+      <option value="molecolare">Test molecolare</option>
+      <option value="rapido">Tampone rapido (test antigenico)</option>
+    </select>
+  </div>
+  <div>
+    <label for="dataTest">Data in cui il test è stato effettuato</label>
+    <input type="date" name="" id="dataTest">
+  </div>
+  <div>
+    <label for="dataPresenza">Data ultima presenza in sede/ufficio</label>
+    <input type="date" name="" id="dataPresenza">
+  </div>
+  <div>
+    <label for="sintomi">Sei sintomatico?</label>
+    <select name="" id="sintomi">
+      <option value="null"> </option>
+      <option value="si">Si</option>
+      <option value="no">No</option>
+    </select>
+  </div>
+  <!--Da mostrare solo se si risponde si alla domanda sopra-->
+  <div>
+    <label for="dataSintomi">Data inizio sintomi</label>
+    <input type="date" name="" id="dataSintomi">
+  </div>
+  <div>
+    <label for="sintomi">Indica di seguito i sintomi</label><br>
+    <textarea name="" id="sintomi" cols="30" rows="10"></textarea>
+  </div>
+  <!------------------------------------------------------------->
+  <div>
+    <label for="variante">Il tuo è un caso sospetto o confermato di variante?</label>
+    <select name="" id="variante">
+      <option value="null"> </option>
+      <option value="si">Si</option>
+      <option value="no">No</option>
+    </select>
+    <h6>Rispondi si solo in caso di sequenziamento genomico che ha rilevato variante DIVERSA da Delta e Omicron</h6>
+  </div>
 </form>
