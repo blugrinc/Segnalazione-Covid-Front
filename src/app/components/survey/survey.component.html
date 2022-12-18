@@ -1,45 +1,53 @@
-<form class="container" action="">
-  <div>
-    <label class="bg-red" for="tipoTest">Selezionare la tipologia di test</label>
-    <select name="tipoTest" id="tipoTest">
-      <option value="null"> </option>
-      <option value="molecolare">Test molecolare</option>
-      <option value="rapido">Tampone rapido (test antigenico)</option>
-    </select>
+<div class="container-fluid" id="grad1">
+  <div class="row justify-content-center mt-0">
+    <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+      <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+
+        <div class="row">
+          <div class="col-md-12 mx-0">
+            <form id="msform">
+              <!-- progressbar -->
+              <ul id="progressbar">
+                <li class="active" id="account"><strong>Dettagli Segnalazione</strong></li>
+                <li id="personal"><strong>Sintomaticità</strong></li>
+                <li id="payment"><strong>Dati di Controllo</strong></li>
+              </ul>
+              <!-- fieldsets -->
+
+              <!--   PRIMO STEP -->
+              <fieldset>
+                <div class="form-card">
+                  <h2 class="fs-title">Dettagli Segnalazione</h2>
+                  <div>
+                    <label for="tipoTest" aria-placeholder="">Selezionare la tipologia di test</label>
+                    <select name="tipoTest" class="dropDown">
+                      <option value="molecolare">Test molecolare</option>
+                      <option value="rapido">Tampone rapido (test antigenico)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="dataTest">Data in cui il test è stato effettuato</label>
+                    <input type="date" name="" id="textareaDate">
+                  </div>
+                  <div>
+                    <label for="dataPresenza">Data ultima presenza in sede/ufficio</label>
+                    <input type="date" name="" id="textareaDate">
+                  </div>
+                  <!--  SE "SI" PASSARE AL PROSSIMO STEP SE è NO PASSARE ALL'ULTIMO-->
+                  <div>
+                    <label for="sintomi">Sei sintomatico?</label>
+                    <select name="" id="sintomi">
+                      <option value="si">Si</option>
+                      <option value="no">No</option>
+                    </select>
+                  </div>
+                </div>
+                <input type="button" name="next" class="next action-button" value="Avanti" />
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div>
-    <label for="dataTest">Data in cui il test è stato effettuato</label>
-    <input type="date" name="" id="dataTest">
-  </div>
-  <div>
-    <label for="dataPresenza">Data ultima presenza in sede/ufficio</label>
-    <input type="date" name="" id="dataPresenza">
-  </div>
-  <div>
-    <label for="sintomi">Sei sintomatico?</label>
-    <select name="" id="sintomi">
-      <option value="null"> </option>
-      <option value="si">Si</option>
-      <option value="no">No</option>
-    </select>
-  </div>
-  <!--Da mostrare solo se si risponde si alla domanda sopra-->
-  <div>
-    <label for="dataSintomi">Data inizio sintomi</label>
-    <input type="date" name="" id="dataSintomi">
-  </div>
-  <div>
-    <label for="sintomi">Indica di seguito i sintomi</label><br>
-    <textarea name="" id="sintomi" cols="30" rows="10"></textarea>
-  </div>
-  <!------------------------------------------------------------->
-  <div>
-    <label for="variante">Il tuo è un caso sospetto o confermato di variante?</label>
-    <select name="" id="variante">
-      <option value="null"> </option>
-      <option value="si">Si</option>
-      <option value="no">No</option>
-    </select>
-    <h6>Rispondi si solo in caso di sequenziamento genomico che ha rilevato variante DIVERSA da Delta e Omicron</h6>
-  </div>
-</form>
+</div>

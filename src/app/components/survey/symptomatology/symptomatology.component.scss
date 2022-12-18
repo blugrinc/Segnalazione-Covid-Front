@@ -61,10 +61,9 @@ html {
   font-weight: bold;
   padding: 0px 8px 4px 8px;
   border: none;
-  border-left: 1px solid rgb(10, 10, 10);
-  border-bottom: 1px solid rgb(10, 10, 10);
+
   border-radius: 0px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   margin-top: 2px;
   box-sizing: border-box;
   color: #000000;
@@ -73,6 +72,11 @@ html {
 
 label {
   margin-right: 20px;
+  margin-top: 20px;
+}
+
+#textArea textarea {
+  border: 1px solid black;
 }
 
 #msform input:focus,
@@ -181,7 +185,7 @@ select.list-dt:focus {
 /*Icons in the ProgressBar*/
 #progressbar #account:before {
   font-family: FontAwesome;
-  content: "\f023";
+  content: "\F797";
 }
 
 #progressbar #personal:before {

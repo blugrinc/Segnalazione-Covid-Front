@@ -7,6 +7,8 @@ import { SurveyComponent } from './components/survey/survey.component';
 import { PathComponent } from './components/path/path.component';
 import { ExportPageComponent } from './components/export-page/export-page.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { SymptomatologyComponent } from './components/survey/symptomatology/symptomatology.component';
+import { ControlDataComponent } from './components/survey/control-data/control-data.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     SurveyComponent,
     PathComponent,
     ExportPageComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    SymptomatologyComponent,
+    ControlDataComponent
   ],
   imports: [
     BrowserModule,
