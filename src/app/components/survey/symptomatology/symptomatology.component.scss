@@ -1,12 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  height: 100%;
-}
-
 /*form styles*/
 #msform {
   text-align: center;
@@ -260,4 +251,14 @@ select.list-dt:focus {
 .fit-image {
   width: 100%;
   object-fit: cover;
+}
+
+.principale {
+  background-color: #f8ffee;
+  margin-top: 13vh;
+  margin-bottom: 3vh;
+  height: 76vh;
+  padding: 2.5rem;
+  border-radius: 15px;
+  border: 1px solid #d7e5c3;
 }

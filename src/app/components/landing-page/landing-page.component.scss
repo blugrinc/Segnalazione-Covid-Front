@@ -13,18 +13,19 @@ h2 {
   margin: 0;
 }
 
-.tipologia {
+.principale {
   background-color: #f8ffee;
   margin-top: 13vh;
   margin-bottom: 3vh;
-  height: 76vh;
+  min-height: 76vh;
   padding: 2.5rem;
   border-radius: 15px;
+  border: 1px solid #d7e5c3;
 }
 
-.buttons {
-  display: flex;
-  justify-content: space-around;
+form {
+  margin: 1.5rem auto 3rem auto;
+  width: 75%;
 }
 
 .form-check-label {
@@ -49,22 +50,25 @@ h2 {
 }
 
 .containerButton {
+  margin-top: 1.5rem;
   display: flex;
   justify-content: space-evenly;
+}
+
+button {
+  height: 50px;
+  width: 150px;
 }
 
 /*Blue Buttons*/
 .action-button {
   font-family: "Inter", sans-serif;
-  width: 100px;
   background: #16510d;
   font-weight: bold;
   color: white;
   border: 0 none;
   border-radius: 0px;
   cursor: pointer;
-  padding: 10px 5px;
-  margin: 10px 5px;
 }
 
 .action-button:hover,
@@ -74,15 +78,12 @@ h2 {
 
 /*Previous Buttons*/
 .action-button-previous {
-  width: 100px;
   background: #616161;
   font-weight: bold;
   color: white;
   border: 0 none;
   border-radius: 0px;
   cursor: pointer;
-  padding: 10px 5px;
-  margin: 10px 5px;
 }
 
 .action-button-previous:hover,

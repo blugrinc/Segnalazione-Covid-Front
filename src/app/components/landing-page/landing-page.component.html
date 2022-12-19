@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="tipologia">
+  <div class="principale">
     <h2>Tipologia di Segnalazione</h2>
     <form action="">
       <p class="sceltaSegnalazione">Seleziona la tipologia di segnalazione:</p>
@@ -12,10 +12,10 @@
         <input class="form-check-input" type="checkbox" value="" id="domanda2" />
       </div>
       <div class="containerButton">
-        <input type="button" name="previous" class="previous action-button-previous" value="ExportPage"
-          [routerLink]="['/export-page']" routerLinkActive="active" />
-        <input type="button" name="next" class="next action-button" value="Avanti" [routerLink]="['/survey']"
-          routerLinkActive="active" />
+        <button type="submit" class="previous action-button-previous"
+          [routerLink]="['/export-page']" routerLinkActive="active">Export-Page</button>
+        <button type="submit" class="next action-button" [routerLink]="['/survey']"
+          routerLinkActive="active">Invia</button>
       </div>
     </form>
   </div>

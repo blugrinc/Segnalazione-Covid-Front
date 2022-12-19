@@ -1,53 +1,55 @@
-<div class="container-fluid" id="grad1">
-  <div class="row justify-content-center mt-0">
-    <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
-      <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+<div class="container" id="grad1">
+  <div class="principale">
+    <div class="row justify-content-center mt-0">
+      <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+        <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
 
-        <div class="row">
-          <div class="col-md-12 mx-0">
-            <form id="msform">
-              <!-- progressbar -->
-              <ul id="progressbar">
-                <li class="active" id="account"><strong>Dettagli Segnalazione</strong></li>
-                <li id="personal"><strong>Sintomaticità</strong></li>
-                <li id="payment"><strong>Dati di Controllo</strong></li>
-              </ul>
-              <!-- fieldsets -->
+          <div class="row">
+            <div class="col-md-12 mx-0">
+              <form id="msform">
+                <!-- progressbar -->
+                <ul id="progressbar">
+                  <li class="active" id="account"><strong>Dettagli Segnalazione</strong></li>
+                  <li id="personal"><strong>Sintomaticità</strong></li>
+                  <li id="payment"><strong>Dati di Controllo</strong></li>
+                </ul>
+                <!-- fieldsets -->
 
-              <!--   PRIMO STEP -->
-              <fieldset>
-                <div class="form-card">
-                  <h2 class="fs-title">Dettagli Segnalazione</h2>
-                  <div>
-                    <label for="tipoTest" aria-placeholder="">Selezionare la tipologia di test</label>
-                    <select name="tipoTest" class="dropDown">
-                      <option value="molecolare">Test molecolare</option>
-                      <option value="rapido">Tampone rapido (test antigenico)</option>
-                    </select>
+                <!--   PRIMO STEP -->
+                <fieldset>
+                  <div class="form-card">
+                    <h2 class="fs-title">Dettagli Segnalazione</h2>
+                    <div>
+                      <label for="tipoTest" aria-placeholder="">Selezionare la tipologia di test</label>
+                      <select name="tipoTest" class="dropDown">
+                        <option value="molecolare">Test molecolare</option>
+                        <option value="rapido">Tampone rapido (test antigenico)</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label for="dataTest">Data in cui il test è stato effettuato</label>
+                      <input type="date" name="" id="textareaDate">
+                    </div>
+                    <div>
+                      <label for="dataPresenza">Data ultima presenza in sede/ufficio</label>
+                      <input type="date" name="" id="textareaDate">
+                    </div>
+                    <!--  SE "SI" PASSARE AL PROSSIMO STEP SE è NO PASSARE ALL'ULTIMO-->
+                    <div>
+                      <label for="sintomi">Sei sintomatico?</label>
+                      <select name="" id="sintomi">
+                        <option value="si">Si</option>
+                        <option value="no">No</option>
+                      </select>
+                    </div>
                   </div>
-                  <div>
-                    <label for="dataTest">Data in cui il test è stato effettuato</label>
-                    <input type="date" name="" id="textareaDate">
-                  </div>
-                  <div>
-                    <label for="dataPresenza">Data ultima presenza in sede/ufficio</label>
-                    <input type="date" name="" id="textareaDate">
-                  </div>
-                  <!--  SE "SI" PASSARE AL PROSSIMO STEP SE è NO PASSARE ALL'ULTIMO-->
-                  <div>
-                    <label for="sintomi">Sei sintomatico?</label>
-                    <select name="" id="sintomi">
-                      <option value="si">Si</option>
-                      <option value="no">No</option>
-                    </select>
-                  </div>
-                </div>
-                <input type="button" name="previous" class="previous action-button-previous" value="Indietro"
-                  [routerLink]="['/landing-page']" routerLinkActive="active" />
-                <input type="button" name="next" class="next action-button" value="Avanti"
-                  [routerLink]="['/symptomatology']" routerLinkActive="active" />
-              </fieldset>
-            </form>
+                  <input type="button" name="previous" class="previous action-button-previous" value="Indietro"
+                    [routerLink]="['/landing-page']" routerLinkActive="active" />
+                  <input type="button" name="next" class="next action-button" value="Avanti"
+                    [routerLink]="['/symptomatology']" routerLinkActive="active" />
+                </fieldset>
+              </form>
+            </div>
           </div>
         </div>
       </div>
