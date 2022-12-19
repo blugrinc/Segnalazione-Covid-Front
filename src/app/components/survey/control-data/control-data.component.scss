@@ -7,11 +7,6 @@ html {
   height: 100%;
 }
 
-/*Background color*/
-#grad1 {
-  background-color: #d1f89f;
-}
-
 /*form styles*/
 #msform {
   text-align: center;
@@ -33,7 +28,6 @@ html {
 }
 
 #msform fieldset {
-  background: white;
   border: 0 none;
   border-radius: 0.5rem;
   box-sizing: border-box;
@@ -268,4 +262,18 @@ select.list-dt:focus {
   margin-top: 5px;
   font-size: 12px;
   font-weight: bold;
+}
+
+.principale {
+  margin-top: 13vh;
+  margin-bottom: 3vh;
+  height: 76vh;
+  padding: 2.5rem;
+  border-radius: 15px;
+}
+
+#msform, .form-card, .sfondoVerde {
+background-color: #f8ffee;
+border-radius: 15px;
+padding: 1rem;
 }
