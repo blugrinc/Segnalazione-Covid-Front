@@ -13,7 +13,16 @@
 }
 
 .header {
+  height: 10vh;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 1.4rem;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 00;
+  height: 5.5vh;
+  font-size: 1.2rem;
 }
 
 h2 {

@@ -1,32 +1,3 @@
-.main {
-  height: 100vh;
-  width: 100vw;
-  background-color: #d1f89f;
-}
-
-.toolbar {
-  width: 100%;
-  border: 1px solid #16510d;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  background-color: #148B12;
-  color: white;
-  font-weight: 300;
-  text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000, 1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
-}
-
-.header {
-  height: 10vh;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-size: 1.4rem;
-}
-
-.footer {
-  height: 5.5vh;
-  font-size: 1.2rem;
-}
-
 h2 {
   text-shadow: 4px 4px rgba(0, 0, 0, 0.25);
   padding-top: 1rem;
