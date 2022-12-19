@@ -264,6 +264,6 @@ select.list-dt:focus {
 }
 
 #box {
-  width: 30vw;
-  height: 10vh;
+  width: 100%;
+  box-sizing: border-box;
 }
