@@ -14,7 +14,7 @@ import { SymptomatologyComponent } from './components/survey/symptomatology/symp
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '',
+    redirectTo: 'landing-page',
     pathMatch: 'full'
   },
   {

@@ -26,10 +26,11 @@
           al Covid-19</label>
         <input class="form-check-input" type="checkbox" value="" id="domanda4" />
       </div>
-      <div class="buttons">
-
-        <button type="button" class="btn" [routerLink]="['/export-page']" routerLinkActive="active">Export-page</button>
-        <button type="submit" class="btn">Next</button>
+      <div class="containerButton">
+        <input type="button" name="previous" class="previous action-button-previous" value="ExportPage"
+          [routerLink]="['/export-page']" routerLinkActive="active" />
+        <input type="button" name="next" class="next action-button" value="Avanti" [routerLink]="['/survey']"
+          routerLinkActive="active" />
       </div>
     </form>
   </div>

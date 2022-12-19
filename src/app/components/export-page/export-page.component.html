@@ -22,7 +22,9 @@
             <input type="date" id="dataFine" name="dataFine" value="" />
           </div>
         </div>
-        <button type="submit" class="btn btn-success my-5">Scarica</button>
+        <input type="button" name="previous" class="previous action-button-previous" value="Indietro"
+          [routerLink]="['/landing-page']" routerLinkActive="active" />
+        <input type="button" name="next" class="next action-button" value="Scarica" />
       </form>
     </div>
   </div>

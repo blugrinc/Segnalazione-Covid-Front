@@ -23,11 +23,13 @@
                   </div>
                   <div id="textArea">
                     <label for="sintomi">Indica di seguito i sintomi:</label><br>
-                    <textarea cols="50" rows="5"></textarea>
+                    <textarea cols="40" rows="5"></textarea>
                   </div>
                 </div>
-                <input type="button" name="previous" class="previous action-button-previous" value="Indietro" />
-                <input type="button" name="next" class="next action-button" value="Avanti" />
+                <input type="button" name="previous" class="previous action-button-previous" value="Indietro"
+                  [routerLink]="['/survey']" routerLinkActive="active" />
+                <input type="button" name="next" class="next action-button" value="Avanti"
+                  [routerLink]="['/control-data']" routerLinkActive="active" />
               </fieldset>
             </form>
           </div>

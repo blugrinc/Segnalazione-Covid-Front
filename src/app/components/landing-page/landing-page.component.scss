@@ -6,7 +6,7 @@ h2 {
 
 .sceltaSegnalazione {
   font-size: 1.4rem;
-  font-family: 'Vollkorn';
+  font-family: "Vollkorn";
   font-style: normal;
   font-weight: 400;
   color: #000;
@@ -25,17 +25,6 @@ h2 {
 .buttons {
   display: flex;
   justify-content: space-around;
-}
-
-.btn {
-  margin: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-weight: bold;
-  background-color: #16510d;
-  color: #fff;
-  text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000, 1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
-  font-style: italic;
 }
 
 .form-check-label {
@@ -57,4 +46,46 @@ h2 {
   border: 1px solid #16510d;
   margin-bottom: 1rem;
   width: 20vw;
+}
+
+.containerButton {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/*Blue Buttons*/
+.action-button {
+  font-family: "Inter", sans-serif;
+  width: 100px;
+  background: #16510d;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 0px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 5px;
+}
+
+.action-button:hover,
+.action-button:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px skyblue;
+}
+
+/*Previous Buttons*/
+.action-button-previous {
+  width: 100px;
+  background: #616161;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 0px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 5px;
+}
+
+.action-button-previous:hover,
+.action-button-previous:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #616161;
 }
