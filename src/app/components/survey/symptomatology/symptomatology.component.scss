@@ -257,8 +257,13 @@ select.list-dt:focus {
   background-color: #f8ffee;
   margin-top: 13vh;
   margin-bottom: 3vh;
-  height: 76vh;
+  min-height: 76vh;
   padding: 2.5rem;
   border-radius: 15px;
   border: 1px solid #d7e5c3;
+}
+
+#box {
+  width: 30vw;
+  height: 10vh;
 }
