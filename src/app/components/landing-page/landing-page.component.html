@@ -1,50 +1,36 @@
-<div class="main">
-  <div class="toolbar header">
-    <img
-      width="300"
-      alt="Logo Intesa SanPaolo"
-      src="../assets/img/logo-intesasanpaolo.png"
-    />
-    <p><span class="align-middle">Modulo Segnalazione Covid-19</span></p>
-  </div>
-  <div class="container">
-    <div class="tipologia">
-      <h2>Tipologia di Segnalazione</h2>
-      <form action="">
-        <p class="sceltaSegnalazione">Seleziona la tipologia di segnalazione:</p>
-        <select class="form-select">
-          <option selected>---</option>
-          <option value="1">Segnalazione 1</option>
-          <option value="2">Segnalazione 2</option>
-        </select>
-        <div class="form-check form-check-reverse">
-          <label class="form-check-label text-start" for="domanda1">Sono positivo al Covid-19</label>
-          <input class="form-check-input" type="checkbox" value="" id="domanda1"/>
-        </div>
-        <div class="form-check form-check-reverse">
-          <label class="form-check-label text-start" for="domanda2"
-            >Ho sintomi semi-influenzali</label>
-          <input class="form-check-input" type="checkbox" value="" id="domanda2"/>
-        </div>
-        <div class="form-check form-check-reverse">
-          <label class="form-check-label text-start" for="domanda3"
-            >Sono asintomatico ma convivo con una persona con sintomi semi-influenzali</label>
-          <input class="form-check-input" type="checkbox" value="" id="domanda3"/>
-        </div>
-        <div class="form-check form-check-reverse">
-          <label class="form-check-label text-start" for="domanda4"
-            >Sono asintomatico ma convivo con una persona positiva al Covid-19</label>
-          <input class="form-check-input" type="checkbox" value="" id="domanda4"/>
-        </div>
-        <div class="buttons">
-          <button type="button" class="btn" [routerLink]="['/export-page']" routerLinkActive="active">Export-page</button>
-          <button type="submit" class="btn">Next</button>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="toolbar footer">
-    <p><span class="align-middle">Copyright 2022 @ Intesa SanPaolo</span></p>
+<div class="container">
+  <div class="tipologia">
+    <h2>Tipologia di Segnalazione</h2>
+    <form action="">
+      <p class="sceltaSegnalazione">Seleziona la tipologia di segnalazione:</p>
+      <select class="form-select">
+        <option selected>---</option>
+        <option value="1">Segnalazione 1</option>
+        <option value="2">Segnalazione 2</option>
+      </select>
+      <div class="form-check form-check-reverse">
+        <label class="form-check-label text-start" for="domanda1">Sono positivo al Covid-19</label>
+        <input class="form-check-input" type="checkbox" value="" id="domanda1" />
+      </div>
+      <div class="form-check form-check-reverse">
+        <label class="form-check-label text-start" for="domanda2">Ho sintomi semi-influenzali</label>
+        <input class="form-check-input" type="checkbox" value="" id="domanda2" />
+      </div>
+      <div class="form-check form-check-reverse">
+        <label class="form-check-label text-start" for="domanda3">Sono asintomatico ma convivo con una persona con
+          sintomi semi-influenzali</label>
+        <input class="form-check-input" type="checkbox" value="" id="domanda3" />
+      </div>
+      <div class="form-check form-check-reverse">
+        <label class="form-check-label text-start" for="domanda4">Sono asintomatico ma convivo con una persona positiva
+          al Covid-19</label>
+        <input class="form-check-input" type="checkbox" value="" id="domanda4" />
+      </div>
+      <div class="buttons">
+
+        <button type="button" class="btn" [routerLink]="['/export-page']" routerLinkActive="active">Export-page</button>
+        <button type="submit" class="btn">Next</button>
+      </div>
+    </form>
   </div>
 </div>
-<router-outlet></router-outlet>
