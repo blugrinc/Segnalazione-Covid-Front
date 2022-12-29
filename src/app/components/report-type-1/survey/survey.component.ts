@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: [ './survey.component.scss' ]
 })
 
-export class SurveyComponent {
+export class type1_SurveyComponent {
 
 }

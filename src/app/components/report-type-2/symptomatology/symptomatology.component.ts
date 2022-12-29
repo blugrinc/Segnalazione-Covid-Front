@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-symptomatology',
   templateUrl: './symptomatology.component.html',
-  styleUrls: ['./symptomatology.component.scss']
+  styleUrls: [ './symptomatology.component.scss' ]
 })
-export class SymptomatologyComponent {
+export class type2_SymptomatologyComponent {
 
 }

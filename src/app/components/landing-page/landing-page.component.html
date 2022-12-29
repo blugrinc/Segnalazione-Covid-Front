@@ -4,18 +4,23 @@
     <form action="">
       <p class="sceltaSegnalazione">Seleziona la tipologia di segnalazione:</p>
       <div class="form-check form-check-reverse">
-        <label class="form-check-label text-start" for="domanda1">Sono positivo al Covid-19</label>
-        <input class="form-check-input" type="checkbox" value="" id="domanda1" />
+        <label class="form-check-label text-start" for="domanda1" [routerLink]="['/survey:1']"
+          routerLinkActive="active">Sono positivo ad un test diagnostico</label>
+        <!--  <input class="form-check-input" type="checkbox" value="" id="domanda1"  /> -->
       </div>
       <div class="form-check form-check-reverse">
-        <label class="form-check-label text-start" for="domanda2">Ho sintomi semi-influenzali</label>
-        <input class="form-check-input" type="checkbox" value="" id="domanda2" />
+        <label class="form-check-label text-start" for="domanda2" [routerLink]="['/survey:2']"
+          routerLinkActive="active">Aggiornamento per richiesta fine astenzione</label>
+        <!--         <input class="form-check-input" type="checkbox" value="" id="domanda2"  />
+ -->
       </div>
       <div class="containerButton">
-        <button type="submit" class="previous action-button-previous"
-          [routerLink]="['/export-page']" routerLinkActive="active">Export-Page</button>
-        <button type="submit" class="next action-button" [routerLink]="['/survey']"
-          routerLinkActive="active">Invia</button>
+
+        <!--  <button type="submit" class="previous action-button-previous" [routerLink]="['/export-page']"
+          routerLinkActive="active">Export-Page</button> -->
+
+        <!-- <button type="submit" class="next action-button" [routerLink]="['/survey']"
+          routerLinkActive="active">Inizia</button> -->
       </div>
     </form>
   </div>

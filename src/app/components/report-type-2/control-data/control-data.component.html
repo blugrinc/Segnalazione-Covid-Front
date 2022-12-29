@@ -10,29 +10,27 @@
                 <!-- progressbar -->
                 <ul id="progressbar">
                   <li class="active" id="account"><strong>Dettagli Segnalazione</strong></li>
-                  <li id="personal" class="active"><strong>Sintomaticità</strong></li>
-                  <li id="payment" class="active"><strong>Dati di Controllo</strong></li>
+                  <li id="personal" class="active"><strong>Convivente</strong></li>
+                  <li id="payment" class="active"><strong>Sintomi</strong></li>
                 </ul>
                 <!-- fieldsets -->
 
                 <!--        TERZO STEP -->
                 <fieldset>
                   <div class="form-card">
-                    <h2 class="fs-title">Dati di Controllo</h2>
+                    <h2 class="fs-title">Sintomi</h2>
                     <div>
-                      <label for="variante">Il tuo è un caso sospetto o confermato di variante?</label>
-                      <select name="" id="variante">
-                        <option value="null">---</option>
-                        <option value="si">Si</option>
-                        <option value="no">No</option>
-                      </select>
-                      <p id="note">Rispondi si solo in caso di sequenziamento genomico che ha rilevato variante DIVERSA
-                        da Delta e
-                        Omicron</p>
+                      <div>
+                        <label for="dataSintomi">Se avevi sintomi simil-influenzali indica la data in cui i sintomi sono
+                          cessati (non considerando perdita/alterazione di
+                          olfatto e gusto):</label>
+                        <input type="date" name="" id="dataTampone">
+                      </div>
+
                     </div>
                   </div>
                   <input type="button" name="previous" class="previous action-button-previous" value="Indietro"
-                    [routerLink]="['/symptomatology']" routerLinkActive="active" />
+                    [routerLink]="['/symptomatology:2']" routerLinkActive="active" />
                   <input type="button" name="next" class="next action-button" value="Avanti" [routerLink]="['/path1']"
                     routerLinkActive="active" />
                 </fieldset>

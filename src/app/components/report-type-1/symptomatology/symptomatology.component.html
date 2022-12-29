@@ -1,0 +1,43 @@
+<div class="container" id="grad1">
+  <div class="principale">
+    <div class="row justify-content-center mt-0">
+      <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+        <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+
+          <div class="row">
+            <div class="col-md-12 mx-0">
+              <form id="msform">
+                <!-- progressbar -->
+                <ul id="progressbar">
+                  <li class="active" id="account"><strong>Dettagli Segnalazione</strong></li>
+                  <li id="personal" class="active"><strong>Sintomaticità</strong></li>
+                  <li id="payment"><strong>Dati di Controllo</strong></li>
+                </ul>
+
+                <!-- SECONDO STEP -->
+                <fieldset>
+                  <div class="form-card">
+                    <h2 class="fs-title">Sintomaticità</h2>
+                    <div>
+                      <label for="dataSintomi">Data inizio sintomi:</label>
+                      <input type="date" name="" id="dataSintomi">
+                    </div>
+                    <div id="textArea">
+                      <label for="sintomi">Indica di seguito i sintomi:</label><br>
+                      <textarea id="box"></textarea>
+                    </div>
+                  </div>
+
+                  <input type="button" name="previous" class="previous action-button-previous" value="Indietro"
+                    [routerLink]="['/survey:1']" routerLinkActive="active" />
+                  <input type="button" name="next" class="next action-button" value="Avanti"
+                    [routerLink]="['/control-data:1']" routerLinkActive="active" />
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
