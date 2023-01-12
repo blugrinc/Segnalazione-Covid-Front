@@ -15,18 +15,18 @@ const report = {
   reportDate: new Date(),
   triage: true,
   abstention: false,
-  disinfectionDate: false,
+  disinfection: false,
 
   typeOfReport: "",
 
-  questions1: "",
-  questions2: "",
-  questions3: "",
-  questions4: "",
-  questions5: "",
-  questions6: "",
-  questions7: "",
-  questions8: "",
+  question1: "",
+  question2: "",
+  question3: "",
+  question4: "",
+  question5: "",
+  question6: "",
+  question7: "",
+  question8: "",
 
   answer1: "",
   answer2: "",
@@ -40,37 +40,10 @@ const report = {
   newClassification: "MANTIENE_LA_PRECEDENTE",
   oldClassification: "MANTIENE_LA_PRECEDENTE",
   proposedAbstentionDate: {},
-  path: "",
+  path: "VENTIDUE",
 }
 
-const testR = {
-  "idPerson": 1,
-  "typeOfReport": "AGGIORNAMENTO_PER_RICHIESTA_FINE_ASTENSIONE",
-  "reportingDate": "12-01-2023",
-  "triage": null,
-  "abstention": null,
-  "disinfection": null,
-  "question1": null,
-  "question2": null,
-  "question3": null,
-  "question4": null,
-  "question5": null,
-  "question6": null,
-  "question7": null,
-  "question8": null,
-  "answer1": null,
-  "answer2": null,
-  "answer3": null,
-  "answer4": null,
-  "answer5": null,
-  "answer6": null,
-  "answer7": null,
-  "answer8": null,
-  "newClassification": null,
-  "oldClassification": null,
-  "proposedAbstentionDate": null,
-  "path": null
-}
+
 
 @Injectable({
   providedIn: "root",
@@ -82,10 +55,10 @@ export class ComponentService {
   getSurvey_1(item: any) {
     if (item.value !== "") {
       report.typeOfReport = item.typeOfReport;
-      report.questions1 = item.question1;
-      report.questions2 = item.question2;
-      report.questions3 = item.question3;
-      report.questions4 = item.question4;
+      report.question1 = item.question1;
+      report.question2 = item.question2;
+      report.question3 = item.question3;
+      report.question4 = item.question4;
 
       report.answer1 = item.answer1;
       report.answer2 = item.answer2;
@@ -95,8 +68,8 @@ export class ComponentService {
   }
   getSurvey_2(item: any) {
     if (item.value !== "") {
-      report.questions5 = item.question5;
-      report.questions6 = item.question6;
+      report.question5 = item.question5;
+      report.question6 = item.question6;
 
       report.answer5 = item.answer5;
       report.answer6 = item.answer6;
@@ -105,8 +78,8 @@ export class ComponentService {
   }
   getSurvey_3(item: any) {
     if (item.value !== "") {
-      report.questions7 = item.question7;
-      report.questions8 = item.question8;
+      report.question7 = item.question7;
+      report.question8 = item.question8;
 
       report.answer7 = item.answer7;
       report.answer8 = item.answer8;
@@ -140,7 +113,7 @@ export class ComponentService {
     }
 
     //ABSTENTION DATE
-    if (report.typeOfReport === "Sono positivo ad un test diagnostico") {
+    if (report.typeOfReport === "SONO_POSITIVO_AD_UN_TEST_DIAGNOSTICO") {
       const abstentionDate = new Date(report.answer2);
       report.proposedAbstentionDate = new Date(abstentionDate.setDate(abstentionDate.getDate() + 14));
     } else {
@@ -203,8 +176,8 @@ export class ComponentService {
     const threeDayBefore = new Date();
     threeDayBefore.setDate(threeDayBefore.getDate() - 3);
     if (date_H >= threeDayBefore) {
-      report.disinfectionDate = true;
-    } else report.disinfectionDate = false;
+      report.disinfection = true;
+    } else report.disinfection = false;
   }
 
   redirectControll() {
@@ -213,7 +186,7 @@ export class ComponentService {
       report.typeOfReport === "SONO_POSITIVO_AD_UN_TEST_DIAGNOSTICO" &&
       report.answer1 === "Test_molecolare" &&
       report.answer8 === "no") {
-      report.path = "1";
+      report.path = "UNO";
       this.router.navigate([ '/path1' ]);
     }
 
@@ -221,20 +194,20 @@ export class ComponentService {
       report.typeOfReport === "SONO_POSITIVO_AD_UN_TEST_DIAGNOSTICO" &&
       report.answer1 === "Tampone_rapido" &&
       report.answer8 === "no") {
-      report.path = "2";
+      report.path = "DUE";
       this.router.navigate([ '/path2' ]);
     }
 
     if (report.typeOfReport === "AGGIORNAMENTO_PER_RICHIESTA_FINE_ASTENSIONE"
     ) {
-      report.path = "22";
+      report.path = "VENTIDUE";
       this.router.navigate([ '/path22' ]);
     }
 
     if (
       report.typeOfReport === "SONO_POSITIVO_AD_UN_TEST_DIAGNOSTICO" &&
       report.answer8 === "si") {
-      report.path = "25"
+      report.path = "VENTICINQUE"
       this.router.navigate([ '/path25' ]);
     }
   }
