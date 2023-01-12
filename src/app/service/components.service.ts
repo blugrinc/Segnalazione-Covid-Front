@@ -42,6 +42,34 @@ const report = {
   path: "",
 }
 
+const testR = {
+  "idReport": 22,
+  "typeOfReport": "CIAOOOOOOO",
+  "reportingDate": "12-01-2023",
+  "triage": null,
+  "abstention": null,
+  "disinfection": null,
+  "question1": null,
+  "question2": null,
+  "question3": null,
+  "question4": null,
+  "question5": null,
+  "question6": null,
+  "question7": null,
+  "question8": null,
+  "answer1": null,
+  "answer2": null,
+  "answer3": null,
+  "answer4": null,
+  "answer5": null,
+  "answer6": null,
+  "answer7": null,
+  "answer8": null,
+  "newClassification": null,
+  "oldClassification": null,
+  "proposedAbstentionDate": null,
+  "path": null
+}
 
 @Injectable({
   providedIn: "root",
@@ -83,11 +111,11 @@ export class ComponentService {
       report.answer8 = item.answer8;
       report.reportDate = new Date();
     }
-    /* this.postSurvey(TestReport) */;
-    this.setOtherValueSurvey();
 
+    this.setOtherValueSurvey();
     console.log(report);
 
+    this.postSurvey(testR);
     return this.redirectControll();
   }
 
