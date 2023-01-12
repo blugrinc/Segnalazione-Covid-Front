@@ -1,0 +1,48 @@
+{
+  "id": "",
+  "typeOfRepor": {
+    "id": "1",
+    "type": ""
+  },
+
+  "person": {
+    "id": ""
+  },
+  "reportingDate": "",
+  "triage": "boolean",
+  "abstention": "boolean",
+  "disinfectionDate": "boolean",
+
+  "questions1": "",
+  "questions2": "",
+  "questions3": "",
+  "questions4": "",
+  "questions5": "",
+  "questions6": "",
+  "questions7": "",
+  "questions8": "",
+
+  "answer1": "",
+  "answer2": "",
+  "answer3": "",
+  "answer4": "",
+  "answer5": "",
+  "answer6": "",
+  "answer7": "",
+  "answer8": "",
+
+  "newClassification": {
+    "id": "",
+    "type": ""
+  },
+  "oldClassification": {
+    "id": "",
+    "type": ""
+  },
+  "proposedAbstentionDate": "",
+
+  "path": {
+    "id": "",
+    "type": ""
+  }
+}

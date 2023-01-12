@@ -259,8 +259,6 @@ select.list-dt:focus {
   border: 1px solid #d7e5c3;
 }
 
-.dropDown option {
-  max-width: 100px; /*should force maximum width*/
-  overflow: hidden; /*in case the contents do not fit*/
-  word-break: break-all;
+.dropDown > option {
+  width: 100px;
 }

@@ -6,7 +6,7 @@
 
           <div class="row">
             <div class="col-md-12 mx-0">
-              <form id="msform">
+              <form id="msform" [formGroup]="form" (submit)="sendObject(form)">
                 <!-- progressbar -->
                 <ul id="progressbar">
                   <li class="active" id="account"><strong>Dettagli Segnalazione</strong></li>
@@ -20,18 +20,17 @@
                     <h2 class="fs-title">Sintomaticità</h2>
                     <div>
                       <label for="dataSintomi">Data inizio sintomi:</label>
-                      <input type="date" name="" id="dataSintomi">
+                      <input type="date" name="" id="dataSintomi" formControlName="answer5">
                     </div>
                     <div id="textArea">
                       <label for="sintomi">Indica di seguito i sintomi:</label><br>
-                      <textarea id="box"></textarea>
+                      <textarea type="text" id="box" formControlName="answer6"></textarea>
                     </div>
                   </div>
 
-                  <input type="button" name="previous" class="previous action-button-previous" value="Indietro"
+                  <input type="button" name="previous" class="previous action-button-previous" value="previous"
                     [routerLink]="['/survey:1']" routerLinkActive="active" />
-                  <input type="button" name="next" class="next action-button" value="Avanti"
-                    [routerLink]="['/control-data:1']" routerLinkActive="active" />
+                  <input type="submit" name="next" class="next action-button" value="next" routerLinkActive="active" />
                 </fieldset>
               </form>
             </div>

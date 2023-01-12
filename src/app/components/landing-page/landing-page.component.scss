@@ -55,29 +55,11 @@ form {
   justify-content: space-evenly;
 }
 
-button {
-  height: 50px;
-  width: 150px;
-}
-
-/*Blue Buttons*/
-.action-button {
-  font-family: "Inter", sans-serif;
-  background: #16510d;
-  font-weight: bold;
-  color: white;
-  border: 0 none;
-  border-radius: 0px;
-  cursor: pointer;
-}
-
-.action-button:hover,
-.action-button:focus {
-  box-shadow: 0 0 0 2px white, 0 0 0 3px skyblue;
-}
-
 /*Previous Buttons*/
 .action-button-previous {
+  height: 50px;
+  width: 150px;
+
   background: #616161;
   font-weight: bold;
   color: white;

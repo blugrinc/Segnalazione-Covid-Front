@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { type1_SurveyComponent } from './components/report-type-1/survey/survey.component';
 import { type1_ControlDataComponent } from './components/report-type-1/control-data/control-data.component';
@@ -18,6 +19,7 @@ import { Path1Component } from './components/path/path1/path1.component';
 import { Path2Component } from './components/path/path2/path2.component';
 import { Path22Component } from './components/path/path22/path22.component';
 import { Path25Component } from './components/path/path25/path25.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,10 @@ import { Path25Component } from './components/path/path25/path25.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [ AppComponent ]

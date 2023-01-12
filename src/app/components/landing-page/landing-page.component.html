@@ -1,26 +1,26 @@
 <div class="container">
   <div class="principale">
     <h2>Tipologia di Segnalazione</h2>
-    <form action="">
+
+    <form>
       <p class="sceltaSegnalazione">Seleziona la tipologia di segnalazione:</p>
-      <div class="form-check form-check-reverse">
-        <label class="form-check-label text-start" for="domanda1" [routerLink]="['/survey:1']"
-          routerLinkActive="active">Sono positivo ad un test diagnostico</label>
-        <!--  <input class="form-check-input" type="checkbox" value="" id="domanda1"  /> -->
+
+      <div>
+        <button class="form-check-label text-start" [routerLink]="['/survey:1']" routerLinkActive="active">
+          Sono positivo ad un test diagnostico </button>
+
       </div>
-      <div class="form-check form-check-reverse">
-        <label class="form-check-label text-start" for="domanda2" [routerLink]="['/survey:2']"
-          routerLinkActive="active">Aggiornamento per richiesta fine astenzione</label>
-        <!--         <input class="form-check-input" type="checkbox" value="" id="domanda2"  />
- -->
+
+      <div>
+        <button class="form-check-label text-start" [routerLink]="['/survey:2']" routerLinkActive="active">
+          Aggiornamento per richiesta
+          fine astenzione</button>
+
       </div>
       <div class="containerButton">
 
-        <!--  <button type="submit" class="previous action-button-previous" [routerLink]="['/export-page']"
-          routerLinkActive="active">Export-Page</button> -->
-
-        <!-- <button type="submit" class="next action-button" [routerLink]="['/survey']"
-          routerLinkActive="active">Inizia</button> -->
+        <button type="submit" class="previous action-button-previous" [routerLink]="['/export-page']"
+          routerLinkActive="active">Export-Page</button>
       </div>
     </form>
   </div>

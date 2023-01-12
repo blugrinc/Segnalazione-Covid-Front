@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, Router } from '@angular/router';
 
 import { ExportPageComponent } from './components/export-page/export-page.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
