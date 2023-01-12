@@ -10,7 +10,8 @@ import { IfStmt } from "@angular/compiler";
 
 
 const report = {
-  person: "person",
+  /* person: "person", */
+  idPerson: 1,
   reportDate: new Date(),
   triage: true,
   abstention: false,
@@ -36,15 +37,15 @@ const report = {
   answer7: "",
   answer8: "",
 
-  newClassification: "mantiene la precedente",
-  oldClassification: "mantiene la precedente",
+  newClassification: "MANTIENE_LA_PRECEDENTE",
+  oldClassification: "MANTIENE_LA_PRECEDENTE",
   proposedAbstentionDate: {},
   path: "",
 }
 
 const testR = {
-  "idReport": 22,
-  "typeOfReport": "CIAOOOOOOO",
+  "idPerson": 1,
+  "typeOfReport": "AGGIORNAMENTO_PER_RICHIESTA_FINE_ASTENSIONE",
   "reportingDate": "12-01-2023",
   "triage": null,
   "abstention": null,
@@ -113,30 +114,29 @@ export class ComponentService {
     }
 
     this.setOtherValueSurvey();
+    this.redirectControll()
     console.log(report);
-
-    this.postSurvey(testR);
-    return this.redirectControll();
+    return this.postSurvey(report);
   }
 
   setOtherValueSurvey() {
     //ABSTENTION ( TRUE OR FALSE )
-    if (report.typeOfReport === "Sono positivo ad un test diagnostico") {
+    if (report.typeOfReport === "SONO_POSITIVO_AD_UN_TEST_DIAGNOSTICO") {
       report.abstention = true;
     }
     //OLD CLASSIFICATION
     if (report.answer1 === "Test_molecolare") {
-      report.oldClassification = "Caso probabile"
+      report.oldClassification = "CASO_PROBABILE"
     } else if (report.answer1 === "Tampone_rapido") {
-      report.oldClassification = "Caso possibile"
+      report.oldClassification = "CASO_POSSIBILE"
     }
     //NEW CLASSIFICATION
     if (report.answer1 === "Test_molecolare" && report.answer8 === "no") {
-      report.newClassification = "Caso confermato_molecolare"
+      report.newClassification = "CASO_CONFERMATO_MOLECOLARE"
     } else if (report.answer1 === "Tampone_rapido" && report.answer8 === "no") {
-      report.newClassification = "Caso confermato_antigenico"
+      report.newClassification = "CASO_CONFERMATO_ANTIGENICO"
     } else if (report.answer8 === "si") {
-      report.newClassification = "Caso confermato_variante"
+      report.newClassification = "CASO_CONFERMATO_VARIANTE"
     }
 
     //ABSTENTION DATE
@@ -144,7 +144,7 @@ export class ComponentService {
       const abstentionDate = new Date(report.answer2);
       report.proposedAbstentionDate = new Date(abstentionDate.setDate(abstentionDate.getDate() + 14));
     } else {
-      report.proposedAbstentionDate = "nessuna";
+      report.proposedAbstentionDate = "";
     }
     //TRIAGE
     const date_F = new Date(report.answer2); /* data_Tampone */
@@ -210,7 +210,7 @@ export class ComponentService {
   redirectControll() {
 
     if (
-      report.typeOfReport === "Sono positivo ad un test diagnostico" &&
+      report.typeOfReport === "SONO_POSITIVO_AD_UN_TEST_DIAGNOSTICO" &&
       report.answer1 === "Test_molecolare" &&
       report.answer8 === "no") {
       report.path = "1";
@@ -218,21 +218,21 @@ export class ComponentService {
     }
 
     if (
-      report.typeOfReport === "Sono positivo ad un test diagnostico" &&
+      report.typeOfReport === "SONO_POSITIVO_AD_UN_TEST_DIAGNOSTICO" &&
       report.answer1 === "Tampone_rapido" &&
       report.answer8 === "no") {
       report.path = "2";
       this.router.navigate([ '/path2' ]);
     }
 
-    if (report.typeOfReport === "Aggiornamento per richiesta fine astenzione"
+    if (report.typeOfReport === "AGGIORNAMENTO_PER_RICHIESTA_FINE_ASTENSIONE"
     ) {
       report.path = "22";
       this.router.navigate([ '/path22' ]);
     }
 
     if (
-      report.typeOfReport === "Sono positivo ad un test diagnostico" &&
+      report.typeOfReport === "SONO_POSITIVO_AD_UN_TEST_DIAGNOSTICO" &&
       report.answer8 === "si") {
       report.path = "25"
       this.router.navigate([ '/path25' ]);

@@ -47,7 +47,7 @@ export class type1_SurveyComponent implements OnInit {
 
   InitForm() {
     this.form = this.fb.group({
-      typeOfReport: new FormControl("Sono positivo ad un test diagnostico"),
+      typeOfReport: new FormControl("SONO_POSITIVO_AD_UN_TEST_DIAGNOSTICO"),
       question1: new FormControl('Selezionare la tipologia di test'),
       answer1: new FormControl(''),
 
