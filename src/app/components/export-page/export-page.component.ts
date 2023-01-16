@@ -23,11 +23,19 @@ export class ExportPageComponent implements OnInit{
   }
 
   getByReportingDate(date : Date){
-    this.medicoService.getReportByReportingDate(date);
+    this.medicoService.getReportByReportingDate(date).subscribe((res)=>{;
+    console.log(res)
+    this.page=res;
+    this.reports=res.content;
+  });
   }
 
   getReportBetweenDate (minDate :Date, maxDate : Date){
-    this.medicoService.getReportBetweenDate(minDate,maxDate);
+    this.medicoService.getReportBetweenDate(minDate,maxDate).subscribe((res)=>{;
+      console.log(res)
+      this.page=res;
+      this.reports=res.content;
+    });
   }
 
 }

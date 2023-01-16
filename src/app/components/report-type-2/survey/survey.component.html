@@ -1,29 +1,29 @@
 <div class="container" id="grad1">
-  <div class="principale">
-    <div class="row justify-content-center mt-0">
-      <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
-        <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+    <div class="principale">
+        <div class="row justify-content-center mt-0">
+            <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+                <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
 
-          <div class="row">
-            <div class="col-md-12 mx-0">
-              <form id="msform">
-                <!-- progressbar -->
-                <ul id="progressbar">
-                  <li class="active" id="account"><strong>Dettagli Segnalazione</strong></li>
-                  <li id="personal"><strong>Convivente</strong></li>
-                  <li id="payment"><strong>Sintomi</strong></li>
-                </ul>
-                <!-- fieldsets -->
+                    <div class="row">
+                        <div class="col-md-12 mx-0">
+                            <form id="msform">
+                                <!-- progressbar -->
+                                <ul id="progressbar">
+                                    <li class="active" id="account"><strong>Dettagli Segnalazione</strong></li>
+                                    <li id="personal"><strong>Convivente</strong></li>
+                                    <li id="payment"><strong>Sintomi</strong></li>
+                                </ul>
+                                <!-- fieldsets -->
 
-                <!--   PRIMO STEP -->
-                <fieldset>
-                  <div class="form-card">
-                    <h2 class="fs-title">Dettagli Segnalazione</h2>
-                    <div>
-                      <!--   DOMANDA 1 -->
-                      <label for="tipoTest" aria-placeholder="">Tipologia di segnalazione per cui si è in
+                                <!--   PRIMO STEP -->
+                                <fieldset>
+                                    <div class="form-card">
+                                        <h2 class="fs-title">Dettagli Segnalazione</h2>
+                                        <div>
+                                            <!--   DOMANDA 1 -->
+                                            <label for="tipoTest" aria-placeholder="">Tipologia di segnalazione per cui si è in
                         astensione:</label>
-                      <select name="tipoTest" class="dropDown">
+                                            <select name="tipoTest" class="dropDown">
                         <option value="1">Sono positivo ad un test diagnostico</option>
                         <option value="2">Ho sintomi simil-influenzali</option>
                         <option value="3">Sono asintomatico ma ho avuto contatti con persona non convivente
@@ -31,36 +31,33 @@
                         <option value="4">Sono asintomatico ma convivo con una persona con sintomi
                           simil-influenzali</option>
                         <option value="5">Sono asintomatico ma convivo con una persona posta in
-                          quarantena/isolamento dal SSN (ASL/ATS, medico curante) come
-                          contatto stretto</option>
+                          quarantena/isolamento dal SSN </option>
                         <option value="6">Aggiornamento per tampone di controllo positivo</option>
                       </select>
-                    </div>
-                    <!--   DOMANDA 2 -->
-                    <div>
-                      <label for="dataTest">Se hai effettato un tampone di controllo con esito negativo, indica la data
+                                        </div>
+                                        <!--   DOMANDA 2 -->
+                                        <div>
+                                            <label for="dataTest">Se hai effettato un tampone di controllo con esito negativo, indica la data
                         del tampone</label>
-                      <input type="date" name="" id="textareaDate">
-                    </div>
-                    <!--   DOMANDA 3 -->
-                    <div>
-                      <label for="dataPresenza">Se il SSN (ASL/ATS, medico curante) aveva disposto per te un periodo di
+                                            <input type="date" name="" id="textareaDate">
+                                        </div>
+                                        <!--   DOMANDA 3 -->
+                                        <div>
+                                            <label for="dataPresenza">Se il SSN (ASL/ATS, medico curante) aveva disposto per te un periodo di
                         quarantena/isolamento, indica la data di termine
                         quarantena/isolamento</label>
-                      <input type="date" name="" id="textareaDate">
-                    </div>
+                                            <input type="date" name="" id="textareaDate">
+                                        </div>
 
-                  </div>
-                  <input type="button" name="previous" class="previous action-button-previous" value="Indietro"
-                    [routerLink]="['/landing-page']" routerLinkActive="active" />
-                  <input type="button" name="next" class="next action-button" value="Avanti"
-                    [routerLink]="['/symptomatology:2']" routerLinkActive="active" />
-                </fieldset>
-              </form>
+                                    </div>
+                                    <input type="button" name="previous" class="previous action-button-previous" value="Indietro" [routerLink]="['/landing-page']" routerLinkActive="active" />
+                                    <input type="button" name="next" class="next action-button" value="Avanti" [routerLink]="['/symptomatology:2']" routerLinkActive="active" />
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
