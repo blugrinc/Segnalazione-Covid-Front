@@ -1,31 +1,39 @@
 <div class="container">
-  <div class="principale">
-    <h2>Esporta segnalazioni</h2>
-    <div>
-      <div class="sceltaFiltro">
-        <p class="filtri">Filtra per:</p>
-        <select name="" id="">
+    <div class="principale">
+        <h2>Esporta segnalazioni</h2>
+        <div>
+            <div class="sceltaFiltro">
+                <p class="filtri">Filtra per:</p>
+                <select name="" id="">
           <option value="">Data</option>
           <option value="">Intervallo</option>
           <option value="">Scarica tutto</option>
         </select>
-      </div>
-      <p class="filtri">Seleziona intervallo:</p>
-      <form>
-        <div class="selezionaData">
-          <div>
-            <p class="filtri rangeData">Dal: </p>
-            <input type="date" id="dataInizio" name="dataInizio" value="" />
-          </div>
-          <div>
-            <p class="filtri rangeData">Al: </p>
-            <input type="date" id="dataFine" name="dataFine" value="" />
-          </div>
+            </div>
+            <p class="filtri">Seleziona intervallo:</p>
+            <form>
+                <div class="selezionaData">
+                    <div>
+                        <p class="filtri rangeData">Dal: </p>
+                        <input type="date" id="dataInizio" name="dataInizio" value="" />
+                    </div>
+                    <div>
+                        <p class="filtri rangeData">Al: </p>
+                        <input type="date" id="dataFine" name="dataFine" value="" />
+                    </div>
+                </div>
+                <input type="button" name="previous" class="previous action-button-previous" value="Indietro" [routerLink]="['/landing-page']" routerLinkActive="active" />
+                <input type="button" name="next" class="next action-button" value="Scarica" />
+            </form>
         </div>
-        <input type="button" name="previous" class="previous action-button-previous" value="Indietro"
-          [routerLink]="['/landing-page']" routerLinkActive="active" />
-        <input type="button" name="next" class="next action-button" value="Scarica" />
-      </form>
+        <div *ngFor="let report of reports">
+            <ul class="list-group">
+                <li class="list-group-item">Nome:&nbsp;<span class="info">{{report.person.name}}</span></li>
+                <li class="list-group-item">Cognome:&nbsp;<span class="info">{{report.person.surname}}</span></li>
+                <li class="list-group-item">Tipo di segnalazione:&nbsp;<span class="info">{{report.typeOfReport}}</span></li>
+                <li class="list-group-item">Date:&nbsp;<span class="info">{{report.reportingDate | slice:0:10}}</span></li>
+                <li class="list-group-item"><button>Visualizza</button></li>
+            </ul>
+        </div>
     </div>
-  </div>
 </div>

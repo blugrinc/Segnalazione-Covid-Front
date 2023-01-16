@@ -7,6 +7,7 @@ import { Report } from "../models/report";
 import { Observable } from "rxjs";
 import { getLocaleDateFormat } from "@angular/common";
 import { IfStmt } from "@angular/compiler";
+import { environment } from "../environments/env";
 
 
 const report = {
@@ -51,6 +52,9 @@ const report = {
 export class ComponentService {
 
   constructor(private http: HttpClient, private router: Router) { }
+
+  URL= environment.pathApi;
+
 
   getSurvey_1(item: any) {
     if (item.value !== "") {
@@ -213,9 +217,12 @@ export class ComponentService {
   }
 
   postSurvey(item: any) {
-    return this.http.post<any>("http://localhost:8080/report/add", item)
-      .subscribe(res => console.log(res));
+    return this.http.post<any>(`${this.URL}report/add`, item)
+    .subscribe(res => console.log(res))
+      ;
   }
+
+
 
 }
 
