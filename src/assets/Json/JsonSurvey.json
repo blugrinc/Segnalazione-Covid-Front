@@ -1,0 +1,59 @@
+{
+  "reportType1": {
+    "typeOfReport":"Sono positivo ad un test diagnostico",
+      "question1": "Selezionare la tipologia di test",
+      "question2": "Data in cui il test è stato effettuato",
+      "question3": "Data ultima presenza in sede/ufficio",
+      "question4": "Sei sintomatico?",
+      "question5": "Data inizio sintomi:",
+      "question6": "Indica di seguito i sintomi:",
+      "question7": "Se conosci la data di effettuazione del tampone di controllo indicala di seguito:",
+      "question8": "Il tuo è un caso sospetto o confermato di variante?",
+
+      "answer1": {
+        "option1": "Test molecolare",
+        "option2": "Tampone rapido"
+      },
+      "answer2": "Inserire Data",
+      "answer3": "Inserire Data",
+      "answer4": {
+        "option1": "SI",
+        "option2": "NO"
+      },
+      "answer5": "Inserire Data",
+      "answer6": "Inserire Testo",
+      "answer7": "Inserire Data",
+      "answer8": {
+        "option1": "SI",
+        "option2": "NO"
+      }
+  },
+
+  "reportType2": {
+    "typeOfReport":"Aggiornamento per richiesta fine astenzione",
+      "question1": "Tipologia di segnalazione per cui si è in astensione:",
+      "question2": "Se hai effettato un tampone di controllo con esito negativo, indica la data del tampone:",
+      "question3": "Se il SSN (ASL/ATS, medico curante) aveva disposto per te un periodo di quarantena/isolamento, indica la data di termine quarantena/isolamento:",
+      "question4": "Se il tuo convivente ha effettato un tampone di controllo con esito negativo, indica la data del tampone:",
+      "question5": "Se il SSN (ASL/ATS, medico curante) aveva disposto per il convivente un periodo di quarantena/isolamento, indica la data di termine quarantena/isolamento:",
+      "question6": "Se avevi sintomi simil-influenzali indica la data in cui i sintomi sono cessati (non considerando perdita/alterazione di olfatto e gusto)",
+      "question7": "",
+      "question8": "",
+
+      "answer1": {
+        "option1": "Sono positivo ad un test diagnostico",
+        "option2": "Ho sintomi simil-influenzali",
+        "option3": "Sono asintomatico ma ho avuto contatti con persona non convivente positiva al Covid",
+        "option4": "Sono asintomatico ma convivo con una persona con sintomi simil-influenzali",
+        "option5": "Sono asintomatico ma convivo con una persona posta in quarantena/isolamento dal SSN",
+        "option6": "Aggiornamento per tampone di controllo positivo"
+      },
+      "answer2": "Inserire data",
+      "answer3": "Inserire data",
+      "answer4": "Inserire data",
+      "answer5": "Inserire data",
+      "answer6": "Inserire data",
+      "answer7": "",
+      "answer8": ""
+  }
+}

@@ -6,7 +6,7 @@
 
           <div class="row">
             <div class="col-md-12 mx-0">
-              <form id="msform">
+              <form id="msform" [formGroup]="form" (submit)="sendObject(form)">
                 <!-- progressbar -->
                 <ul id="progressbar">
                   <li class="active" id="account"><strong>Dettagli Segnalazione</strong></li>
@@ -18,25 +18,21 @@
                 <fieldset>
                   <div class="form-card">
                     <h2 class="fs-title">Convivente</h2>
+                    <!-- DOMANDA 4 -->
                     <div>
-                      <label for="dataSintomi">Se il tuo convivente ha effettato un tampone di controllo con esito
-                        negativo, indica la data del tampone:</label>
-                      <input type="date" name="" id="dataSintomi">
+                      <label for="dataSintomi">{{survey.question4}}</label>
+                      <input type="date" name="" id="dataSintomi" formControlName="answer4">
                     </div>
+                    <!-- DOMANDA 5 -->
                     <div>
-                      <label for="dataSintomi">Se il SSN (ASL/ATS, medico curante) aveva disposto per il convivente un
-                        periodo di quarantena/isolamento, indica la data
-                        di termine quarantena/isolamento:</label>
-                      <input type="date" name="" id="dataSintomi">
+                      <label for="dataSintomi">{{survey.question5}}</label>
+                      <input type="date" name="" id="dataSintomi" formControlName="answer5">
                     </div>
-
-
                   </div>
 
-                  <input type="button" name="previous" class="previous action-button-previous" value="Indietro"
+                  <input type="button" name="previous" class="previous action-button-previous" value="INDIETRO"
                     [routerLink]="['/survey:2']" routerLinkActive="active" />
-                  <input type="button" name="next" class="next action-button" value="Avanti"
-                    [routerLink]="['/control-data:2']" routerLinkActive="active" />
+                  <input type="submit" name="next" class="next action-button" value="AVANTI" />
                 </fieldset>
               </form>
             </div>

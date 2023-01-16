@@ -4,6 +4,7 @@ import { Report } from 'src/app/models/report';
 import { ComponentService } from 'src/app/service/components.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
+const jsonData = require('../../../../assets/Json/JsonSurvey.json');
 @Component({
   selector: 'app-survey',
   templateUrl: './survey.component.html',
@@ -12,9 +13,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 
 export class type1_SurveyComponent implements OnInit {
-  id: number = 2;
+  id!: number;
   form!: FormGroup;
   report!: Report;
+  survey = jsonData.reportType1
 
   constructor(
     private fb: FormBuilder,
@@ -25,12 +27,10 @@ export class type1_SurveyComponent implements OnInit {
 
 
   sendObject(formData: any) {
-    /*   const proposedAbstentionDate = new Date(formData.value.answer2)
-      proposedAbstentionDate.setDate(proposedAbstentionDate.getDate() + 14) */
     this.componentService.getSurvey_1(formData.value)
 
 
-    if (formData.value.answer4 === "si") {
+    if (formData.value.answer4 === "SI") {
       this.router.navigate([ '/symptomatology:1' ]);
     } else {
       this.router.navigate([ '/control-data:1' ]);
@@ -48,16 +48,16 @@ export class type1_SurveyComponent implements OnInit {
   InitForm() {
     this.form = this.fb.group({
       typeOfReport: new FormControl("SONO_POSITIVO_AD_UN_TEST_DIAGNOSTICO"),
-      question1: new FormControl('Selezionare la tipologia di test'),
+      question1: new FormControl(this.survey.question1),
       answer1: new FormControl(''),
 
-      question2: new FormControl('Data in cui il test è stato effettuato'),
+      question2: new FormControl(this.survey.question2),
       answer2: new FormControl(''),
 
-      question3: new FormControl('Data ultima presenza in sede/ufficio'),
+      question3: new FormControl(this.survey.question3),
       answer3: new FormControl(''),
 
-      question4: new FormControl('Sei sintomatico?'),
+      question4: new FormControl(this.survey.question4),
       answer4: new FormControl(''),
 
     });

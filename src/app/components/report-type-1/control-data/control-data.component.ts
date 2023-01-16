@@ -4,6 +4,8 @@ import { Report } from 'src/app/models/report';
 import { ComponentService } from 'src/app/service/components.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
+const jsonData = require('../../../../assets/Json/JsonSurvey.json');
+
 @Component({
   selector: 'app-control-data',
   templateUrl: './control-data.component.html',
@@ -11,9 +13,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 
 export class type1_ControlDataComponent implements OnInit {
-  id: number = 2;
+  id!: number;
   form!: FormGroup;
   report!: Report;
+  survey = jsonData.reportType1
 
   constructor(
     private fb: FormBuilder,
@@ -37,10 +40,10 @@ export class type1_ControlDataComponent implements OnInit {
 
   InitForm() {
     this.form = this.fb.group({
-      question7: new FormControl('Se conosci la data di effettuazione del tampone di controllo indicala di seguito:'),
+      question7: new FormControl(this.survey.question7),
       answer7: new FormControl(''),
 
-      question8: new FormControl('Il tuo è un caso sospetto o confermato di variante?'),
+      question8: new FormControl(this.survey.question8),
       answer8: new FormControl(''),
 
     });
