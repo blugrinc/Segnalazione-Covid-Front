@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MedicoService } from 'src/app/service/medico.service';
 import { NgbModal, NgbModalModule, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-export-page',
@@ -10,6 +11,7 @@ import { NgbModal, NgbModalModule, NgbModalConfig } from '@ng-bootstrap/ng-boots
 export class ExportPageComponent implements OnInit {
 
   constructor(
+    private fb: FormBuilder,
     private medicoService: MedicoService,
     private modalService: NgbModal,
     config: NgbModalConfig) {
@@ -17,7 +19,7 @@ export class ExportPageComponent implements OnInit {
     config.keyboard = false;
   }
 
-  reports = [
+  /* reports = [
     {
       id: 25,
       reportDate: "16/01/2023",
@@ -50,38 +52,82 @@ export class ExportPageComponent implements OnInit {
       typeOfReport: "SONO POSITIVO",
       reportingDate: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
     },
-  ];
+  ]; */
+
+  reports!: any;
+  dataReports!: any;
+  intervallReports!: any;
 
   persons!: any;
   page!: any;
 
+  filter!: FormGroup;
+  selectedOption!: string;
+
   ngOnInit(): void {
     this.medicoService.getReportList(0).subscribe((res) => {
-      console.log(res)
+      console.log("SONO IO", res)
       this.page = res;
       this.reports = res.content;
     });
+    this.InitForm();
+    console.log("ALL", this.reports);
+    console.log("DATA", this.dataReports);
+    console.log("INTERVALLO", this.intervallReports);
+  }
+
+  handleSelectChange(event: any) {
+    this.selectedOption = event.target.value;
   }
 
   openModal(content: any) {
     this.modalService.open(content);
   }
 
-  getByReportingDate(date: Date) {
-    this.medicoService.getReportByReportingDate(date).subscribe((res) => {
-      ;
-      console.log(res)
-      this.page = res;
-      this.reports = res.content;
-    });
-  }
+  getObject(formData: any) {
 
-  getReportBetweenDate(minDate: Date, maxDate: Date) {
-    this.medicoService.getReportBetweenDate(minDate, maxDate).subscribe((res) => {
-      ;
-      console.log(res)
-      this.page = res;
-      this.reports = res.content;
+    if (formData.value.firstData !== "" && formData.value.secondData == "") {
+      this.medicoService.getReportByReportingDate(formData.value.firstData).subscribe((res) => {
+        console.log(res)
+        this.page = res;
+        this.dataReports = res.content;
+      });
+      return this.dataReports;
+    }
+
+    if (formData.value.firstData !== "" && formData.value.secondData !== "") {
+      this.medicoService.getReportBetweenDate(formData.value.firstData, formData.value.firstData).subscribe((res) => {
+        console.log(res)
+        this.page = res;
+        this.intervallReports = res.content;
+      });
+      return this.intervallReports;
+    }
+
+  }
+  /*
+    getByReportingDate(date: Date) {
+      this.medicoService.getReportByReportingDate(date).subscribe((res) => {
+        console.log(res)
+        this.page = res;
+        this.reports = res.content;
+      });
+    }
+
+    getReportBetweenDate(minDate: Date, maxDate: Date) {
+      this.medicoService.getReportBetweenDate(minDate, maxDate).subscribe((res) => {
+        ;
+        console.log(res)
+        this.page = res;
+        this.reports = res.content;
+      });
+    } */
+
+  InitForm() {
+    this.filter = this.fb.group({
+      firstData: new FormControl(""),
+      secondData: new FormControl(""),
+
     });
   }
 

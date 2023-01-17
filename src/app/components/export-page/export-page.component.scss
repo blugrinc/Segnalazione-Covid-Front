@@ -53,6 +53,20 @@ h2 {
   margin: 0;
 }
 
+.filter {
+margin-left: 10px;
+
+font-family: "Inter", sans-serif;
+  width: 100px;
+  background: #16510d;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 0px;
+  cursor: pointer;
+  margin: 23px 5px;
+}
+
 .sceltaFiltro {
   margin-bottom: 1rem;
 }
@@ -68,7 +82,7 @@ h2 {
   font-size: 1rem;
 }
 
-/*Blue Buttons*/
+
 .action-button {
   font-family: "Inter", sans-serif;
   width: 100px;

@@ -4,28 +4,69 @@
     <div>
       <div class="sceltaFiltro">
         <p class="filtri">Filtra per:</p>
-        <select name="" id="">
-          <option value="">Visualizza tutto</option>
-          <option value="">Intervallo</option>
-          <option value="">Data</option>
+        <select name="" id="" (change)="handleSelectChange($event)">
+          <option value=""></option>
+          <option value="option1">Visualizza tutti Report</option>
+          <option value="option2">Data</option>
+          <option value="option3">Intervallo</option>
         </select>
       </div>
-      <p class="filtri">Seleziona intervallo:</p>
 
-      <form>
-        <div class="selezionaData">
-          <div>
-            <p class="filtri rangeData">Dal: </p>
-            <input type="date" id="dataInizio" name="dataInizio" value="" />
-          </div>
-          <div>
-            <p class="filtri rangeData">Al: </p>
-            <input type="date" id="dataFine" name="dataFine" value="" />
-          </div>
-        </div>
+      <!-- OPTION 1 -->
+      <table class="table" *ngIf="selectedOption === 'option1'">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Tipologia di Report</th>
+            <th scope="col">Data</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let report of reports">
+            <th scope="row">{{report.idReport}}</th>
+            <td>{{report.typeOfReport}}</td>
+            <td>{{report.reportingDate}}</td>
+            <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold" mdbRipple rippleColor="dark"
+              (click)="openModal(content)">
+              DETTAGLI
+            </button>
 
-        <!-- TABELLA  -->
-        <table class="table">
+            <ng-template #content let-close="close">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">ID: {{report.id}} - Tipologia: {{report.typeOfReport}}
+                </h4>
+                <p> {{report.reportDate}}</p>
+                <button type="button" class="btn-close" aria-label="Close" (click)="close('Cross click')"></button>
+              </div>
+              <div class="modal-body">
+                <p>{{report.person.name}}</p>
+                <p>{{report.person.surname}}</p>
+                <p>{{report.person.name}}</p>
+                <p>{{report.person.surname}}</p>
+                <p>{{report.person.name}}</p>
+                <p></p>
+
+              </div>
+            </ng-template>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- OPTION 2 -->
+      <div *ngIf="selectedOption === 'option2'">
+        <p class="filtri">Inserisci Data:</p>
+        <form [formGroup]="filter" (submit)="getObject(filter)">
+          <div class="selezionaData">
+            <div>
+              <p class="filtri rangeData">Data:</p>
+              <input type="date" id="textareaDate" name="dataInizio" formControlName="firstData">
+            </div>
+            <button type="submit" class="filter"> Filtra </button>
+          </div>
+
+        </form>
+
+        <table class="table" *ngIf="dataReports !== undefined">
           <thead>
             <tr>
               <th scope="col">ID</th>
@@ -34,10 +75,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let report of reports">
-              <th scope="row">{{report.id}}</th>
+            <tr *ngFor="let report of dataReports">
+              <th scope="row">{{report.idReport}}</th>
               <td>{{report.typeOfReport}}</td>
-              <td>{{report.reportDate}}</td>
+              <td>{{report.reportingDate}}</td>
               <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold" mdbRipple rippleColor="dark"
                 (click)="openModal(content)">
                 DETTAGLI
@@ -47,7 +88,7 @@
                 <div class="modal-header">
                   <h4 class="modal-title" id="modal-basic-title">ID: {{report.id}} - Tipologia: {{report.typeOfReport}}
                   </h4>
-                  <p> {{report.reportDate}}</p>
+                  <p> {{report.reportingDate}}</p>
                   <button type="button" class="btn-close" aria-label="Close" (click)="close('Cross click')"></button>
                 </div>
                 <div class="modal-body">
@@ -63,11 +104,68 @@
             </tr>
           </tbody>
         </table>
+      </div>
+      <!-- OPTION 3 -->
+      <div *ngIf="selectedOption === 'option3'">
+        <p class="filtri">Seleziona intervallo:</p>
+        <form [formGroup]="filter" (submit)="getObject(filter)">
+          <div class="selezionaData">
+            <div>
+              <p class="filtri rangeData">Dal: </p>
+              <input type="date" id="textareaDate" name="dataInizio" formControlName="firstData">
+            </div>
+            <div>
+              <p class="filtri rangeData">Al: </p>
+              <input type="date" id="textareaDate" name="dataFine" formControlName="secondData" />
+            </div>
+            <button type="submit" class="filter"> Filtra </button>
+          </div>
 
-        <input type="button" name="previous" class="previous action-button-previous" value="Indietro"
-          [routerLink]="['/landing-page']" routerLinkActive="active" />
-        <input type="button" name="next" class="next action-button" value="Scarica" />
-      </form>
+        </form>
+
+        <table class="table" *ngIf="dataReports !== undefined">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Tipologia di Report</th>
+              <th scope="col">Data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let report of intervallReports">
+              <th scope="row">{{report.idReport}}</th>
+              <td>{{report.typeOfReport}}</td>
+              <td>{{report.reportingDate}}</td>
+              <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold" mdbRipple rippleColor="dark"
+                (click)="openModal(content)">
+                DETTAGLI
+              </button>
+
+              <ng-template #content let-close="close">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-basic-title">ID: {{report.id}} - Tipologia: {{report.typeOfReport}}
+                  </h4>
+                  <p> {{report.reportingDate}}</p>
+                  <button type="button" class="btn-close" aria-label="Close" (click)="close('Cross click')"></button>
+                </div>
+                <div class="modal-body">
+                  <p>{{report.person.name}}</p>
+                  <p>{{report.person.surname}}</p>
+                  <p>{{report.person.name}}</p>
+                  <p>{{report.person.surname}}</p>
+                  <p>{{report.person.name}}</p>
+                  <p></p>
+
+                </div>
+              </ng-template>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <input type="button" name="previous" class="previous action-button-previous" value="Indietro"
+        [routerLink]="['/landing-page']" routerLinkActive="active" />
+      <input type="button" name="next" class="next action-button" value="Scarica" />
     </div>
   </div>
 </div>
