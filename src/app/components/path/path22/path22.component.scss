@@ -1,9 +1,3 @@
-.header {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    position: fixed;
-    margin-top: -5%;
-}
-
 h2 {
     font-family: "Inter", sans-serif;
     font-style: italic;
@@ -19,7 +13,7 @@ h1 {
 
 p,
 li {
-    font-family: 'Abel';
+    font-family: "Abel";
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -37,7 +31,7 @@ span {
 
 .containerBody {
     margin-left: 15%;
-    margin-top: 5%;
+    margin-top: 7%;
     margin-bottom: 2%;
     padding-top: 1%;
     padding-left: 6%;
@@ -45,6 +39,8 @@ span {
     width: 70%;
     height: 100%;
     background-color: #f8ffee;
+    border-radius: 15px;
+    border: 1px solid #d7e5c3;
 }
 
 .recapiti {
@@ -62,7 +58,7 @@ span {
 button {
     width: 300px;
     height: 49px;
-    background: #16510D;
+    background: #16510d;
     color: white;
     margin: 30px;
 }
@@ -71,6 +67,32 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+
+
+/*Blue Buttons*/
+
+.action-button {
+    font-family: "Inter", sans-serif;
+    width: 60%;
+    background: #16510d;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 0px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+.action-button:hover,
+.action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px skyblue;
+}
+
+.action-button-previous:hover,
+.action-button-previous:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #616161;
 }
 
 .numeri {

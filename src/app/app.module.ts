@@ -20,6 +20,8 @@ import { Path2Component } from './components/path/path2/path2.component';
 import { Path22Component } from './components/path/path22/path22.component';
 import { Path25Component } from './components/path/path25/path25.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './auth/token.interceptor';
 import { NgbModule, NgbModalModule, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -50,7 +52,14 @@ import { NgbModule, NgbModalModule, NgbModal, NgbModalConfig } from '@ng-bootstr
     NgbModule,
     NgbModalModule
   ],
-  providers: [ NgbModalConfig, NgbModal ],
+  providers:
+    [ NgbModalConfig, NgbModal,
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: TokenInterceptor,
+        multi: true
+      }
+    ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
