@@ -20,6 +20,7 @@ import { Path2Component } from './components/path/path2/path2.component';
 import { Path22Component } from './components/path/path22/path22.component';
 import { Path25Component } from './components/path/path25/path25.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule, NgbModalModule, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -46,8 +47,10 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgbModule,
+    NgbModalModule
   ],
-  providers: [],
+  providers: [ NgbModalConfig, NgbModal ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

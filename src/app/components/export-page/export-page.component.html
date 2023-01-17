@@ -11,6 +11,7 @@
         </select>
       </div>
       <p class="filtri">Seleziona intervallo:</p>
+
       <form>
         <div class="selezionaData">
           <div>
@@ -22,42 +23,51 @@
             <input type="date" id="dataFine" name="dataFine" value="" />
           </div>
         </div>
+
+        <!-- TABELLA  -->
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Tipologia di Report</th>
+              <th scope="col">Data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let report of reports">
+              <th scope="row">{{report.id}}</th>
+              <td>{{report.typeOfReport}}</td>
+              <td>{{report.reportDate}}</td>
+              <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold" mdbRipple rippleColor="dark"
+                (click)="openModal(content)">
+                DETTAGLI
+              </button>
+
+              <ng-template #content let-close="close">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-basic-title">ID: {{report.id}} - Tipologia: {{report.typeOfReport}}
+                  </h4>
+                  <p> {{report.reportDate}}</p>
+                  <button type="button" class="btn-close" aria-label="Close" (click)="close('Cross click')"></button>
+                </div>
+                <div class="modal-body">
+                  <p>{{report.person.name}}</p>
+                  <p>{{report.person.surname}}</p>
+                  <p>{{report.person.name}}</p>
+                  <p>{{report.person.surname}}</p>
+                  <p>{{report.person.name}}</p>
+                  <p></p>
+
+                </div>
+              </ng-template>
+            </tr>
+          </tbody>
+        </table>
+
         <input type="button" name="previous" class="previous action-button-previous" value="Indietro"
           [routerLink]="['/landing-page']" routerLinkActive="active" />
         <input type="button" name="next" class="next action-button" value="Scarica" />
       </form>
     </div>
-    <!--  <div *ngFor="let report of reports">
-            <ul class="list-group">
-                <li class="list-group-item">Nome:&nbsp;<span class="info">{{report.id}}</span></li>
-                <li class="list-group-item">Cognome:&nbsp;<span class="info">{{report.person.surname}}</span></li>
-                <li class="list-group-item">Tipo di segnalazione:&nbsp;<span class="info">{{report.typeOfReport}}</span></li>
-                <li class="list-group-item">Date:&nbsp;<span class="info">{{report.reportingDate | slice:0:10}}</span></li>
-                <li class="list-group-item"><button>Visualizza</button></li>
-            </ul>
-        </div> -->
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Tipologia di Report</th>
-          <th scope="col">Data</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let report of reports">
-          <th scope="row">{{report.id}}</th>
-          <td>{{report.typeOfReport}}</td>
-          <td>{{report.reportDate}}</td>
-          <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold" mdbRipple rippleColor="dark">
-            DETTAGLI
-          </button>
-        </tr>
-      </tbody>
-    </table>
-
-
-
   </div>
 </div>

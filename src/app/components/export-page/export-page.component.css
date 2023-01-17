@@ -1,0 +1,105 @@
+.main {
+  height: 100vh;
+  width: 100vw;
+  background-color: #d1f89f;
+}
+
+.toolbar {
+  width: 100%;
+  border: 1px solid #16510d;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #148b12;
+  color: white;
+  font-weight: 300;
+  text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000, 1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+}
+
+.header {
+  height: 10vh;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 1.4rem;
+}
+
+.footer {
+  height: 5.5vh;
+  font-size: 1.2rem;
+}
+
+.principale {
+  background-color: #f8ffee;
+  margin-top: 13vh;
+  margin-bottom: 3vh;
+  min-height: 76vh;
+  padding: 2.5rem;
+  border-radius: 15px;
+  border: 1px solid #d7e5c3;
+}
+
+h2 {
+  text-shadow: 4px 4px rgba(0, 0, 0, 0.25);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.filtri {
+  font-size: 1.4rem;
+  font-family: "Vollkorn";
+  font-style: normal;
+  font-weight: 400;
+  color: #000;
+  margin: 0;
+}
+
+.sceltaFiltro {
+  margin-bottom: 1rem;
+}
+
+.selezionaData {
+  width: 50%;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rangeData {
+  font-size: 1rem;
+}
+
+/*Blue Buttons*/
+.action-button {
+  font-family: "Inter", sans-serif;
+  width: 100px;
+  background: #16510d;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 0px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 5px;
+}
+
+.action-button:hover,
+.action-button:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px skyblue;
+}
+
+/*Previous Buttons*/
+.action-button-previous {
+  width: 100px;
+  background: #616161;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 0px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 5px;
+}
+
+.action-button-previous:hover,
+.action-button-previous:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #616161;
+}/*# sourceMappingURL=export-page.component.css.map */
