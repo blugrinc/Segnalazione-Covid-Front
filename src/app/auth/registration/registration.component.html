@@ -1,0 +1,155 @@
+<!-- <div class="tab-content">
+  <mat-card class="mat-elevation-z12">
+    <mat-card-title style="text-align:center; color: brown;">Registration</mat-card-title>
+
+    <mat-card-content>
+      <form #form="ngForm" (ngSubmit)="signup(form)">
+        <mat-form-field>
+          <input matInput placeholder="Nome" type="text" #nome="ngModel" ngModel name="nome" />
+          <mat-error *ngIf="nome.errors">
+            Nome is required
+          </mat-error>
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="cognome" type="text" #cognome="ngModel" ngModel name="cognome" />
+          <mat-error *ngIf="cognome.errors">
+            Cognome is required
+          </mat-error>
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Username" type="text" #username="ngModel" ngModel name="username" required />
+          <mat-icon matSuffix>perm_identity</mat-icon>
+          <mat-error *ngIf="username.invalid">
+            Username is required
+          </mat-error>
+
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Email" required name="email" ngModel #email="ngModel">
+          <mat-error *ngIf="email.invalid">Email is required</mat-error>
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Password" type="password" required minlength="6" name="password" ngModel
+            #password="ngModel">
+          <mat-error *ngIf="password.errors">
+            Password is required
+          </mat-error>
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select matInput placeholder="Role" type="text" required name="roles" ngModel #roles="ngModel">
+            <mat-option value=""></mat-option>
+            <mat-option value="user">User</mat-option>
+            <mat-option value="admin">Administrator</mat-option>
+          </mat-select>
+          <mat-error *ngIf="roles.errors">
+            Role is required
+          </mat-error>
+          <mat-icon matSuffix>assignment</mat-icon>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" class="login-button" type="submit">
+          Sign Up
+        </button>
+
+        <button mat-raised-button color="primary" class="log-in-button" [routerLink]="['/login']">
+          Go to Login page
+        </button>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div> -->
+
+
+<div class="container h-100">
+  <div class="d-flex justify-content-center h-100">
+    <div class="user_card">
+      <div class="d-flex justify-content-center">
+        <div class="brand_logo_container">
+          <img src="../../../assets/img/BLUGRINC - Copia.png" class="brand_logo" alt="Logo" />
+        </div>
+      </div>
+      <div class="d-flex justify-content-center form_container">
+
+        <form #form="ngForm" (ngSubmit)="signup(form)">
+
+          <mat-form-field class="input-group mb-3">
+            <input matInput placeholder="Nome" type="text" #nome="ngModel" ngModel name="nome" />
+            <mat-error *ngIf="nome.errors">
+              Nome is required
+            </mat-error>
+            <mat-icon matSuffix></mat-icon>
+          </mat-form-field>
+
+          <mat-form-field class="input-group mb-3">
+            <input matInput placeholder="cognome" type="text" #cognome="ngModel" ngModel name="cognome" />
+            <mat-error *ngIf="cognome.errors">
+              Cognome is required
+            </mat-error>
+            <mat-icon matSuffix></mat-icon>
+          </mat-form-field>
+
+          <mat-form-field class="input-group mb-3">
+            <input matInput placeholder="Username" type="text" #username="ngModel" ngModel name="username" required />
+            <mat-icon matSuffix>perm_identity</mat-icon>
+            <mat-error *ngIf="username.invalid">
+              Username is required
+            </mat-error>
+
+          </mat-form-field>
+
+          <mat-form-field class="input-group mb-3">
+            <input matInput placeholder="Email" required name="email" ngModel #email="ngModel">
+            <mat-error *ngIf="email.invalid">Email is required</mat-error>
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field class="input-group mb-3">
+            <input matInput placeholder="Password" type="password" required minlength="6" name="password" ngModel
+              #password="ngModel">
+            <mat-error *ngIf="password.errors">
+              Password is required
+            </mat-error>
+            <mat-icon matSuffix>lock</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field class="input-group mb-3">
+            <mat-select matInput placeholder="Role" type="text" required name="roles" ngModel #roles="ngModel">
+              <mat-option value=""></mat-option>
+              <mat-option value="user">User</mat-option>
+              <mat-option value="admin">Administrator</mat-option>
+            </mat-select>
+            <mat-error *ngIf="roles.errors">
+              Role is required
+            </mat-error>
+            <mat-icon matSuffix>assignment</mat-icon>
+          </mat-form-field>
+
+          <div class="d-flex justify-content-center mt-3 login_container">
+            <button mat-raised-button color="primary" class="btn login_btn">
+              Signup
+            </button>
+          </div>
+        </form>
+
+      </div>
+
+      <div class="mt-4">
+        <div class="d-flex justify-content-center links">
+          Have an account? <a [routerLink]="['/login']" class="ml-2">Login</a>
+        </div>
+        <div class="d-flex justify-content-center links">
+          <a href="#">Forgot your password?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

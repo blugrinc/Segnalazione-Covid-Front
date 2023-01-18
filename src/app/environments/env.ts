@@ -3,7 +3,7 @@ export const environment = {
   pathApi: 'http://localhost:8080/api/',
 
   token:
-    "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJibHVncmluY0Bob3RtYWlsLml0IiwiaWF0IjoxNjczOTc4MTg4LCJleHAiOjE2NzM5Nzk2Mjh9._pyvgQvBqJG0wp0Hmcnntls6-ZiDUt55UbV658KumBE"
+    "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJibHVncmluY0Bob3RtYWlsLml0IiwiaWF0IjoxNjc0MDQwODI2LCJleHAiOjE2NzQwNDIyNjZ9.cMd-Ts7OyohcC2y-JewTMQa3Z_LmJlbERm1gb-PfumU"
 };
 
 

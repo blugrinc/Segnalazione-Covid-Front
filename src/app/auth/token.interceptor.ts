@@ -19,17 +19,12 @@ export class TokenInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     const token = environment.token;
-    console.log(token);
-    if (token) {
-      const newReq = request.clone({
-        headers: request.headers.set('Authorization', "Bearer " + token)
-      });
-      console.log(newReq);
-      return next.handle(newReq)
-    }
-    else {
-      console.log("request", request)
-      return next.handle(request);
-    }
+
+    const newReq = request.clone({
+      headers: request.headers.set('Authorization', `Bearer ${environment.token}`).set("Content-Type", "application/json")
+    })
+
+    console.log("NUOVA RICHIESTA", newReq);
+    return next.handle(newReq)
   }
 }
