@@ -14,43 +14,26 @@ import { AuthService } from '../service/auth.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
+  token = localStorage.getItem("UTENTE");
 
-  token!: string;
+  constructor(private authSrv: AuthService) { }
 
-  constructor(private authSrv: AuthService) {
-    this.token = environment.token;
-  }
-
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-    const newReq = request.clone({
-      headers: request.headers.set('Authorization', `Bearer ${environment.token}`).set("Content-Type", "application/json")
-    })
-
-    console.log("NUOVA RICHIESTA", newReq);
-    return next.handle(newReq)
-  }
-
-  /*
-    intercept(
-      request: HttpRequest<unknown>,
-      next: HttpHandler
-    ): Observable<HttpEvent<unknown>> {
-      return this.authSrv.user$.pipe(
-        take(1),
-        switchMap((user) => {
-
-
-          const newReq: HttpRequest<any> = request.clone({
-            headers: request.headers
-              .set(
-                'Authorization',
-                `Bearer ${this.token}`
-              )
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    console.log("prova", this.token);
+    return this.authSrv.user$.pipe(
+      take(1),
+      switchMap((user) => {
+        console.log("1", this.token);
+        if (this.token) {
+          console.log("2", this.token);
+          const cloned = request.clone({
+            headers: request.headers.set('Authorization', 'Bearer ' + this.token).set("Content-Type", "application/json")
           });
-
-          return next.handle(newReq);
-        })
-      );
-    } */
+          return next.handle(cloned);
+        } else {
+          return next.handle(request);
+        }
+      })
+    );
+  }
 }

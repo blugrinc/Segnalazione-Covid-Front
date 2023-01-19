@@ -21,11 +21,8 @@ export interface AuthData {
   providedIn: 'root'
 })
 export class AuthService {
-
-
-
-  private authSub = new BehaviorSubject<AuthData | null>(null); //questa variabile serve per tenere traccia dell'access token
-
+  //questa variabile serve per tenere traccia dell'access token
+  private authSub = new BehaviorSubject<AuthData | null>(null);
   user$ = this.authSub.asObservable();
 
   timeoutRef: any;
@@ -38,17 +35,16 @@ export class AuthService {
   }
 
 
-  login(data: { username: string; password: string }) {
-    return this.http
-      .post<AuthData>(`${environment.pathApi}/auth/login`, data)
+  login(data: { email: string; password: string }) {
+    return this.http.post<AuthData>(`${environment.pathApi}auth/authenticate`, data)
       .pipe(
         tap((data) => {
-          console.log('user auth data:', data);
+          console.log('LOGIN_DATA:', data);
         }),
         tap((data) => {
           this.authSub.next(data);
-          localStorage.setItem('user', JSON.stringify(data));
-          this.router.navigate([ '/' ])
+          localStorage.setItem('UTENTE', JSON.stringify(data));
+          /* this.router.navigate([ '/' ]) */
         }),
         catchError(this.errors)
       );
@@ -56,15 +52,11 @@ export class AuthService {
 
 
   register(data: any) {
-    return this.http
-      .post(`${environment.pathApi}auth/register`, data)
+    return this.http.post(`${environment.pathApi}auth/register`, data)
       .pipe(
         tap((data) => {
-          console.log('REGISTRAZIONE:', data);
-        }),
-        tap((data) => {
-          localStorage.setItem('user', JSON.stringify(data));
-          console.log('LOCAL_STORAGE:', data);
+          localStorage.setItem('UTENTE', JSON.stringify(data));
+          console.log("UTENTE REGISTRATO")
         }),
         catchError(this.errors)
       );
@@ -72,19 +64,18 @@ export class AuthService {
 
 
   restore() {
-    const userJson = localStorage.getItem('user')
+    const userJson = localStorage.getItem('UTENTE')
     if (!userJson) {
       return
     }
     const user: AuthData = JSON.parse(userJson)
     this.authSub.next(user)
-
   }
 
 
   logout() {
     this.authSub.next(null);
-    localStorage.removeItem('user');
+    localStorage.removeItem('UTENTE');
     this.router.navigate([ '/login' ]);
     if (this.timeoutRef) {
       clearTimeout(this.timeoutRef);
