@@ -29,7 +29,6 @@ export class type2_SurveyComponent implements OnInit {
 
   sendObject(formData: any) {
     this.componentService.getSurvey_1(formData.value)
-    console.log(formData.value);
     this.router.navigate([ '/symptomatology:2' ]);
 
   }

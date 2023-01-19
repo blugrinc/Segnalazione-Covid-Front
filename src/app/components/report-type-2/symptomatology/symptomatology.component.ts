@@ -27,7 +27,6 @@ export class type2_SymptomatologyComponent {
 
   sendObject(formData: any) {
     this.componentService.getSurvey_2(formData.value)
-    console.log(formData.value);
     this.router.navigate([ '/control-data:2' ]);
 
   }

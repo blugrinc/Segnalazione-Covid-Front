@@ -28,7 +28,6 @@ export class type2_ControlDataComponent {
 
   sendObject(formData: any) {
     this.componentService.getSurvey_3(formData.value)
-    console.log(formData.value);
   }
 
   ngOnInit(): void {

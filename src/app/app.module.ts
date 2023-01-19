@@ -4,6 +4,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+import { LoginComponent } from './auth/login/login.component';
+import { RegistrationComponent } from './auth/registration/registration.component';
+
 import { type1_SurveyComponent } from './components/report-type-1/survey/survey.component';
 import { type1_ControlDataComponent } from './components/report-type-1/control-data/control-data.component';
 import { type1_SymptomatologyComponent } from './components/report-type-1/symptomatology/symptomatology.component';
@@ -26,6 +29,9 @@ import { NgbModule, NgbModalModule, NgbModal, NgbModalConfig } from '@ng-bootstr
 
 @NgModule({
   declarations: [
+    LoginComponent,
+    RegistrationComponent,
+
     AppComponent,
     type1_SurveyComponent,
     type1_SymptomatologyComponent,

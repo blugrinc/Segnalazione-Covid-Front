@@ -66,14 +66,11 @@ export class ExportPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.medicoService.getReportList(0).subscribe((res) => {
-      console.log("SONO IO", res)
+      console.log("GetAllReport", res)
       this.page = res;
       this.reports = res.content;
     });
     this.InitForm();
-    console.log("ALL", this.reports);
-    console.log("DATA", this.dataReports);
-    console.log("INTERVALLO", this.intervallReports);
   }
 
   handleSelectChange(event: any) {
@@ -88,7 +85,7 @@ export class ExportPageComponent implements OnInit {
 
     if (formData.value.firstData !== "" && formData.value.secondData == "") {
       this.medicoService.getReportByReportingDate(formData.value.firstData).subscribe((res) => {
-        console.log(res)
+        console.log("GetReportDate", res)
         this.page = res;
         this.dataReports = res.content;
       });
@@ -97,31 +94,13 @@ export class ExportPageComponent implements OnInit {
 
     if (formData.value.firstData !== "" && formData.value.secondData !== "") {
       this.medicoService.getReportBetweenDate(formData.value.firstData, formData.value.firstData).subscribe((res) => {
-        console.log(res)
+        console.log("GetReportInterval:", res)
         this.page = res;
         this.intervallReports = res.content;
       });
       return this.intervallReports;
     }
-
   }
-  /*
-    getByReportingDate(date: Date) {
-      this.medicoService.getReportByReportingDate(date).subscribe((res) => {
-        console.log(res)
-        this.page = res;
-        this.reports = res.content;
-      });
-    }
-
-    getReportBetweenDate(minDate: Date, maxDate: Date) {
-      this.medicoService.getReportBetweenDate(minDate, maxDate).subscribe((res) => {
-        ;
-        console.log(res)
-        this.page = res;
-        this.reports = res.content;
-      });
-    } */
 
   InitForm() {
     this.filter = this.fb.group({

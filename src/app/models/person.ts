@@ -7,6 +7,8 @@ export interface Person {
   surname: string;
   dateOfBirth: Date;
   roles: PersonRole;
-  listReport: Report[];
+  /* listReport: Report[]; */
 
 }
+
+

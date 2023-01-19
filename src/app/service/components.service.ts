@@ -112,7 +112,6 @@ export class ComponentService {
 
     this.setOtherValueSurvey();
     this.navigatePathControll()
-    console.log(report);
     return this.postSurvey(report);
   }
 
@@ -237,12 +236,14 @@ export class ComponentService {
 
   postSurvey(item: any) {
     return this.http.post<any>(`${this.URL}report/add`, item)
-      .subscribe(res => console.log(res))
+      .subscribe(res => console.log("ADD_REPORT", res))
       ;
   }
-
-
-
+  getIdPerson(fiscalCode: any) {
+    return this.http.get<any>(`${this.URL}person/getByFiscalCode/${fiscalCode}`)
+      .subscribe(res => console.log("GET_ID_PERSON", res))
+      ;
+  }
 }
 
 

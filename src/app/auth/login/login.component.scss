@@ -1,81 +1,184 @@
-  	/* Coded with love by Mutiullah Samim */
-  	body,
-  	html {
-  	  margin: 0;
-  	  padding: 0;
-  	  height: 100%;
-  	  background: #60a3bc !important;
-  	}
+#msform {
+  text-align: center;
+  position: relative;
+}
 
-  	.user_card {
-  	  height: 400px;
-  	  width: 350px;
-  	  margin-top: auto;
-  	  margin-bottom: auto;
-  	  background: #f39c12;
-  	  position: relative;
-  	  display: flex;
-  	  justify-content: center;
-  	  flex-direction: column;
-  	  padding: 40px;
-  	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  	  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  	  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  	  border-radius: 5px;
+#msform fieldset .form-card {
+  border: 0 none;
+  border-radius: 0px;
+  box-shadow: 0 2px 4px 7px rgba(0, 0, 0, 0.2);
+  padding: 0px 15px 15px 15px;
+  box-sizing: border-box;
+  width: 94%;
+  margin: 0 3% 20px 3%;
 
-  	}
 
-  	.brand_logo_container {
-  	  position: absolute;
-  	  height: 170px;
-  	  width: 170px;
-  	  top: -75px;
-  	  border-radius: 50%;
-  	  background: #60a3bc;
-  	  padding: 10px;
-  	  text-align: center;
-  	}
+  position: relative;
+}
 
-  	.brand_logo {
-  	  height: 150px;
-  	  width: 150px;
-  	  border-radius: 50%;
-  	  border: 2px solid white;
-  	}
+#msform fieldset {
+  background: white;
+  border: 0 none;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding-bottom: 20px;
 
-  	.form_container {
-  	  margin-top: 100px;
-  	}
 
-  	.login_btn {
-  	  width: 100%;
-  	  background: #c0392b !important;
-  	  color: white !important;
-  	}
+  position: relative;
+}
 
-  	.login_btn:focus {
-  	  box-shadow: none !important;
-  	  outline: 0px !important;
-  	}
 
-  	.login_container {
-  	  padding: 0 2rem;
-  	}
+#msform fieldset:not(:first-of-type) {
+  display: none;
+}
 
-  	.input-group-text {
-  	  background: #c0392b !important;
-  	  color: white !important;
-  	  border: 0 !important;
-  	  border-radius: 0.25rem 0 0 0.25rem !important;
-  	}
+#msform fieldset .form-card {
+  text-align: left;
+  color: #030303;
+  display: flex;
+  flex-direction: column;
+    align-items: center;
+}
 
-  	.input_user,
-  	.input_pass:focus {
-  	  box-shadow: none !important;
-  	  outline: 0px !important;
-  	}
+#msform input,
+#msform textarea,
+.dropDown {
+  font-weight: bold;
+  padding: 0px 8px 4px 8px;
 
-  	.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-  	  background-color: #c0392b !important;
-  	}
+  border-left: 1px solid rgb(10, 10, 10);
+  border-bottom: 1px solid rgb(10, 10, 10);
+  border-radius: 0px;
+  margin-bottom: 30px;
+  margin-top: 2px;
+  box-sizing: border-box;
+  color: #000000;
+  font-size: 16px;
+}
 
+label {
+  margin-right: 20px;
+}
+
+#msform input:focus,
+#msform textarea:focus,
+.dropDown:focus {
+ box-shadow: none !important;
+  font-weight: bold;
+  border: 2px solid #5b891d;
+  outline-width: 0;
+}
+
+/*Blue Buttons*/
+#msform .action-button {
+  font-family: "Inter", sans-serif;
+  width: 100px;
+  background: #16510d;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 0px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 5px;
+}
+
+#msform .action-button:hover,
+#msform .action-button:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px skyblue;
+}
+
+/*Previous Buttons*/
+#msform .action-button-previous {
+  width: 100px;
+  background: #616161;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 0px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 5px;
+}
+
+#msform .action-button-previous:hover,
+#msform .action-button-previous:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #616161;
+}
+
+/*Dropdown List Exp Date*/
+select.list-dt {
+  border: none;
+  outline: 0;
+  border-bottom: 1px solid #ccc;
+  padding: 2px 5px 3px 5px;
+  margin: 2px;
+}
+
+select.list-dt:focus {
+  border-bottom: 2px solid skyblue;
+}
+
+/*The background card*/
+.card {
+  z-index: 0;
+  border: none;
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+/*FieldSet headings*/
+.fs-title {
+  padding-top: 10px;
+  font-size: 25px;
+  color: #000000;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: left;
+  font-family: "Vidaloka", serif;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/*Imaged Radio Buttons*/
+.radio-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.radio {
+  display: inline-block;
+  width: 204;
+  height: 104;
+  border-radius: 0;
+  background: lightblue;
+  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  cursor: pointer;
+  margin: 8px 2px;
+}
+
+.radio:hover {
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.radio.selected {
+  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+/*Fit image in bootstrap div*/
+.fit-image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.principale {
+  background-color: #f8ffee;
+  margin-top: 13vh;
+  margin-bottom: 3vh;
+  min-height: 76vh;
+  padding: 2.5rem;
+  border-radius: 15px;
+  border: 1px solid #d7e5c3;
+}

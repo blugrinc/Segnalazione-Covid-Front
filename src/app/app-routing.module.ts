@@ -3,6 +3,8 @@ import { RouterModule, Routes, Router } from '@angular/router';
 
 import { ExportPageComponent } from './components/export-page/export-page.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegistrationComponent } from './auth/registration/registration.component';
 
 import { type1_SurveyComponent } from './components/report-type-1/survey/survey.component';
 import { type1_ControlDataComponent } from './components/report-type-1/control-data/control-data.component';
@@ -23,6 +25,23 @@ const routes: Routes = [
     redirectTo: 'landing-page',
     pathMatch: 'full'
   },
+  //AUTENTICAZIONE
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+
+  {
+    path: 'auth',
+    component: RegistrationComponent
+  },
+
+  //PAGINA INIZIALE
+  {
+    path: 'landing-page',
+    component: LandingPageComponent
+  },
+
   // TIPOLOGIA SEGNALAZIONE 1
   {
     path: 'survey:1',
@@ -36,6 +55,7 @@ const routes: Routes = [
     path: 'symptomatology:1',
     component: type1_SymptomatologyComponent
   },
+
   //TIPOLOGIA SEGNALAZIONE 2
   {
     path: 'survey:2',
@@ -50,15 +70,13 @@ const routes: Routes = [
     component: type2_SymptomatologyComponent
   },
 
-  {
-    path: 'landing-page',
-    component: LandingPageComponent
-  },
+  //EXPORT PAGE
   {
     path: 'export-page',
     component: ExportPageComponent
   },
 
+  //RISULTATI PERCORSI
   {
     path: 'path1',
     component: Path1Component

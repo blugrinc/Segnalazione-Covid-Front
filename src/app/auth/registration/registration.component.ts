@@ -17,27 +17,45 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  user = { username: "", nome: "", cognome: "", password: "", email: "", role: [ "" ] }
+
+  person = {
+    firstname: "",
+    lastname: "",
+    email: "",
+    fiscalCode: "",
+    password: "",
+    role: ""
+  }
+
+  ciao = {
+    firstname: "Marco",
+    lastname: "Caccania",
+    email: "MOMMO@lollo.it",
+    fiscalCod2e: "NYGOOF26R17N924Q",
+    password: "admin",
+    role: "DIPENDENTE"
+  }
 
   signup(form: NgForm) {
 
-    this.user.username = form.value.username;
-    this.user.nome = form.value.nome;
-    this.user.cognome = form.value.cognome;
-    this.user.password = form.value.password;
-    this.user.email = form.value.email;
-    this.user.role.splice(0, 1);
-    this.user.role.push(form.value.roles);
+    this.person.firstname = form.value.firstname;
+    this.person.lastname = form.value.lastname;
+    this.person.fiscalCode = form.value.fiscalCode;
+    this.person.email = form.value.email;
+    this.person.password = form.value.password;
+    this.person.role = form.value.role;
 
-    console.log(this.user)
-
+    console.log(this.ciao)
 
     try {
-      this.authSrv.register(this.user).subscribe();
-      this.router.navigate([ '/login' ])
+      this.authSrv.register(this.ciao).subscribe();
+      /*  this.router.navigate([ '/landing-page' ]) */
     } catch (error: any) {
       alert(error)
     }
   }
+
+
+
 
 }

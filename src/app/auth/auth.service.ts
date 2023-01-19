@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { BehaviorSubject, throwError } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from '../environments/env';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -40,7 +40,7 @@ export class AuthService {
 
   login(data: { username: string; password: string }) {
     return this.http
-      .post<AuthData>(`${environment.apiBaseUrl}/auth/login`, data)
+      .post<AuthData>(`${environment.pathApi}/auth/login`, data)
       .pipe(
         tap((data) => {
           console.log('user auth data:', data);
@@ -57,10 +57,14 @@ export class AuthService {
 
   register(data: any) {
     return this.http
-      .post(`${environment.apiBaseUrl}/auth/signup`, data)
+      .post(`${environment.pathApi}auth/register`, data)
       .pipe(
         tap((data) => {
-          console.log('result:', data);
+          console.log('REGISTRAZIONE:', data);
+        }),
+        tap((data) => {
+          localStorage.setItem('user', JSON.stringify(data));
+          console.log('LOCAL_STORAGE:', data);
         }),
         catchError(this.errors)
       );
