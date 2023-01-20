@@ -14,7 +14,9 @@ import { AuthService } from '../service/auth.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-  token = localStorage.getItem("UTENTE");
+
+  token: string | null = localStorage.getItem("UTENTE");
+
 
   constructor(private authSrv: AuthService) { }
 
@@ -24,10 +26,14 @@ export class TokenInterceptor implements HttpInterceptor {
       take(1),
       switchMap((user) => {
         console.log("1", this.token);
+
         if (this.token) {
+          const tokenParse = JSON.parse(this.token)
           console.log("2", this.token);
+
           const cloned = request.clone({
-            headers: request.headers.set('Authorization', 'Bearer ' + this.token).set("Content-Type", "application/json")
+            headers: request.headers.set('Authorization', 'Bearer ' + tokenParse.token)
+              .set("Content-Type", "application/json")
           });
           return next.handle(cloned);
         } else {
