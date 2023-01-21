@@ -8,8 +8,6 @@ import {
 import { Observable } from 'rxjs';
 
 import { switchMap, take } from 'rxjs/operators';
-import { environment } from 'src/app/environments/env';
-import { ComponentService } from '../service/components.service';
 import { AuthService } from '../service/auth.service';
 
 @Injectable()
@@ -26,7 +24,7 @@ export class TokenInterceptor implements HttpInterceptor {
       switchMap(() => {
         if (this.token) {
           const cloned = request.clone({
-            headers: request.headers.set('Authorization', 'Bearer ' + this.token)
+            headers: request.headers.set('Authorization', 'Bearer ' + this.token.replaceAll('"', ''))
               .set("Content-Type", "application/json")
           });
           return next.handle(cloned);
