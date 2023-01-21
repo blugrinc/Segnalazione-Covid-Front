@@ -7,13 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 export interface AuthData {
-  accessToken: string;
-  user: {
-    id: number;
-    username: string;
-    surname: string;
-    type: string;
-  };
+  token: string;
 }
 
 
@@ -21,14 +15,12 @@ export interface AuthData {
   providedIn: 'root'
 })
 export class AuthService {
+
   //questa variabile serve per tenere traccia dell'access token
   private authSub = new BehaviorSubject<AuthData | null>(null);
   user$ = this.authSub.asObservable();
-
   timeoutRef: any;
-
   isLoggedIn$ = this.user$.pipe(map(user => !!user));
-
 
   constructor(private http: HttpClient, private router: Router) {
     this.restore()
@@ -40,28 +32,22 @@ export class AuthService {
       .pipe(
         tap((data) => {
           console.log('LOGIN_DATA:', data);
-        }),
-        tap((data) => {
+          localStorage.setItem('UTENTE', JSON.stringify(data.token));
           this.authSub.next(data);
-          localStorage.setItem('UTENTE', JSON.stringify(data));
-          /* this.router.navigate([ '/' ]) */
         }),
         catchError(this.errors)
       );
   }
-
-
   register(data: any) {
-    return this.http.post(`${environment.pathApi}auth/register`, data)
+    return this.http.post<AuthData>(`${environment.pathApi}auth/register`, data)
       .pipe(
         tap((data) => {
-          localStorage.setItem('UTENTE', JSON.stringify(data));
-          console.log("UTENTE REGISTRATO")
+          console.log("UTENTE REGISTRATO", data)
+          localStorage.setItem('UTENTE', JSON.stringify(data.token));
         }),
         catchError(this.errors)
       );
   }
-
 
   restore() {
     const userJson = localStorage.getItem('UTENTE')
@@ -82,10 +68,7 @@ export class AuthService {
     }
   }
 
-
-
   private errors(err: any) {
-    // console.error(err)
     switch (err.error) {
       case "Email and password are required":
         return throwError("Email e password sono obbligatorie");

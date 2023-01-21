@@ -10,15 +10,7 @@
                 <fieldset>
                   <div class="form-card">
                     <h2 class="fs-title">REGISTRAZIONE</h2>
-                    <div>
-                      <!--NAME-->
-                      <input placeholder="name" type="text" #firstname="ngModel" ngModel name="firstname">
-                    </div>
-                    <!-- SURNAME-->
-                    <div>
-                      <input placeholder="surname " type="text" #lastname="ngModel" ngModel name="lastname">
-                    </div>
-                    <!-- CODICE FISCALE -->
+                    <!--  CODICE FISCALE -->
                     <div>
                       <input placeholder="codiceFiscale" type="text" #fiscalCode="ngModel" ngModel name="fiscalCode">
                     </div>
@@ -32,13 +24,13 @@
                         #password="ngModel">
                     </div>
                     <!--RUOLO-->
-                    <div>
+                    <!-- <div>
                       <label>RUOLO: </label>
                       <select placeholder="Role" type="text" required name="role" ngModel #role="ngModel">
                         <option value="DIPENDENTE">DIPENDENTE</option>
                         <option value="MEDICO">MEDICO</option>
                       </select>
-                    </div>
+                    </div>  -->
                   </div>
                   <input type="button" name="previous" class="previous action-button-previous" value="LOGIN"
                     [routerLink]="['/login']" routerLinkActive="active" />

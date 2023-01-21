@@ -18,41 +18,41 @@ export class ExportPageComponent implements OnInit {
     config.backdrop = 'static';
     config.keyboard = false;
   }
-
-  /* reports = [
-    {
-      id: 25,
-      reportDate: "16/01/2023",
-      person: {
-        name: "Luca",
-        surname: "Grillo",
+  /*
+    reports = [
+      {
+        idRepor: 25,
+        reportDate: "16/01/2023",
+        person: {
+          name: "Luca",
+          surname: "Grillo",
+        },
+        typeOfReport: "SONO MORTO",
+        reportingDate: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
       },
-      typeOfReport: "SONO MORTO",
-      reportingDate: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
-    },
 
-    {
-      id: 1,
-      reportDate: "15/01/2023",
-      person: {
-        name: "Marco",
-        surname: "Friggido",
+      {
+        idRepor: 1,
+        reportDate: "15/01/2023",
+        person: {
+          name: "Marco",
+          surname: "Friggido",
+        },
+        typeOfReport: "SONO POSITIVO",
+        reportingDate: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
       },
-      typeOfReport: "SONO POSITIVO",
-      reportingDate: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
-    },
 
-    {
-      id: 524,
-      reportDate: "14/01/2023",
-      person: {
-        name: "Cane",
-        surname: "Pelato",
+      {
+        idRepor: 524,
+        reportDate: "14/01/2023",
+        person: {
+          name: "Cane",
+          surname: "Pelato",
+        },
+        typeOfReport: "SONO POSITIVO",
+        reportingDate: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
       },
-      typeOfReport: "SONO POSITIVO",
-      reportingDate: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
-    },
-  ]; */
+    ]; */
 
   reports!: any;
   dataReports!: any;
@@ -65,7 +65,7 @@ export class ExportPageComponent implements OnInit {
   selectedOption!: string;
 
   ngOnInit(): void {
-    this.medicoService.getReportList(0).subscribe((res) => {
+    this.medicoService.getReportList().subscribe((res) => {
       console.log("GetAllReport", res)
       this.page = res;
       this.reports = res.content;

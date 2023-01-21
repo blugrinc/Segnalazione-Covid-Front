@@ -18,23 +18,15 @@ export class RegistrationComponent implements OnInit {
   }
 
   person = {
-    firstname: "",
-    lastname: "",
     email: "",
     fiscalCode: "",
     password: "",
-    role: ""
   }
 
   signup(form: NgForm) {
-
-    this.person.firstname = form.value.firstname;
-    this.person.lastname = form.value.lastname;
     this.person.fiscalCode = form.value.fiscalCode;
     this.person.email = form.value.email;
     this.person.password = form.value.password;
-    this.person.role = form.value.role;
-
     console.log(this.person)
 
     try {
@@ -44,8 +36,4 @@ export class RegistrationComponent implements OnInit {
       alert(error)
     }
   }
-
-
-
-
 }

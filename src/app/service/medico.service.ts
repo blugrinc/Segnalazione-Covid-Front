@@ -13,7 +13,7 @@ export class MedicoService {
 
   URL = environment.pathApi;
 
-  getReportList(page: number) {
+  getReportList() {
     return this.http.get<any>(
       `${this.URL}report/getAll`
     );
