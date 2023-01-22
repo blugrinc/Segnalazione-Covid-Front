@@ -36,4 +36,10 @@ export class RegistrationComponent implements OnInit {
       alert(error)
     }
   }
+
+  user$ = this.authSrv.user$
+
+  logout() {
+    this.authSrv.logout();
+  }
 }

@@ -23,7 +23,6 @@ export class AuthService {
   isLoggedIn$ = this.user$.pipe(map(user => !!user));
 
   constructor(private http: HttpClient, private router: Router) {
-    this.restore()
   }
 
 

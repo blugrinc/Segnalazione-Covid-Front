@@ -18,7 +18,6 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor(private authSrv: AuthService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-
     return this.authSrv.user$.pipe(
       take(1),
       switchMap(() => {
