@@ -8,11 +8,10 @@ import {
 import { Observable } from 'rxjs';
 
 import { switchMap, take } from 'rxjs/operators';
-import { AuthService } from '../service/auth.service';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-
   token = localStorage.getItem("UTENTE");
 
   constructor(private authSrv: AuthService) { }

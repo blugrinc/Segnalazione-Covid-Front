@@ -7,6 +7,14 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 export interface AuthData {
+  user: {
+    id: string;
+    username: string;
+    password: string;
+    email: string;
+    fiscalCode: string;
+    role: string;
+  },
   token: string;
 }
 
@@ -16,33 +24,44 @@ export interface AuthData {
 })
 export class AuthService {
 
-  //questa variabile serve per tenere traccia dell'access token
+  //BehaviorSubject
   private authSub = new BehaviorSubject<AuthData | null>(null);
+  //Observable
   user$ = this.authSub.asObservable();
+
   timeoutRef: any;
   isLoggedIn$ = this.user$.pipe(map(user => !!user));
 
   constructor(private http: HttpClient, private router: Router) {
   }
 
-
   login(data: { email: string; password: string }) {
-    return this.http.post<AuthData>(`${environment.pathApi}auth/authenticate`, data)
-      .pipe(
-        tap((data) => {
-          console.log('LOGIN_DATA:', data);
-          localStorage.setItem('UTENTE', JSON.stringify(data.token));
-          this.authSub.next(data);
-        }),
-        catchError(this.errors)
-      );
+    return this.http.post<AuthData>(`${environment.pathApi}auth/authenticate`, data).pipe(
+      tap((data) => {
+        console.log('LOGIN_DATA:', data);
+        localStorage.setItem("UTENTE", JSON.stringify(data.token));
+        this.authSub.next(data);
+
+        if (this.authSub.getValue()?.user.role === "ROLE_DIPENDENTE") {
+          this.router.navigate([ '/reportPage' ]);
+        }
+        if (this.authSub.getValue()?.user.role === "ROLE_MEDICO") {
+          this.router.navigate([ '/exportPage' ]);
+        }
+      }),
+      catchError(this.errors)
+    );
+
+
   }
+
   register(data: any) {
     return this.http.post<AuthData>(`${environment.pathApi}auth/register`, data)
       .pipe(
         tap((data) => {
           console.log("UTENTE REGISTRATO", data)
           localStorage.setItem('UTENTE', JSON.stringify(data.token));
+          this.authSub.next(data);
         }),
         catchError(this.errors)
       );
@@ -61,10 +80,7 @@ export class AuthService {
   logout() {
     this.authSub.next(null);
     localStorage.removeItem('UTENTE');
-    this.router.navigate([ '/login' ]);
-    if (this.timeoutRef) {
-      clearTimeout(this.timeoutRef);
-    }
+    this.router.navigate([ '/' ]);
   }
 
   private errors(err: any) {

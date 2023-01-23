@@ -39,7 +39,9 @@ export class RegistrationComponent implements OnInit {
 
   user$ = this.authSrv.user$
 
+
   logout() {
     this.authSrv.logout();
+    alert("LOGOUT EFFETTUATO")
   }
 }

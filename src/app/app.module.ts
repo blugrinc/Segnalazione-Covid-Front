@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AppComponent } from './app.component';
 
+import { IntroPage } from './auth/introProgect/intro';
 import { LoginComponent } from './auth/login/login.component';
 import { RegistrationComponent } from './auth/registration/registration.component';
 
@@ -29,6 +30,7 @@ import { NgbModule, NgbModalModule, NgbModal, NgbModalConfig } from '@ng-bootstr
 
 @NgModule({
   declarations: [
+    IntroPage,
     LoginComponent,
     RegistrationComponent,
 
