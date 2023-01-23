@@ -26,7 +26,7 @@ export class ExportPageComponent implements OnInit {
 
   reports!: any;
   dataReports!: any;
-  intervallReports!: any;
+  intervalReports!: any;
 
   persons!: any;
   page!: any;
@@ -51,30 +51,25 @@ export class ExportPageComponent implements OnInit {
     this.modalService.open(content);
   }
 
-  getObject(formData: any) {
-    if (formData.value.firstData !== '' && formData.value.secondData == '') {
-      this.medicoService
-        .getReportByReportingDate(formData.value.firstData)
-        .subscribe((res) => {
-          console.log('GetReportDate', res);
-          this.page = res;
-          this.dataReports = res.content;
-        });
-    }
-
-    if (formData.value.firstData !== '' && formData.value.secondData !== '') {
-      this.medicoService
-        .getReportBetweenDate(
-          formData.value.firstData,
-          formData.value.firstData
-        )
-        .subscribe((res) => {
-          console.log('GetReportInterval:', res);
-          this.page = res;
-          this.intervallReports = res.content;
-        });
-    }
-    this.filter.reset()
+  getDate(formData: any) {
+    this.medicoService
+      .getReportByReportingDate(formData.value.firstData)
+      .subscribe((res) => {
+        console.log('GetReportDate', res);
+        this.page = res;
+        this.dataReports = res.content;
+      });
+      this.filter.reset();
+  }
+  getInterval(formData: any) {
+    this.medicoService
+      .getReportBetweenDate(formData.value.firstData, formData.value.secondData)
+      .subscribe((res) => {
+        console.log('GetReportInterval', res);
+        this.page = res;
+        this.intervalReports = res.content;
+      });
+    this.filter.reset();
   }
 
   InitForm() {

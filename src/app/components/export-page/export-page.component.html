@@ -5,7 +5,7 @@
       <div class="sceltaFiltro">
         <p class="filtri">Filtra per:</p>
         <select (change)="handleSelectChange($event)">
-          <option value=""></option>
+          <option value="">---</option>
           <option value="option1">Visualizza tutti Report</option>
           <option value="option2">Data</option>
           <option value="option3">Intervallo</option>
@@ -51,7 +51,7 @@
       <!-- OPTION 2 -->
       <div *ngIf="selectedOption === 'option2'">
         <p class="filtri">Inserisci Data:</p>
-        <form [formGroup]="filter" (submit)="getObject(filter)">
+        <form [formGroup]="filter" (submit)="getDate(filter)">
           <div class="selezionaData">
             <div>
               <p class="filtri rangeData">Data:</p>
@@ -100,7 +100,7 @@
       <!-- OPTION 3 -->
       <div *ngIf="selectedOption === 'option3'">
         <p class="filtri">Seleziona intervallo:</p>
-        <form [formGroup]="filter" (submit)="getObject(filter)">
+        <form [formGroup]="filter" (submit)="getInterval(filter)">
           <div class="selezionaData">
             <div>
               <p class="filtri rangeData">Dal: </p>
@@ -108,14 +108,14 @@
             </div>
             <div>
               <p class="filtri rangeData">Al: </p>
-              <input type="date" id="textareaDate" name="dataFine" formControlName="secondData" />
+              <input type="date" id="textareaDate" name="dataFine" formControlName="secondData"/>
             </div>
             <button type="submit" class="filter"> Filtra </button>
           </div>
 
         </form>
 
-        <table class="table" *ngIf="dataReports !== undefined">
+        <table class="table" *ngIf="intervalReports != undefined">
           <thead>
             <tr>
               <th scope="col">ID</th>
@@ -124,7 +124,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let report of intervallReports">
+            <tr *ngFor="let report of intervalReports">
               <th scope="row">{{report.idReport}}</th>
               <td>{{report.typeOfReport}}</td>
               <td>{{report.reportingDate}}</td>
