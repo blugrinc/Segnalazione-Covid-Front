@@ -240,9 +240,8 @@ export class ComponentService {
       ;
   }
   getIdPerson(fiscalCode: any) {
-    return this.http.get<any>(`${this.URL}person/getByFiscalCode/${fiscalCode}`)
-      .subscribe(res => console.log("GET_ID_PERSON", res))
-      ;
+    const data = this.http.get<any>(`${this.URL}person/getByFiscalCode/${fiscalCode}`)
+    return data;
   }
 }
 

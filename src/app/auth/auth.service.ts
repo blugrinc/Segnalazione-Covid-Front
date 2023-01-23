@@ -33,21 +33,18 @@ export class AuthService {
   isLoggedIn$ = this.user$.pipe(map(user => !!user));
 
   constructor(private http: HttpClient, private router: Router) {
+    this.restore();
   }
 
   login(data: { email: string; password: string }) {
     return this.http.post<AuthData>(`${environment.pathApi}auth/authenticate`, data).pipe(
       tap((data) => {
         console.log('LOGIN_DATA:', data);
-        localStorage.setItem("UTENTE", JSON.stringify(data.token));
+        localStorage.setItem("UTENTE", JSON.stringify(data));
         this.authSub.next(data);
+        this.authSub.complete();
+        this.router.navigate([ '/' ])
 
-        if (this.authSub.getValue()?.user.role === "ROLE_DIPENDENTE") {
-          this.router.navigate([ '/reportPage' ]);
-        }
-        if (this.authSub.getValue()?.user.role === "ROLE_MEDICO") {
-          this.router.navigate([ '/exportPage' ]);
-        }
       }),
       catchError(this.errors)
     );
@@ -59,15 +56,10 @@ export class AuthService {
       .pipe(
         tap((data) => {
           console.log("UTENTE REGISTRATO", data)
-          localStorage.setItem('UTENTE', JSON.stringify(data.token));
+          localStorage.setItem('UTENTE', JSON.stringify(data));
           this.authSub.next(data);
-
-          if (this.authSub.getValue()?.user.role === "ROLE_DIPENDENTE") {
-            this.router.navigate([ '/reportPage' ]);
-          }
-          if (this.authSub.getValue()?.user.role === "ROLE_MEDICO") {
-            this.router.navigate([ '/exportPage' ]);
-          }
+          this.authSub.complete();
+          this.router.navigate([ '/' ]);
         }),
         catchError(this.errors)
       );

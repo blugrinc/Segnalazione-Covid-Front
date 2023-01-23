@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './auth/auth.service';
 
@@ -12,6 +12,7 @@ import { AuthService } from './auth/auth.service';
 export class AppComponent {
   constructor(private authSrv: AuthService, private router: Router) { }
   isLoggedIn$ = localStorage.getItem('UTENTE') !== null || undefined;
+
 
   user$ = this.authSrv.user$
 

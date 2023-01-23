@@ -10,9 +10,6 @@
         <div class="d-flex justify-content-around">
           <a class="btn btn-primary btn-lg" [routerLink]="['/login']" routerLinkActive="active">Login</a>
           <a class="btn btn-primary btn-lg" [routerLink]="['/signup']" routerLinkActive="active">Signup</a>
-
-          <a class="btn btn-primary btn-lg" [routerLink]="['/reportPage']" routerLinkActive="active">REPORT_PAGE</a>
-          <a class="btn btn-primary btn-lg" [routerLink]="['/exportPage']" routerLinkActive="active">EXPORT_PAGE</a>
         </div>
       </div>
     </div>
@@ -23,29 +20,33 @@
 <section>
   <div class="container px-lg-5">
     <div class="row gx-lg-5">
-      <div class="col-lg-6 col-xxl-4 mb-5">
+      <div *ngIf="userData.user.role === 'ROLE_DIPENDENTE' && userInfo" class="col-lg-6 col-xxl-4 mb-5">
         <div class="card bg-light border-0 h-100">
           <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
             <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-collection"></i>
             </div>
-            <h2 class="fs-4 fw-bold">DIPENDENTE</h2>
-            <p class="mb-0">Atterrerà direttamente nella pagina REPORT, dove sceglierà la tipologia di segnalazione.
-              <br> Il dipendente può solo inviare segnalazioni, scaricare il risultato della propria segnalazione. Non
+            <h2 class="fs-4 fw-bold">DIPENDENTE: {{userInfo.name}} {{userInfo.surname}}</h2>
+            <p class="mb-0">
+              Il dipendente può solo inviare segnalazioni, scaricare il risultato della propria segnalazione. Non
               ha accesso alla pagina di export.
             </p>
+            Accedi alla pagina segnalazioni:
+            <a class="" [routerLink]="['/reportPage']" routerLinkActive="active">report page</a>
           </div>
         </div>
       </div>
-      <div class="col-lg-6 col-xxl-4 mb-5">
+      <div *ngIf="userData.user.role === 'ROLE_MEDICO' && userInfo" class="col-lg-6 col-xxl-4 mb-5">
         <div class="card bg-light border-0 h-100">
           <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
             <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i
                 class="bi bi-cloud-download"></i></div>
-            <h2 class="fs-4 fw-bold">MEDICO</h2>
+            <h2 class="fs-4 fw-bold">MEDICO: {{userInfo.name}} {{userInfo.surname}}</h2>
             <p class="mb-0">Ha accesso a tutti i report presenti nel database in forma anonima. <br>
               Può filtrare in base alla data e al tipo di segnalazione. <br>
               Può scaricare tutti o un singolo report
             </p>
+            Accedi alla pagina export per visualizzare tutti i report:
+            <a class="" [routerLink]="['/exportPage']" routerLinkActive="active">export page</a>
           </div>
         </div>
       </div>

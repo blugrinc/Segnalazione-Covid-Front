@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
@@ -10,12 +10,10 @@ import { AuthService } from '../auth.service';
   templateUrl: './registration.component.html',
   styleUrls: [ './registration.component.scss' ]
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent {
 
   constructor(private authSrv: AuthService, private router: Router) { }
 
-  ngOnInit(): void {
-  }
 
   person = {
     email: "",
@@ -35,13 +33,5 @@ export class RegistrationComponent implements OnInit {
     } catch (error: any) {
       alert(error)
     }
-  }
-
-  user$ = this.authSrv.user$
-
-
-  logout() {
-    this.authSrv.logout();
-    alert("LOGOUT EFFETTUATO")
   }
 }
