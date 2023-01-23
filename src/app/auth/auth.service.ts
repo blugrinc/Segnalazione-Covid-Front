@@ -42,7 +42,6 @@ export class AuthService {
         console.log('LOGIN_DATA:', data);
         localStorage.setItem("UTENTE", JSON.stringify(data));
         this.authSub.next(data);
-        this.authSub.complete();
         this.router.navigate([ '/' ])
 
       }),
@@ -58,7 +57,6 @@ export class AuthService {
           console.log("UTENTE REGISTRATO", data)
           localStorage.setItem('UTENTE', JSON.stringify(data));
           this.authSub.next(data);
-          this.authSub.complete();
           this.router.navigate([ '/' ]);
         }),
         catchError(this.errors)
