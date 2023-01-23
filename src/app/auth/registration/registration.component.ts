@@ -12,7 +12,9 @@ import { AuthService } from '../auth.service';
 })
 export class RegistrationComponent {
 
-  constructor(private authSrv: AuthService, private router: Router) { }
+  constructor(
+    private authSrv: AuthService,
+    private router: Router) { }
 
 
   person = {

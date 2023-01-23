@@ -18,13 +18,15 @@ export class IntroPage implements OnInit {
 
   ngOnInit(): void {
     this.authSrv.user$.subscribe((data) => {
+      console.log(data);
       this.userData = data;
       console.log("PRENDO CODICEFISCALE(intro)", this.userData);
+      this.getPerson(this.userData.user.fiscalCode).subscribe((data) => {
+        this.userInfo = data;
+        console.log(" PRENDO LA PERSONA(intro)", data);
+      });
     });
-    this.getPerson(this.userData.user.fiscalCode).subscribe((data) => {
-      this.userInfo = data;
-      console.log(" PRENDO LA PERSONA(intro)", data);
-    });
+
   }
 
   getPerson(data: string) {

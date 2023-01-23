@@ -49,6 +49,7 @@ export class ExportPageComponent implements OnInit {
       this.reports = res.content;
     });
   }
+
   getObject(formData: any) {
     if (formData.value.firstData !== "" && formData.value.secondData == "") {
       this.medicoService.getReportByReportingDate(formData.value.firstData).subscribe((res) => {
@@ -71,7 +72,7 @@ export class ExportPageComponent implements OnInit {
 
   InitForm() {
     this.filter = this.fb.group({
-      firstData: new FormControl(""),
+      singleData: new FormControl(""),
       secondData: new FormControl(""),
 
     });
