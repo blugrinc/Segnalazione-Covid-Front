@@ -8,14 +8,18 @@ import { AuthService } from '../auth.service';
   styleUrls: [ './intro.scss' ]
 })
 export class IntroPage implements OnInit {
+  userData: any;
+
   constructor(private authSrv: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-  }
 
-  user$ = this.authSrv.user$
-  medico = this.authSrv.user$
-  logout() {
-    this.authSrv.logout();
   }
+  /*
+    user$ = this.authSrv.user$
+    medico = this.authSrv.user$
+
+    logout() {
+      this.authSrv.logout();
+    } */
 }

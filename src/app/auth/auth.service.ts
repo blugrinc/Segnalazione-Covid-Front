@@ -52,7 +52,6 @@ export class AuthService {
       catchError(this.errors)
     );
 
-
   }
 
   register(data: any) {
@@ -62,6 +61,13 @@ export class AuthService {
           console.log("UTENTE REGISTRATO", data)
           localStorage.setItem('UTENTE', JSON.stringify(data.token));
           this.authSub.next(data);
+
+          if (this.authSub.getValue()?.user.role === "ROLE_DIPENDENTE") {
+            this.router.navigate([ '/reportPage' ]);
+          }
+          if (this.authSub.getValue()?.user.role === "ROLE_MEDICO") {
+            this.router.navigate([ '/exportPage' ]);
+          }
         }),
         catchError(this.errors)
       );
