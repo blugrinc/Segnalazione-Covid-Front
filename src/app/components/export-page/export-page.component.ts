@@ -1,20 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { MedicoService } from 'src/app/service/medico.service';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-export-page',
   templateUrl: './export-page.component.html',
-  styleUrls: [ './export-page.component.scss' ]
+  styleUrls: [ './export-page.component.scss' ],
 })
 export class ExportPageComponent implements OnInit {
-
   constructor(
     private fb: FormBuilder,
     private medicoService: MedicoService,
     private modalService: NgbModal,
-    config: NgbModalConfig) {
+    config: NgbModalConfig
+  ) {
     config.backdrop = 'static';
     config.keyboard = false;
   }
@@ -31,8 +36,12 @@ export class ExportPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.InitForm();
+    this.medicoService.getReportList().subscribe((res) => {
+      console.log('GetAllReport', res);
+      this.page = res;
+      this.reports = res.content;
+    });
   }
-
 
   handleSelectChange(event: any) {
     this.selectedOption = event.target.value;
@@ -51,23 +60,29 @@ export class ExportPageComponent implements OnInit {
   }
 
   getObject(formData: any) {
-    if (formData.value.firstData !== "" && formData.value.secondData == "") {
-      this.medicoService.getReportByReportingDate(formData.value.firstData).subscribe((res) => {
-        console.log("GetReportDate", res)
-        this.page = res;
-        this.dataReports = res.content;
-      });
-      return this.dataReports;
+    if (formData.value.firstData !== '' && formData.value.secondData == '') {
+      this.medicoService
+        .getReportByReportingDate(formData.value.firstData)
+        .subscribe((res) => {
+          console.log('GetReportDate', res);
+          this.page = res;
+          this.dataReports = res.content;
+        });
     }
 
-    if (formData.value.firstData !== "" && formData.value.secondData !== "") {
-      this.medicoService.getReportBetweenDate(formData.value.firstData, formData.value.firstData).subscribe((res) => {
-        console.log("GetReportInterval:", res)
-        this.page = res;
-        this.intervallReports = res.content;
-      });
-      return this.intervallReports;
+    if (formData.value.firstData !== '' && formData.value.secondData !== '') {
+      this.medicoService
+        .getReportBetweenDate(
+          formData.value.firstData,
+          formData.value.firstData
+        )
+        .subscribe((res) => {
+          console.log('GetReportInterval:', res);
+          this.page = res;
+          this.intervallReports = res.content;
+        });
     }
+    this.filter.reset()
   }
 
   InitForm() {
@@ -77,5 +92,4 @@ export class ExportPageComponent implements OnInit {
 
     });
   }
-
 }

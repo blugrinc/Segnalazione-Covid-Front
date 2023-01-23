@@ -4,9 +4,9 @@
     <div>
       <div class="sceltaFiltro">
         <p class="filtri">Filtra per:</p>
-        <select name="" id="" (change)="handleSelectChange($event)">
+        <select (change)="handleSelectChange($event)">
           <option value=""></option>
-          <option value="option1" onclick="getAllReport()">Visualizza tutti Report</option>
+          <option value="option1">Visualizza tutti Report</option>
           <option value="option2">Data</option>
           <option value="option3">Intervallo</option>
         </select>
@@ -40,12 +40,8 @@
               </div>
               <div class="modal-body">
                 <p>{{report.person.name}}</p>
-                <p>{{report.person.surname}}</p>
-                <p>{{report.person.name}}</p>
-                <p>{{report.person.surname}}</p>
-                <p>{{report.person.name}}</p>
-                <p></p>
-
+                  <p>{{report.person.surname}}</p>
+                  <p>{{report.person.role}}</p>
               </div>
             </ng-template>
           </tr>
@@ -94,11 +90,7 @@
                 <div class="modal-body">
                   <p>{{report.person.name}}</p>
                   <p>{{report.person.surname}}</p>
-                  <p>{{report.person.name}}</p>
-                  <p>{{report.person.surname}}</p>
-                  <p>{{report.person.name}}</p>
-                  <p></p>
-
+                  <p>{{report.person.role}}</p>
                 </div>
               </ng-template>
             </tr>
@@ -151,11 +143,7 @@
                 <div class="modal-body">
                   <p>{{report.person.name}}</p>
                   <p>{{report.person.surname}}</p>
-                  <p>{{report.person.name}}</p>
-                  <p>{{report.person.surname}}</p>
-                  <p>{{report.person.name}}</p>
-                  <p></p>
-
+                  <p>{{report.person.role}}</p>
                 </div>
               </ng-template>
             </tr>

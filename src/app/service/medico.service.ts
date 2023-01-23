@@ -1,22 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-
-import { environment } from "../environments/env";
+import { environment } from '../environments/env';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MedicoService {
-
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) {}
 
   URL = environment.pathApi;
 
   getReportList() {
-    return this.http.get<any>(
-      `${this.URL}report/getAll`
-    );
+    return this.http.get<any>(`${this.URL}report/getAll`);
   }
 
   getReportByReportingDate(date: Date) {
