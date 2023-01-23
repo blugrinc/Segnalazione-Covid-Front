@@ -14,7 +14,7 @@ export class IntroPage implements OnInit {
   }
 
   user$ = this.authSrv.user$
-  medico = this.authSrv.user$.value
+  medico = this.authSrv.user$
   logout() {
     this.authSrv.logout();
   }
