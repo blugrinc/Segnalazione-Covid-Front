@@ -12,9 +12,7 @@ import { AuthService } from '../auth.service';
 })
 export class RegistrationComponent {
 
-  constructor(
-    private authSrv: AuthService,
-    private router: Router) { }
+  constructor(private authSrv: AuthService) { }
 
 
   person = {
@@ -27,11 +25,9 @@ export class RegistrationComponent {
     this.person.fiscalCode = form.value.fiscalCode;
     this.person.email = form.value.email;
     this.person.password = form.value.password;
-    console.log(this.person)
-
     try {
       this.authSrv.register(this.person).subscribe();
-      /*  this.router.navigate([ '/landing-page' ]) */
+      console.log(this.person)
     } catch (error: any) {
       alert(error)
     }

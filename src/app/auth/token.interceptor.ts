@@ -12,7 +12,6 @@ import { AuthService } from './auth.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-  /* user = localStorage.getItem("UTENTE"); */
   constructor(private authSrv: AuthService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -25,7 +24,6 @@ export class TokenInterceptor implements HttpInterceptor {
       take(1),
       switchMap(() => {
         if (object) {
-          console.log("TOKEN INTERCEPTOR", object);
           const cloned = request.clone({
             headers: request.headers.set('Authorization', 'Bearer ' + object)
               .set("Content-Type", "application/json")

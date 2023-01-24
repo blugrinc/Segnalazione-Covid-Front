@@ -1,37 +1,52 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  CanDeactivate,
+  Router,
+  RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
 import { Observable } from 'rxjs';
-
-import { map, take } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { map, take } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class DipendenteGuard implements CanActivate {
-
-  constructor(private authSrv: AuthService, private router: Router) { }
-
+export class DipendenteGuard implements CanActivate, CanDeactivate<unknown> {
+  constructor(private authSrv: AuthService, private router: Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot):
-    Observable<boolean | UrlTree> |
-    Promise<boolean | UrlTree> |
-    boolean | UrlTree {
-
+    state: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
     return this.authSrv.user$.pipe(
       take(1),
       map((user) => {
         if (user) {
-          if (user.user.role === "DIPENDENTE") {
-            return true;
-          }
+          if(user.user.role === 'ROLE_DIPENDENTE')
+          return true;
         }
-        return this.router.createUrlTree([ '/login' ]);
+        alert('Non sei autorizzato');
+        return this.router.createUrlTree(['/introPage']);
       })
     );
   }
 
-
+  canDeactivate(
+    component: unknown,
+    currentRoute: ActivatedRouteSnapshot,
+    currentState: RouterStateSnapshot,
+    nextState?: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
+    return true;
+  }
 }
