@@ -19,7 +19,7 @@ export class AppComponent {
   logout() {
     localStorage.removeItem("UTENTE");
     localStorage.clear();
-    alert('logged out');
+    alert('Logged out');
     this.router.navigate([ '/signup' ]);
   }
 

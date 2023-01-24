@@ -1,5 +1,3 @@
-import { MedicoGuard } from './auth/routeGuard/medico.guard';
-import { DipendenteGuard } from './auth/routeGuard/dipendente.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, Router } from '@angular/router';
 
@@ -10,9 +8,10 @@ import { RegistrationComponent } from './auth/registration/registration.componen
 
 //MEDICO
 import { ExportPageComponent } from './components/export-page/export-page.component';
+import { MedicoGuard } from './auth/routeGuard/medico.guard';
 //ATTERRAGGIO REPORT
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-
+import { DipendenteGuard } from './auth/routeGuard/dipendente.guard';
 //PRIMO REPORT
 import { type1_SurveyComponent } from './components/report-type-1/survey/survey.component';
 import { type1_ControlDataComponent } from './components/report-type-1/control-data/control-data.component';
@@ -28,8 +27,11 @@ import { Path22Component } from './components/path/path22/path22.component';
 import { Path25Component } from './components/path/path25/path25.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/introPage', pathMatch: 'full' },
-  /*  { path: '**', component: PageNotFoundComponent }, */
+  {
+    path: '',
+    redirectTo: 'introPage',
+    pathMatch: 'full'
+  },
   {
     path: 'introPage',
     component: IntroPage,
@@ -37,76 +39,85 @@ const routes: Routes = [
   //AUTENTICAZIONE
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
 
   {
     path: 'signup',
-    component: RegistrationComponent
+    component: RegistrationComponent,
   },
 
   //PAGINA INIZIALE REPORT
   {
-    /* canActivate: [ DipendenteGuard ], */
     path: 'reportPage',
-    component: LandingPageComponent
+    component: LandingPageComponent,
+    canActivate: [DipendenteGuard]
   },
 
   //EXPORT PAGE
   {
-    /*  canActivate: [ MedicoGuard ], */
     path: 'exportPage',
-    component: ExportPageComponent
+    component: ExportPageComponent,
+    canActivate: [MedicoGuard]
   },
   // TIPOLOGIA SEGNALAZIONE 1
   {
     path: 'survey:1',
-    component: type1_SurveyComponent
+    component: type1_SurveyComponent,
+    canActivate: [DipendenteGuard]
   },
   {
     path: 'control-data:1',
-    component: type1_ControlDataComponent
+    component: type1_ControlDataComponent,
+    canActivate: [DipendenteGuard]
   },
   {
     path: 'symptomatology:1',
-    component: type1_SymptomatologyComponent
+    component: type1_SymptomatologyComponent,
+    canActivate: [DipendenteGuard]
   },
 
   //TIPOLOGIA SEGNALAZIONE 2
   {
     path: 'survey:2',
-    component: type2_SurveyComponent
+    component: type2_SurveyComponent,
+    canActivate: [DipendenteGuard]
   },
   {
     path: 'control-data:2',
-    component: type2_ControlDataComponent
+    component: type2_ControlDataComponent,
+    canActivate: [DipendenteGuard]
   },
   {
     path: 'symptomatology:2',
-    component: type2_SymptomatologyComponent
+    component: type2_SymptomatologyComponent,
+    canActivate: [DipendenteGuard]
   },
   //RISULTATI PERCORSI
   {
     path: 'path1',
-    component: Path1Component
+    component: Path1Component,
+    canActivate: [DipendenteGuard]
   },
   {
     path: 'path2',
-    component: Path2Component
+    component: Path2Component,
+    canActivate: [DipendenteGuard]
   },
   {
     path: 'path22',
-    component: Path22Component
+    component: Path22Component,
+    canActivate: [DipendenteGuard]
   },
   {
     path: 'path25',
-    component: Path25Component
-  }
-
+    component: Path25Component,
+    canActivate: [DipendenteGuard]
+  },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
