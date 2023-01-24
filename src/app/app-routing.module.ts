@@ -47,63 +47,62 @@ const routes: Routes = [
 
   //PAGINA INIZIALE REPORT
   {
-    canActivate: [ DipendenteGuard ],
+    /* canActivate: [ DipendenteGuard ], */
     path: 'reportPage',
-    component: LandingPageComponent,
-    children: [
-      // TIPOLOGIA SEGNALAZIONE 1
-      {
-        path: 'survey:1',
-        component: type1_SurveyComponent
-      },
-      {
-        path: 'control-data:1',
-        component: type1_ControlDataComponent
-      },
-      {
-        path: 'symptomatology:1',
-        component: type1_SymptomatologyComponent
-      },
-
-      //TIPOLOGIA SEGNALAZIONE 2
-      {
-        path: 'survey:2',
-        component: type2_SurveyComponent
-      },
-      {
-        path: 'control-data:2',
-        component: type2_ControlDataComponent
-      },
-      {
-        path: 'symptomatology:2',
-        component: type2_SymptomatologyComponent
-      },
-      //RISULTATI PERCORSI
-      {
-        path: 'path1',
-        component: Path1Component
-      },
-      {
-        path: 'path2',
-        component: Path2Component
-      },
-      {
-        path: 'path22',
-        component: Path22Component
-      },
-      {
-        path: 'path25',
-        component: Path25Component
-      }
-    ]
+    component: LandingPageComponent
   },
 
   //EXPORT PAGE
   {
-    canActivate: [ MedicoGuard ],
+    /*  canActivate: [ MedicoGuard ], */
     path: 'exportPage',
     component: ExportPageComponent
   },
+  // TIPOLOGIA SEGNALAZIONE 1
+  {
+    path: 'survey:1',
+    component: type1_SurveyComponent
+  },
+  {
+    path: 'control-data:1',
+    component: type1_ControlDataComponent
+  },
+  {
+    path: 'symptomatology:1',
+    component: type1_SymptomatologyComponent
+  },
+
+  //TIPOLOGIA SEGNALAZIONE 2
+  {
+    path: 'survey:2',
+    component: type2_SurveyComponent
+  },
+  {
+    path: 'control-data:2',
+    component: type2_ControlDataComponent
+  },
+  {
+    path: 'symptomatology:2',
+    component: type2_SymptomatologyComponent
+  },
+  //RISULTATI PERCORSI
+  {
+    path: 'path1',
+    component: Path1Component
+  },
+  {
+    path: 'path2',
+    component: Path2Component
+  },
+  {
+    path: 'path22',
+    component: Path22Component
+  },
+  {
+    path: 'path25',
+    component: Path25Component
+  }
+
 ];
 
 @NgModule({

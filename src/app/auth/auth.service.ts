@@ -1,11 +1,10 @@
-import { Injectable, LOCALE_ID } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { BehaviorSubject, throwError } from 'rxjs';
 import { environment } from '../environments/env';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { ComponentService } from '../service/components.service';
 
 export interface AuthData {
   user: {
@@ -17,13 +16,6 @@ export interface AuthData {
     role: string;
   },
   token: string;
-
-  dateOfBirth: string;
-  fiscalCode: string;
-  idPerson: string;
-  name: string;
-  surname: string;
-  role: string;
 }
 
 
@@ -40,36 +32,21 @@ export class AuthService {
   timeoutRef: any;
   isLoggedIn$ = this.user$.pipe(map(user => !!user));
 
-  constructor(private http: HttpClient, private router: Router, private componentSrv: ComponentService) {
-    /* this.restore(); */
+  constructor(private http: HttpClient, private router: Router) {
+    this.restore();
   }
 
   login(data: { email: string; password: string }) {
     return this.http.post<AuthData>(`${environment.pathApi}auth/authenticate`, data).pipe(
       tap((data) => {
         console.log('LOGIN_DATA:', data);
-        localStorage.setItem("TOKEN", JSON.stringify(data.token));
-
-        //PRENDO TOKEN
+        localStorage.setItem("UTENTE", JSON.stringify(data));
         this.authSub.next(data);
-        console.log(this.authSub);
-
-        //PRENDO LA PERSONA
-        this.componentSrv.getIdPerson(data.user.fiscalCode).subscribe((data) => {
-          this.authSub.next(data);
-          localStorage.setItem("PERSON", JSON.stringify(data));
-          console.log(this.authSub);
-        });
-
-        if (data.user.role === "ROLE_DIPENDENTE") {
-          this.router.navigate([ '/reportPage' ]);
-        }
-        if (data.user.role === "ROLE_MEDICO") {
-          this.router.navigate([ '/exportPage' ]);
-        }
+        this.router.navigate([ '/' ]);
       }),
       catchError(this.errors)
     );
+
   }
 
   register(data: any) {
@@ -77,43 +54,28 @@ export class AuthService {
       .pipe(
         tap((data) => {
           console.log("UTENTE REGISTRATO", data)
-          localStorage.setItem('TOKEN', JSON.stringify(data.token));
-          //PRENDO TOKEN E USER E LI SALVO
+          localStorage.setItem('UTENTE', JSON.stringify(data));
           this.authSub.next(data);
-
-          //PRENDO LA PERSONA
-          this.componentSrv.getIdPerson(data.user.fiscalCode).subscribe((data) => {
-            this.authSub.next(data);
-            localStorage.setItem("PERSON", JSON.stringify(data));
-            console.log(this.authSub);
-          });
-
-          if (data.user.role === "ROLE_DIPENDENTE") {
-            this.router.navigate([ '/reportPage' ]);
-          }
-          if (data.user.role === "ROLE_MEDICO") {
-            this.router.navigate([ '/exportPage' ]);
-          }
+          this.router.navigate([ '/' ]);
         }),
         catchError(this.errors)
       );
   }
 
-  /*
-    restore() {
-      const userJson = localStorage.getItem('PERSON')
-      if (!userJson) {
-        return
-      }
-      const user: AuthData = JSON.parse(userJson)
-      this.authSub.next(user)
-    } */
+  restore() {
+    const userJson = localStorage.getItem('UTENTE')
+    if (!userJson) {
+      return
+    }
+    const user: AuthData = JSON.parse(userJson)
+    this.authSub.next(user)
+  }
 
 
   logout() {
     this.authSub.next(null);
-    localStorage.clear()
-    this.router.navigate([ '/login' ]);
+    localStorage.removeItem('UTENTE');
+    this.router.navigate([ '/' ]);
   }
 
   private errors(err: any) {
