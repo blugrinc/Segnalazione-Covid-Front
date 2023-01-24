@@ -11,17 +11,12 @@ import { AuthService } from './auth/auth.service';
 
 export class AppComponent {
   constructor(private authSrv: AuthService, private router: Router) { }
-  isLoggedIn$ = localStorage.getItem('UTENTE') !== null || undefined;
-
+  isLoggedIn$ = localStorage.getItem('TOKEN') !== null || undefined;
 
   user$ = this.authSrv.user$
 
   logout() {
-    localStorage.removeItem("UTENTE");
-    localStorage.clear();
-    alert('logged out');
-    this.router.navigate([ '/signup' ]);
+    alert("Logout successful!");
+    this.authSrv.logout();
   }
-
-
 }
