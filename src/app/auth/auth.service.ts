@@ -29,7 +29,7 @@ export class AuthService {
   user$ = this.authSub.asObservable();
 
   timeoutRef: any;
-  isLoggedIn$ = this.user$.pipe(map((user) => !!user));
+  isLoggedIn$: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) {
     this.restore();
@@ -40,10 +40,11 @@ export class AuthService {
       .post<AuthData>(`${environment.pathApi}auth/authenticate`, data)
       .pipe(
         tap((data) => {
-          console.log('LOGIN_DATA:', data);
+          console.log('Login:', data);
+          this.isLoggedIn$ = true;
           localStorage.setItem('UTENTE', JSON.stringify(data));
           this.authSub.next(data);
-          this.redirect();
+          this.router.navigate(['/introPage'])
         }),
         catchError(this.errors)
       );
@@ -54,24 +55,20 @@ export class AuthService {
       .post<AuthData>(`${environment.pathApi}auth/register`, data)
       .pipe(
         tap((data) => {
-          console.log('UTENTE REGISTRATO', data);
+          console.log('Registrazione', data);
+          this.isLoggedIn$ = true;
           localStorage.setItem('UTENTE', JSON.stringify(data));
           this.authSub.next(data);
-          this.redirect();
+          this.router.navigate(['/introPage'])
         }),
         catchError(this.errors)
       );
   }
 
-  redirect() {
-    this.user$.subscribe((res) => {
-      this.user = res?.user.role;
-    });
-    if (this.user === 'ROLE_MEDICO') {
-      this.router.navigate(['/exportPage']);
-    }
-    if (this.user === 'ROLE_DIPENDENTE') {
-      this.router.navigate(['/reportPage']);
+  checkLocalStorage(){
+    let utente = localStorage.getItem('UTENTE');
+    if(utente != null){
+      this.isLoggedIn$ = true;
     }
   }
 
@@ -85,9 +82,10 @@ export class AuthService {
   }
 
   logout() {
+    this.isLoggedIn$ = false;
     this.authSub.next(null);
     localStorage.removeItem('UTENTE');
-    this.router.navigate(['/']);
+    this.router.createUrlTree(['/introPage']);
   }
 
   private errors(err: any) {
@@ -104,7 +102,6 @@ export class AuthService {
       case 'Cannot find user':
         return throwError("L'utente non esiste");
         break;
-
       default:
         return throwError('Errore nella chiamata');
         break;

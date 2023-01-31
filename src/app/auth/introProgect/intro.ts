@@ -1,35 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { async, asyncScheduler } from 'rxjs';
 import { ComponentService } from 'src/app/service/components.service';
-import { AuthService } from '../auth.service';
+import { AuthData, AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-introduction',
   templateUrl: './intro.html',
-  styleUrls: [ './intro.scss' ]
+  styleUrls: ['./intro.scss'],
 })
-
 export class IntroPage implements OnInit {
-  userData: any;
-  userInfo: any;
+  constructor(
+    private authService: AuthService,
+    private componentService: ComponentService
+  ) {}
 
-  constructor(private authSrv: AuthService, private router: Router,
-    private componentService: ComponentService) { }
+  user!: AuthData | null;
+  datiUser: any;
+  isLoggedIn = this.authService.isLoggedIn$;
 
   ngOnInit(): void {
-    this.authSrv.user$.subscribe((data) => {
-      console.log(data);
-      this.userData = data;
-      console.log("PRENDO CODICEFISCALE(intro)", this.userData);
-      this.getPerson(this.userData.user.fiscalCode).subscribe((data) => {
-        this.userInfo = data;
-        console.log(" PRENDO LA PERSONA(intro)", data);
-      });
-    });
-
+    this.authService.checkLocalStorage();
+    this.checkIfLogged();
+    this.getUser();
   }
-
-  getPerson(data: string) {
-    return this.componentService.getIdPerson(data);
+  getUser() {
+    if (this.authService.isLoggedIn$) {
+      this.authService.user$.subscribe((res) => {
+        this.user = res;
+      });
+      this.componentService
+        .getPerson(this.user!.user.fiscalCode)
+        .subscribe((res) => {
+          this.datiUser = res;
+        });
+    }
+  }
+  checkIfLogged(){
+    return this.authService.isLoggedIn$;
   }
 }

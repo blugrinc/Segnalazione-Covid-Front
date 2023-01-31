@@ -1,10 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http"
-
-
-import { Report } from "../models/report";
-import { Observable } from "rxjs";
 import { environment } from "../environments/env";
 
 
@@ -238,7 +234,7 @@ export class ComponentService {
     return this.http.post<any>(`${this.URL}report/add`, item)
       .subscribe(res => console.log("ADD_REPORT", res))
   }
-  getIdPerson(fiscalCode: any) {
+  getPerson(fiscalCode: any) {
     const data = this.http.get<any>(`${this.URL}person/getByFiscalCode/${fiscalCode}`)
     return data;
   }

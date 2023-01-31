@@ -26,6 +26,7 @@ export class RegistrationComponent {
     this.person.email = form.value.email;
     this.person.password = form.value.password;
     try {
+      this.authSrv.isLoggedIn$ = true;
       this.authSrv.register(this.person).subscribe();
       console.log(this.person)
     } catch (error: any) {

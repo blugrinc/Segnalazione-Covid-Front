@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
 
   login(form: NgForm) {
     try {
+      this.authSrv.isLoggedIn$ = true;
       this.authSrv.login(form.value).subscribe();
     } catch (error) {
       alert('Username o Password errati')

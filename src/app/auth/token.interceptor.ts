@@ -19,7 +19,6 @@ export class TokenInterceptor implements HttpInterceptor {
     this.authSrv.user$.subscribe((data) => {
       object = data?.token;
     });
-
     return this.authSrv.user$.pipe(
       take(1),
       switchMap(() => {

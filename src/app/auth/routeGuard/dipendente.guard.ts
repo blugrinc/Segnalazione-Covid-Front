@@ -28,10 +28,10 @@ export class DipendenteGuard implements CanActivate, CanDeactivate<unknown> {
       take(1),
       map((user) => {
         if (user) {
-          if(user.user.role === 'ROLE_DIPENDENTE')
+          if(user.user.role === 'ROLE_DIPENDENTE' && this.authSrv.isLoggedIn$)
           return true;
         }
-        alert('Non sei autorizzato');
+        alert("ACCESSO NON AUTORIZZATO");
         return this.router.createUrlTree(['/introPage']);
       })
     );

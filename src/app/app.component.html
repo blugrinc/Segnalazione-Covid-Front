@@ -1,21 +1,2 @@
-<body>
-  <div class="bar header">
-    <div>
-      <img width="300" alt="IntesaSanPaolo Logo" src="../assets/IMG/logo-intesasanpaolo.png" />
-    </div>
-    <div class="spacer">
-      <h2> Modulo Segnalazione Covid-19</h2>
-    </div>
-    <a *ngIf="isLoggedIn$" type="buttn" class="btn btn-outline-secondary btn-dark text-white btn-sm"
-      style="margin-right: 30px; font-weight: bold;" (click)="logout()">Logout</a>
-  </div>
-
-  <router-outlet></router-outlet>
-
-
-  <div class="bar footer">
-    <div class="spacer">
-      <p>Copyright 2022 @ Intesa SanPaolo</p>
-    </div>
-  </div>
-</body>
+<app-navbar></app-navbar>
+<router-outlet></router-outlet>

@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+nav {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 1.4rem;
+  line-height: normal;
+  padding: 1.5rem;
+  background: #258900;
+}
+
+ul {
+  height: 100%;
+  display: flex;
+  height: auto;
+  align-items: center;
+}
+
+.nav-link, .nav-link.active {
+  color: #fff;
+}
+.nav-link.active{
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}

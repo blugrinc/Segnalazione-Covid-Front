@@ -1,55 +1,33 @@
-<header class="pt-3">
-  <div class="container px-lg-5">
-    <div class="p-4 p-lg-3 bg-light rounded-3 text-center">
-      <div class="m-4 m-lg-5">
-        <h1 class="display-5 fw-bold">Segnalazioni Covid</h1>
-        <p class="fs-4">Solo i DIPENDENTI di Intesa SanPaolo possono effettuare la segnalazione.
-          Per proseguire bisogna REGISTRARSI inserendo il proprio codice fiscale, che servirà a verificare
-          se siete DIPENDENTI o MEDICI.
-        </p>
+<div class="container p-3 m-auto">
+  <ng-container *ngIf="!checkIfLogged()" class="p-4 p-lg-3 bg-light rounded-3 text-center">
+    <div class="m-4 m-lg-5">
+      <h1 class="display-5 fw-bold">Segnalazioni Covid</h1>
+      <p class="fs-4">Solo i DIPENDENTI di Intesa SanPaolo possono effettuare la segnalazione.
+        Per proseguire bisogna REGISTRARSI inserendo il proprio codice fiscale, che servirà a verificare
+        se siete DIPENDENTI o MEDICI.
+      </p>
+      <div>
         <div class="d-flex justify-content-around">
           <a class="btn btn-primary btn-lg" [routerLink]="['/login']" routerLinkActive="active">Login</a>
           <a class="btn btn-primary btn-lg" [routerLink]="['/signup']" routerLinkActive="active">Signup</a>
         </div>
       </div>
     </div>
-  </div>
-
-</header>
-
-<section>
-  <div class="container px-lg-5">
-    <div class="row gx-lg-5">
-      <div *ngIf="userData.user.role === 'ROLE_DIPENDENTE' && userInfo" class="col-lg-6 col-xxl-4 mb-5">
-        <div class="card bg-light border-0 h-100">
-          <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-collection"></i>
-            </div>
-            <h2 class="fs-4 fw-bold">DIPENDENTE: {{userInfo.name}} {{userInfo.surname}}</h2>
-            <p class="mb-0">
-              Il dipendente può solo inviare segnalazioni, scaricare il risultato della propria segnalazione. Non
-              ha accesso alla pagina di export.
-            </p>
-            Accedi alla pagina segnalazioni:
-            <a class="" [routerLink]="['/reportPage']" routerLinkActive="active">report page</a>
-          </div>
-        </div>
+  </ng-container>
+  <ng-container *ngIf="checkIfLogged()">
+    <div class="d-flex justify-content-around">
+      <div *ngIf="user!.user.role === 'ROLE_DIPENDENTE'">
+        <h3 *ngIf="datiUser">Benvenuta/o {{datiUser.name}} {{datiUser.surname}}</h3>
+        <p>Ora può effettuare una nuova segnalazione.</p>
+        <p>Per effettuare una nuova segnalazione clicchi qui per essere reindizzato:</p>
+        <button class="btn btn-primary" [routerLink]="['/reportPage']" routerLinkActive="active">REPORT PAGE</button>
       </div>
-      <div *ngIf="userData.user.role === 'ROLE_MEDICO' && userInfo" class="col-lg-6 col-xxl-4 mb-5">
-        <div class="card bg-light border-0 h-100">
-          <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i
-                class="bi bi-cloud-download"></i></div>
-            <h2 class="fs-4 fw-bold">MEDICO: {{userInfo.name}} {{userInfo.surname}}</h2>
-            <p class="mb-0">Ha accesso a tutti i report presenti nel database in forma anonima. <br>
-              Può filtrare in base alla data e al tipo di segnalazione. <br>
-              Può scaricare tutti o un singolo report
-            </p>
-            Accedi alla pagina export per visualizzare tutti i report:
-            <a class="" [routerLink]="['/exportPage']" routerLinkActive="active">export page</a>
-          </div>
-        </div>
+      <div *ngIf="user!.user.role === 'ROLE_MEDICO'">
+        <h3 *ngIf="datiUser">Benvenuta/o {{datiUser.name}} {{datiUser.surname}}</h3>
+        <p>Ora può visualizzare le segnalazioni desiderate.</p>
+        <p>Per il controllo delle segnalazioni clicchi qui per essere reindizzato:</p>
+        <button class="btn btn-primary" [routerLink]="['/exportPage']" routerLinkActive="active">EXPORT PAGE</button>
       </div>
     </div>
-  </div>
-</section>
+  </ng-container>
+</div>

@@ -31,7 +31,7 @@ export class MedicoGuard implements CanActivate, CanDeactivate<unknown> {
           if(user.user.role === 'ROLE_MEDICO')
           return true;
         }
-        alert('Non sei autorizzato');
+        alert("ACCESSO NON AUTORIZZATO");
         return this.router.createUrlTree(['/introPage']);
       })
     );

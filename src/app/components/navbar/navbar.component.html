@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid d-flex justify-content-around">
+    <div><a class="navbar-brand" [routerLink]="['/']" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"><img width="300" alt="Logo Intesa San Paolo"
+          src="../../../assets/IMG/logo-intesasanpaolo.png"></a></div>
+    <div>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" *ngIf="!checkIfLogged()">
+          <a class="nav-link" aria-current="page" [routerLink]="['/introPage']" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">Home</a>
+        </li>
+        <li class="nav-item" *ngIf="!checkIfLogged()">
+          <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="!checkIfLogged()">
+          <a class="nav-link" [routerLink]="['/signup']" routerLinkActive="active">Registrati</a>
+        </li>
+        <li class="nav-item" *ngIf="checkIfLogged()" (click)="logout()">
+          <a class="nav-link" [routerLink]="['/introPage']" routerLinkActive="active">Log-out</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+<router-outlet></router-outlet>
