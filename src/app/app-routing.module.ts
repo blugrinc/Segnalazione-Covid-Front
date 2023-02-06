@@ -13,13 +13,9 @@ import { MedicoGuard } from './auth/routeGuard/medico.guard';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { DipendenteGuard } from './auth/routeGuard/dipendente.guard';
 //PRIMO REPORT
-import { type1_SurveyComponent } from './components/report-type-1/survey/survey.component';
-import { type1_ControlDataComponent } from './components/report-type-1/control-data/control-data.component';
-import { type1_SymptomatologyComponent } from './components/report-type-1/symptomatology/symptomatology.component';
-//SECONDO REPORT
-import { type2_SurveyComponent } from './components/report-type-2/survey/survey.component';
-import { type2_ControlDataComponent } from './components/report-type-2/control-data/control-data.component';
-import { type2_SymptomatologyComponent } from './components/report-type-2/symptomatology/symptomatology.component';
+import { surveyPath_01 } from './components/report-type-1/surveyPath_01';
+import { surveyPath_02 } from './components/report-type-2/surveyPath_02';
+
 //PERSORCI FINALI
 import { Path1Component } from './components/path/path1/path1.component';
 import { Path2Component } from './components/path/path2/path2.component';
@@ -51,73 +47,55 @@ const routes: Routes = [
   {
     path: 'reportPage',
     component: LandingPageComponent,
-    canActivate: [DipendenteGuard]
+    canActivate: [ DipendenteGuard ]
   },
 
   //EXPORT PAGE
   {
     path: 'exportPage',
     component: ExportPageComponent,
-    canActivate: [MedicoGuard]
+    canActivate: [ MedicoGuard ]
   },
+
+
   // TIPOLOGIA SEGNALAZIONE 1
   {
     path: 'survey:1',
-    component: type1_SurveyComponent,
-    canActivate: [DipendenteGuard]
-  },
-  {
-    path: 'control-data:1',
-    component: type1_ControlDataComponent,
-    canActivate: [DipendenteGuard]
-  },
-  {
-    path: 'symptomatology:1',
-    component: type1_SymptomatologyComponent,
-    canActivate: [DipendenteGuard]
+    component: surveyPath_01,
+    canActivate: [ DipendenteGuard ]
   },
 
-  //TIPOLOGIA SEGNALAZIONE 2
+  // TIPOLOGIA SEGNALAZIONE 2
   {
     path: 'survey:2',
-    component: type2_SurveyComponent,
-    canActivate: [DipendenteGuard]
+    component: surveyPath_02,
   },
-  {
-    path: 'control-data:2',
-    component: type2_ControlDataComponent,
-    canActivate: [DipendenteGuard]
-  },
-  {
-    path: 'symptomatology:2',
-    component: type2_SymptomatologyComponent,
-    canActivate: [DipendenteGuard]
-  },
+
   //RISULTATI PERCORSI
   {
     path: 'path1',
     component: Path1Component,
-    canActivate: [DipendenteGuard]
+    canActivate: [ DipendenteGuard ]
   },
   {
     path: 'path2',
     component: Path2Component,
-    canActivate: [DipendenteGuard]
+    canActivate: [ DipendenteGuard ]
   },
   {
     path: 'path22',
     component: Path22Component,
-    canActivate: [DipendenteGuard]
+    canActivate: [ DipendenteGuard ]
   },
   {
     path: 'path25',
     component: Path25Component,
-    canActivate: [DipendenteGuard]
+    canActivate: [ DipendenteGuard ]
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

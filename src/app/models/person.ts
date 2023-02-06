@@ -1,4 +1,3 @@
-import { Report } from "./report";
 import { PersonRole } from "./personRole";
 
 export interface Person {
@@ -7,8 +6,6 @@ export interface Person {
   surname: string;
   dateOfBirth: Date;
   roles: PersonRole;
-  /* listReport: Report[]; */
-
 }
 
 

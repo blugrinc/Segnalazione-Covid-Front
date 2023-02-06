@@ -2,12 +2,15 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http"
 import { environment } from "../environments/env";
+import { Report } from "../models/report";
+import { Survey } from "../models/survey";
+import { Person } from "../models/person";
 
 
 const report = {
-  /* person: "person", */
-  reportDate: new Date(),
   idPerson: 1,
+  person: {},
+  reportDate: new Date(),
 
   triage: false,
   abstention: false,
@@ -46,61 +49,43 @@ export class ComponentService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  URL = environment.pathApi;
 
+  sendSurvey(item: Survey) {
 
-  getSurvey_1(item: any) {
-    report.typeOfReport = item.typeOfReport;
-    if (report.typeOfReport === "SONO_POSITIVO_AD_UN_TEST_DIAGNOSTICO") {
-
+    if (item.typeOfReport === "SONO_POSITIVO_AD_UN_TEST_DIAGNOSTICO") {
+      report.typeOfReport = item.typeOfReport;
       report.question1 = item.question1;
       report.question2 = item.question2;
       report.question3 = item.question3;
       report.question4 = item.question4;
-
-      report.answer1 = item.answer1;
-      report.answer2 = item.answer2;
-      report.answer3 = item.answer3;
-      report.answer4 = item.answer4;
-    } else {
-
-      report.question1 = item.question1;
-      report.question2 = item.question2;
-      report.question3 = item.question3;
-
-      report.answer1 = item.answer1;
-      report.answer2 = item.answer2;
-      report.answer3 = item.answer3;
-
-    }
-  }
-
-  getSurvey_2(item: any) {
-    if (report.typeOfReport === "SONO_POSITIVO_AD_UN_TEST_DIAGNOSTICO") {
       report.question5 = item.question5;
       report.question6 = item.question6;
-
-      report.answer5 = item.answer5;
-      report.answer6 = item.answer6;
-
-    } else {
-      report.question4 = item.question4;
-      report.question5 = item.question5;
-
-      report.answer4 = item.answer4;
-      report.answer5 = item.answer5;
-    }
-  }
-
-  getSurvey_3(item: any) {
-    if (report.typeOfReport === "SONO_POSITIVO_AD_UN_TEST_DIAGNOSTICO") {
       report.question7 = item.question7;
       report.question8 = item.question8;
 
+      report.answer1 = item.answer1;
+      report.answer2 = item.answer2;
+      report.answer3 = item.answer3;
+      report.answer4 = item.answer4;
+      report.answer5 = item.answer5;
+      report.answer6 = item.answer6;
       report.answer7 = item.answer7;
       report.answer8 = item.answer8;
       report.reportDate = new Date();
-    } else {
+    }
+    if (item.typeOfReport === "AGGIORNAMENTO_PER_RICHIESTA_FINE_ASTENSIONE") {
+      report.typeOfReport = item.typeOfReport;
+      report.question1 = item.question1;
+      report.question2 = item.question2;
+      report.question3 = item.question3;
+      report.question4 = item.question4;
+      report.question5 = item.question5;
+
+      report.answer1 = item.answer1;
+      report.answer2 = item.answer2;
+      report.answer3 = item.answer3;
+      report.answer4 = item.answer4;
+      report.answer5 = item.answer5;
       report.question6 = item.question6;
       report.answer6 = item.answer6;
       report.reportDate = new Date();
@@ -108,7 +93,9 @@ export class ComponentService {
 
     this.setOtherValueSurvey();
     this.navigatePathControll()
+    console.log("sendSurveyObject", report);
     return this.postSurvey(report);
+
   }
 
   setOtherValueSurvey() {
@@ -231,11 +218,12 @@ export class ComponentService {
   }
 
   postSurvey(item: any) {
-    return this.http.post<any>(`${this.URL}report/add`, item)
+    return this.http.post<any>(`${environment.pathApi}report/add`, item)
       .subscribe(res => console.log("ADD_REPORT", res))
   }
-  getPerson(fiscalCode: any) {
-    const data = this.http.get<any>(`${this.URL}person/getByFiscalCode/${fiscalCode}`)
+
+  getPerson(fiscalCode: string) {
+    const data = this.http.get<Person>(`${environment.pathApi}person/getByFiscalCode/${fiscalCode}`)
     return data;
   }
 }

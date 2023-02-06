@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Report } from 'src/app/models/report';
 import { ComponentService } from 'src/app/service/components.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
-
-const jsonData = require('../../../../assets/Json/JsonSurvey.json');
-
+const jsonData = require('../../../assets/Json/JsonSurvey.json');
 @Component({
-  selector: 'app-survey',
-  templateUrl: './survey.component.html',
-  styleUrls: [ './survey.component.scss' ]
+  selector: 'survey_02',
+  templateUrl: './surveyPath_02.html',
+  styleUrls: [ './surveyPath_02.scss' ],
 })
 
-export class type2_SurveyComponent implements OnInit {
+
+export class surveyPath_02 implements OnInit {
   id!: number;
   form!: FormGroup;
   report!: Report;
+  page: number = 1;
   survey = jsonData.reportType2
 
   constructor(
@@ -26,18 +26,16 @@ export class type2_SurveyComponent implements OnInit {
     private route: ActivatedRoute,
   ) { }
 
+  next() {
+    this.page++
+  }
 
   sendObject(formData: any) {
-    this.componentService.getSurvey_1(formData.value)
-    this.router.navigate([ '/symptomatology:2' ]);
-
+    this.componentService.sendSurvey(formData.value)
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.id = +params[ 'id' ]
-      this.InitForm();
-    });
+    this.InitForm();
   }
 
   InitForm() {
@@ -51,6 +49,17 @@ export class type2_SurveyComponent implements OnInit {
 
       question3: new FormControl(this.survey.question3),
       answer3: new FormControl(''),
+
+      question4: new FormControl(this.survey.question4),
+      answer4: new FormControl(''),
+
+      question5: new FormControl(this.survey.question5),
+      answer5: new FormControl(''),
+
+      question6: new FormControl(this.survey.question6),
+      answer6: new FormControl(''),
     });
   }
 }
+
+

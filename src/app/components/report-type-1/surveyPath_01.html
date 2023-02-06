@@ -1,0 +1,123 @@
+<div class="container" id="grad1">
+  <div class="principale">
+    <div class="row justify-content-center mt-0">
+      <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+        <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+
+          <div class="row">
+            <div class="col-md-12 mx-0">
+              <form id="msform" [formGroup]="form" (submit)="sendObject(form)">
+
+                <div class="path_one" *ngIf="page === 1">
+                  <!-- PROGRESSION BAR -->
+                  <ul id="progressbar">
+                    <li class="active" id="account"><strong>Dettagli Segnalazione</strong></li>
+                    <li id="personal"><strong>Sintomaticità</strong></li>
+                    <li id="payment"><strong>Dati di Controllo</strong></li>
+                  </ul>
+
+                  <!-- PRIMO STEP-->
+                  <fieldset>
+                    <div class="form-card">
+                      <h2 class="fs-title">Dettagli Segnalazione</h2>
+                      <div>
+                        <!-- DOMANDA 1-->
+                        <label for="tipoTest" aria-placeholder="">{{survey.question1}}</label>
+                        <select name="tipoTest" class="dropDown" formControlName="answer1">
+                          <option value="{{survey.answer1.option1}}">{{survey.answer1.option1}}</option>
+                          <option value="{{survey.answer1.option2}}">{{survey.answer1.option2}} (test antigenico)
+                          </option>
+                        </select>
+                      </div>
+                      <!-- DOMANDA 2-->
+                      <div>
+                        <label for="dataTest">{{survey.question2}}</label>
+                        <input type="date" name="" id="textareaDate" formControlName="answer2">
+                      </div>
+                      <!-- DOMANDA 3-->
+                      <div>
+                        <label for="dataPresenza">{{survey.question3}}</label>
+                        <input type="date" name="" id="textareaDate" formControlName="answer3">
+                      </div>
+                      <!-- DOMANDA 4-->
+                      <div>
+                        <label for="sintomi">{{survey.question4}}</label>
+                        <select name="" id="sintomi" formControlName="answer4">
+                          <option value="{{survey.answer4.option1}}">{{survey.answer4.option1}}</option>
+                          <option value="{{survey.answer4.option2}}">{{survey.answer4.option2}}</option>
+                        </select>
+                      </div>
+
+                    </div>
+                    <input (click)="next()" name="next" class="next action-button" value="AVANTI" />
+                  </fieldset>
+                </div>
+                <div class="path_two" *ngIf="page === 2 && form.get('answer4')?.value === 'SI'">
+                  <!-- progressbar -->
+                  <ul id="progressbar">
+                    <li class="active" id="account"><strong>Dettagli Segnalazione</strong></li>
+                    <li id="personal" class="active"><strong>Sintomaticità</strong></li>
+                    <li id="payment"><strong>Dati di Controllo</strong></li>
+                  </ul>
+
+                  <!-- SECONDO STEP -->
+                  <fieldset>
+                    <div class="form-card">
+                      <h2 class="fs-title">Sintomaticità</h2>
+                      <!-- DOMANDA 5 -->
+                      <div>
+                        <label for="dataSintomi">{{survey.question5}}</label>
+                        <input type="date" name="" id="dataSintomi" formControlName="answer5">
+                      </div>
+                      <!-- DOMANDA 6 -->
+                      <div id="textArea">
+                        <label for="sintomi">{{survey.question6}}:</label><br>
+                        <textarea type="text" id="box" formControlName="answer6"></textarea>
+                      </div>
+                    </div>
+                    <input (click)="next()" name="next" class="next action-button" value="AVANTI" />
+                  </fieldset>
+                </div>
+                <div class="patch_three" *ngIf="page === 3">
+                  <!-- progressbar -->
+                  <ul id="progressbar">
+                    <li class="active" id="account"><strong>Dettagli Segnalazione</strong></li>
+                    <li id="personal" class="active"><strong>Sintomaticità</strong></li>
+                    <li id="payment" class="active"><strong>Dati di Controllo</strong></li>
+                  </ul>
+
+                  <!--        TERZO STEP -->
+                  <fieldset>
+                    <div class="form-card">
+                      <h2 class="fs-title">Dati di Controllo</h2>
+                      <div>
+                        <!-- DOMANDA 7 -->
+                        <div>
+                          <label for="dataSintomi">{{survey.question7}}</label>
+                          <input type="date" name="" id="dataTampone" formControlName="answer7">
+                        </div>
+                        <!-- DOMANDA 8 -->
+                        <label for="variante">{{survey.question8}}</label>
+                        <select name="" id="variante" formControlName="answer8">
+                          <option value="{{survey.answer8.option1}}">{{survey.answer8.option1}}</option>
+                          <option value="{{survey.answer8.option2}}">{{survey.answer8.option2}}</option>
+                        </select>
+                        <p id="note">Rispondi <strong>SI</strong> solo in caso di sequenziamento genomico che ha
+                          rilevato
+                          variante DIVERSA
+                          da Delta e
+                          Omicron</p>
+                      </div>
+                    </div>
+
+                    <input type="submit" name="next" class="next action-button" value="AVANTI" />
+                  </fieldset>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

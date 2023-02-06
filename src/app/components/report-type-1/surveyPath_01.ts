@@ -4,18 +4,19 @@ import { Report } from 'src/app/models/report';
 import { ComponentService } from 'src/app/service/components.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
-const jsonData = require('../../../../assets/Json/JsonSurvey.json');
+const jsonData = require('../../../assets/Json/JsonSurvey.json');
 @Component({
-  selector: 'app-survey',
-  templateUrl: './survey.component.html',
-  styleUrls: [ './survey.component.scss' ],
+  selector: 'survey_01',
+  templateUrl: './surveyPath_01.html',
+  styleUrls: [ './surveyPath_01.scss' ],
 })
 
 
-export class type1_SurveyComponent implements OnInit {
+export class surveyPath_01 implements OnInit {
   id!: number;
   form!: FormGroup;
   report!: Report;
+  page: number = 1;
   survey = jsonData.reportType1
 
   constructor(
@@ -25,24 +26,20 @@ export class type1_SurveyComponent implements OnInit {
     private route: ActivatedRoute,
   ) { }
 
+  next() {
+    const controlAnswer = this.form.get('answer4')?.value;
+    if (controlAnswer === "NO" || controlAnswer === "") {
+      this.page += 2
+    } else this.page++
+  }
 
   sendObject(formData: any) {
-    this.componentService.getSurvey_1(formData.value)
-
-
-    if (formData.value.answer4 === "SI") {
-      this.router.navigate([ '/symptomatology:1' ]);
-    } else {
-      this.router.navigate([ '/control-data:1' ]);
-    }
-
+    console.log(formData.value)
+    this.componentService.sendSurvey(formData.value)
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.id = +params[ 'id' ]
-      this.InitForm();
-    });
+    this.InitForm();
   }
 
   InitForm() {
@@ -58,8 +55,19 @@ export class type1_SurveyComponent implements OnInit {
       answer3: new FormControl(''),
 
       question4: new FormControl(this.survey.question4),
-      answer4: new FormControl(''),
+      answer4: new FormControl('', Validators.required),
 
+      question5: new FormControl(this.survey.question5),
+      answer5: new FormControl(''),
+
+      question6: new FormControl(this.survey.question6),
+      answer6: new FormControl(''),
+
+      question7: new FormControl(this.survey.question7),
+      answer7: new FormControl(''),
+
+      question8: new FormControl(this.survey.question8),
+      answer8: new FormControl(''),
     });
   }
 }
