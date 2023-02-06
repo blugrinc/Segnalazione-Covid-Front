@@ -44,7 +44,7 @@ export class AuthService {
           this.isLoggedIn$ = true;
           localStorage.setItem('UTENTE', JSON.stringify(data));
           this.authSub.next(data);
-          this.router.navigate(['/introPage'])
+          this.router.navigate([ '/introPage' ])
         }),
         catchError(this.errors)
       );
@@ -59,15 +59,15 @@ export class AuthService {
           this.isLoggedIn$ = true;
           localStorage.setItem('UTENTE', JSON.stringify(data));
           this.authSub.next(data);
-          this.router.navigate(['/introPage'])
+          this.router.navigate([ '/introPage' ])
         }),
         catchError(this.errors)
       );
   }
 
-  checkLocalStorage(){
+  checkLocalStorage() {
     let utente = localStorage.getItem('UTENTE');
-    if(utente != null){
+    if (utente != null) {
       this.isLoggedIn$ = true;
     }
   }
@@ -85,7 +85,8 @@ export class AuthService {
     this.isLoggedIn$ = false;
     this.authSub.next(null);
     localStorage.removeItem('UTENTE');
-    this.router.createUrlTree(['/introPage']);
+    localStorage.clear();
+    this.router.createUrlTree([ '/introPage' ]);
   }
 
   private errors(err: any) {

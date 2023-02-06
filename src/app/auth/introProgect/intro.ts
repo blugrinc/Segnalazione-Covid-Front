@@ -6,23 +6,23 @@ import { AuthData, AuthService } from '../auth.service';
 @Component({
   selector: 'app-introduction',
   templateUrl: './intro.html',
-  styleUrls: ['./intro.scss'],
+  styleUrls: [ './intro.scss' ],
 })
 export class IntroPage implements OnInit {
   constructor(
     private authService: AuthService,
     private componentService: ComponentService
-  ) {}
+  ) { }
 
   user!: AuthData | null;
   datiUser: any;
-  isLoggedIn = this.authService.isLoggedIn$;
 
   ngOnInit(): void {
     this.authService.checkLocalStorage();
     this.checkIfLogged();
     this.getUser();
   }
+
   getUser() {
     if (this.authService.isLoggedIn$) {
       this.authService.user$.subscribe((res) => {
@@ -35,7 +35,8 @@ export class IntroPage implements OnInit {
         });
     }
   }
-  checkIfLogged(){
+
+  checkIfLogged() {
     return this.authService.isLoggedIn$;
   }
 }
