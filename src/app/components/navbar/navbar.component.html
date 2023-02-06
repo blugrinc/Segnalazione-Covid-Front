@@ -1,8 +1,11 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid d-flex justify-content-around">
-    <div><a class="navbar-brand" [routerLink]="['/']" routerLinkActive="active"
-        [routerLinkActiveOptions]="{exact: true}"><img width="300" alt="Logo Intesa San Paolo"
-          src="../../../assets/IMG/logo-intesasanpaolo.png"></a></div>
+    <div>
+      <img width="300" alt="IntesaSanPaolo Logo" src="../assets/IMG/logo-intesasanpaolo.png" />
+    </div>
+    <div class="spacer">
+      <h2> Modulo Segnalazione Covid-19</h2>
+    </div>
     <div>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item" *ngIf="!checkIfLogged()">
@@ -23,4 +26,3 @@
 
   </div>
 </nav>
-<router-outlet></router-outlet>
