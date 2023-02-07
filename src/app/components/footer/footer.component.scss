@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 80px;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 1.4rem;
+  line-height: normal;
+  background: #148b12;
+}
+
+.spacer {
+  font-size: 20px;
+  color: white;
+}

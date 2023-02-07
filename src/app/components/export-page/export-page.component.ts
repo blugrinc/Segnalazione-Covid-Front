@@ -7,6 +7,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Person } from 'src/app/models/person';
+import { Report } from 'src/app/models/report';
 
 @Component({
   selector: 'app-export-page',
@@ -24,11 +26,11 @@ export class ExportPageComponent implements OnInit {
     config.keyboard = false;
   }
 
-  reports!: any;
+  reports!: Report[];
   dataReports!: any;
   intervalReports!: any;
 
-  persons!: any;
+  persons!: Person;
   page!: any;
 
   filter!: FormGroup;

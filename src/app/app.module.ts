@@ -24,11 +24,13 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './auth/token.interceptor';
 import { NgbModule, NgbModalModule, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     IntroPage,
     NavbarComponent,
+    FooterComponent,
     LoginComponent,
     RegistrationComponent,
 

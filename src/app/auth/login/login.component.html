@@ -1,36 +1,23 @@
 <div class="container" id="grad1">
-  <div class="principale">
-    <div class="row justify-content-center mt-0">
-      <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
-        <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-
-          <div class="row">
-            <div class="col-md-12 mx-0">
-              <form id="msform" #form="ngForm" (ngSubmit)="login(form)">
-                <fieldset>
-                  <div class="form-card">
-                    <h2 class="fs-title">AUTENTICAZIONE</h2>
-                    <div>
-                      <!-- EMAIL-->
-                      <div>
-                        <input placeholder="E-mail" required name="email" ngModel #email="ngModel">
-                      </div>
-                      <!-- PASSWORD-->
-                      <div>
-                        <input placeholder="Password" type="password" required minlength="6" name="password" ngModel
-                          #password="ngModel">
-                      </div>
-                    </div>
-                  </div>
-                  <input type="button" name="previous" class="previous action-button-previous" value="REGISTRATI"
-                    [routerLink]="['/signup']" routerLinkActive="active" />
-                  <input type="submit" name="next" class="next action-button" value="LOGIN" />
-                </fieldset>
-              </form>
-            </div>
+  <form id="msform" #form="ngForm" (ngSubmit)="login(form)">
+    <fieldset>
+      <div class="form-card">
+        <h2 class="fs-title">AUTENTICAZIONE</h2>
+        <div>
+          <!-- EMAIL-->
+          <div>
+            <input placeholder="E-mail" required name="email" ngModel #email="ngModel">
+          </div>
+          <!-- PASSWORD-->
+          <div>
+            <input placeholder="Password" type="password" required minlength="6" name="password" ngModel
+              #password="ngModel">
           </div>
         </div>
       </div>
-    </div>
-  </div>
+      <input type="button" name="previous" class="previous action-button-previous" value="REGISTRATI"
+        [routerLink]="['/signup']" routerLinkActive="active" />
+      <input type="submit" name="next" class="next action-button" value="LOGIN" />
+    </fieldset>
+  </form>
 </div>

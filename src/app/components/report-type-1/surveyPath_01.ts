@@ -49,10 +49,10 @@ export class surveyPath_01 implements OnInit {
       answer1: new FormControl(''),
 
       question2: new FormControl(this.survey.question2),
-      answer2: new FormControl(''),
+      answer2: new FormControl('', Validators.required),
 
       question3: new FormControl(this.survey.question3),
-      answer3: new FormControl(''),
+      answer3: new FormControl('', Validators.required),
 
       question4: new FormControl(this.survey.question4),
       answer4: new FormControl('', Validators.required),

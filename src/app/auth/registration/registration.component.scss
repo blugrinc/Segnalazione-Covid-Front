@@ -3,7 +3,7 @@
   position: relative;
 }
 
-#msform fieldset .form-card {
+.form-card {
   border: 0 none;
   border-radius: 0px;
   box-shadow: 0 2px 4px 7px rgba(0, 0, 0, 0.2);
@@ -12,37 +12,18 @@
   width: 94%;
   margin: 0 3% 20px 3%;
   position: relative;
-}
 
-#msform fieldset {
-  background: white;
-  border: 0 none;
-  border-radius: 0.5rem;
-  box-sizing: border-box;
-  width: 100%;
-  margin: 0;
-  padding-bottom: 20px;
-  position: relative;
-}
-
-
-#msform fieldset:not(:first-of-type) {
-  display: none;
-}
-
-#msform fieldset .form-card {
   text-align: left;
   color: #030303;
   display: flex;
   flex-direction: column;
-    align-items: center;
+  align-items: center;
 }
 
-#msform input,
-#msform textarea,
-.dropDown {
+#msform input {
   font-weight: bold;
   padding: 0px 8px 4px 8px;
+
   border-left: 1px solid rgb(10, 10, 10);
   border-bottom: 1px solid rgb(10, 10, 10);
   border-radius: 0px;
@@ -53,20 +34,7 @@
   font-size: 16px;
 }
 
-label {
-  margin-right: 20px;
-}
-
-#msform input:focus,
-#msform textarea:focus,
-.dropDown:focus {
-  box-shadow: none !important;
-  font-weight: bold;
-  border: 2px solid #5b891d;
-  outline-width: 0;
-}
-
-/*Blue Buttons*/
+/*LOGIN BUTTON*/
 #msform .action-button {
   font-family: "Inter", sans-serif;
   width: 100px;
@@ -80,12 +48,7 @@ label {
   margin: 10px 5px;
 }
 
-#msform .action-button:hover,
-#msform .action-button:focus {
-  box-shadow: 0 0 0 2px white, 0 0 0 3px skyblue;
-}
-
-/*Previous Buttons*/
+/*SIGNUP*/
 #msform .action-button-previous {
   width: 100px;
   background: #616161;
@@ -98,33 +61,7 @@ label {
   margin: 10px 5px;
 }
 
-#msform .action-button-previous:hover,
-#msform .action-button-previous:focus {
-  box-shadow: 0 0 0 2px white, 0 0 0 3px #616161;
-}
-
-/*Dropdown List Exp Date*/
-select.list-dt {
-  border: none;
-  outline: 0;
-  border-bottom: 1px solid #ccc;
-  padding: 2px 5px 3px 5px;
-  margin: 2px;
-}
-
-select.list-dt:focus {
-  border-bottom: 2px solid skyblue;
-}
-
-/*The background card*/
-.card {
-  z-index: 0;
-  border: none;
-  border-radius: 0.5rem;
-  position: relative;
-}
-
-/*FieldSet headings*/
+/*TITOLO AUTENTICAZIONE*/
 .fs-title {
   padding-top: 10px;
   font-size: 25px;
@@ -136,44 +73,9 @@ select.list-dt:focus {
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-/*Imaged Radio Buttons*/
-.radio-group {
-  position: relative;
-  margin-bottom: 25px;
-}
-
-.radio {
-  display: inline-block;
-  width: 204;
-  height: 104;
-  border-radius: 0;
-  background: lightblue;
-  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
-  box-sizing: border-box;
-  cursor: pointer;
-  margin: 8px 2px;
-}
-
-.radio:hover {
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
-}
-
-.radio.selected {
-  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1);
-}
-
-/*Fit image in bootstrap div*/
-.fit-image {
-  width: 100%;
-  object-fit: cover;
-}
-
-.principale {
+.container {
   background-color: #f8ffee;
-  margin-top: 13vh;
-  margin-bottom: 3vh;
-  min-height: 76vh;
   padding: 2.5rem;
   border-radius: 15px;
-  border: 1px solid #d7e5c3;
+  min-height: calc(80vh - 100px);
 }

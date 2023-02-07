@@ -28,6 +28,7 @@ const routes: Routes = [
     redirectTo: 'introPage',
     pathMatch: 'full'
   },
+
   {
     path: 'introPage',
     component: IntroPage,
@@ -69,6 +70,7 @@ const routes: Routes = [
   {
     path: 'survey:2',
     component: surveyPath_02,
+    canActivate: [ DipendenteGuard ]
   },
 
   //RISULTATI PERCORSI

@@ -1,9 +1,8 @@
-import { Survey } from './survey';
 import { Person } from "./person";
 
 export interface Report {
-  idPerson: string;
-  reportDate: Date;
+  idPerson: number;
+  reportingDate: Date;
 
   triage: boolean;
   abstention: boolean;
@@ -35,4 +34,7 @@ export interface Report {
   answer6: string;
   answer7: string;
   answer8: string;
+  //Variables for export Page
+  idReport?: number;
+  person?: Person;
 }

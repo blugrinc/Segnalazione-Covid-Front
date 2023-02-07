@@ -1,41 +1,8 @@
-.main {
-  height: 100vh;
-  width: 100vw;
-  background-color: #d1f89f;
-}
-
-.toolbar {
-  width: 100%;
-  border: 1px solid #16510d;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  background-color: #148b12;
-  color: white;
-  font-weight: 300;
-  text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000, 1px 1px #000,
-    -1px -1px #000, 1px -1px #000, -1px 1px #000;
-}
-
-.header {
-  height: 10vh;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-size: 1.4rem;
-}
-
-.footer {
-  height: 5.5vh;
-  font-size: 1.2rem;
-}
-
-.principale {
+.container {
   background-color: #f8ffee;
-  margin-top: 13vh;
-  margin-bottom: 3vh;
-  min-height: 76vh;
   padding: 2.5rem;
   border-radius: 15px;
-  border: 1px solid #d7e5c3;
+  min-height: calc(80vh - 100px);
 }
 
 h2 {
@@ -53,20 +20,6 @@ h2 {
   margin: 0;
 }
 
-.filter {
-margin-left: 10px;
-
-font-family: "Inter", sans-serif;
-  width: 100px;
-  background: #16510d;
-  font-weight: bold;
-  color: white;
-  border: 0 none;
-  border-radius: 0px;
-  cursor: pointer;
-  margin: 23px 5px;
-}
-
 .sceltaFiltro {
   margin-bottom: 1rem;
 }
@@ -82,6 +35,20 @@ font-family: "Inter", sans-serif;
   font-size: 1rem;
 }
 
+//BUTTON
+.filter {
+  margin-left: 10px;
+
+  font-family: "Inter", sans-serif;
+  width: 100px;
+  background: #16510d;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 0px;
+  cursor: pointer;
+  margin: 23px 5px;
+}
 
 .action-button {
   font-family: "Inter", sans-serif;
@@ -98,7 +65,7 @@ font-family: "Inter", sans-serif;
 
 .action-button:hover,
 .action-button:focus {
-  box-shadow: 0 0 0 2px white, 0 0 0 3px skyblue;
+  box-shadow: 0 0 0 2px rgb(16, 16, 16), 0 0 0 3px #020202;
 }
 
 /*Previous Buttons*/
@@ -116,5 +83,51 @@ font-family: "Inter", sans-serif;
 
 .action-button-previous:hover,
 .action-button-previous:focus {
-  box-shadow: 0 0 0 2px white, 0 0 0 3px #616161;
+  box-shadow: 0 0 0 2px rgb(16, 16, 16), 0 0 0 3px #020202;
+}
+
+//DEATTAGLI - MODAL
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px #000;
+  border-radius: 10px;
+  overflow: auto;
+}
+
+.header {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+}
+
+.header span {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.body {
+  padding: 20px;
+}
+
+.footer {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  text-align: right;
+}
+
+.footer button {
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #333;
+  border-radius: 5px;
+  cursor: pointer;
 }

@@ -1,66 +1,63 @@
 h2 {
-    font-family: "Inter", sans-serif;
-    font-style: italic;
-    font-size: 16px;
-    line-height: 19px;
-    color: #d9d9d9;
-    font-size: 14px;
+  font-family: "Inter", sans-serif;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 19px;
+  color: #d9d9d9;
+  font-size: 14px;
 }
 
 h1 {
-    font-family: "Vidaloka";
+  font-family: "Vidaloka";
 }
 
 p,
 li {
-    font-family: "Abel";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 25px;
+  font-family: "Abel";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
 }
 
-.paragrafi>p {
-    margin-top: -20px;
+.paragrafi > p {
+  margin-top: -20px;
 }
 
 span {
-    font-size: 1.2rem;
-    font-weight: bolder;
+  font-size: 1.2rem;
+  font-weight: bolder;
 }
 
 .containerBody {
-    margin-left: 15%;
-    margin-top: 7%;
-    margin-bottom: 2%;
-    padding-top: 1%;
-    padding-left: 6%;
-    padding-right: 6%;
-    width: 70%;
-    height: 100%;
-    background-color: #f8ffee;
-    border-radius: 15px;
-    border: 1px solid #d7e5c3;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2%;
+  width: 70%;
+  height: 100%;
+  background-color: #f8ffee;
+  border-radius: 15px;
+  border: 1px solid #d7e5c3;
 }
 
 .recapiti {
-    text-align: center;
-    padding: 5%;
+  text-align: center;
+  padding: 5%;
 }
 
 .iperlink {
-    font-size: 14px;
-    text-align: center;
-    margin-left: 8%;
-    margin-bottom: 6px;
+  font-size: 14px;
+  text-align: center;
+  margin-left: 8%;
+  margin-bottom: 6px;
 }
 
 button {
-    width: 300px;
-    height: 49px;
-    background: #16510d;
-    color: white;
-    margin: 30px;
+  width: 300px;
+  height: 49px;
+  background: #16510d;
+  color: white;
+  margin: 30px;
 }
 
 .buttons {
@@ -69,36 +66,35 @@ button {
   justify-content: space-around;
 }
 
-
 /*Blue Buttons*/
 
 .action-button {
-    font-family: "Inter", sans-serif;
-    width: 60%;
-    background: #16510d;
-    font-weight: bold;
-    color: white;
-    border: 0 none;
-    border-radius: 0px;
-    cursor: pointer;
-    padding: 10px 5px;
-    margin: 10px 5px;
+  font-family: "Inter", sans-serif;
+  width: 60%;
+  background: #16510d;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 0px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 5px;
 }
 
 .action-button:hover,
 .action-button:focus {
-    box-shadow: 0 0 0 2px white, 0 0 0 3px skyblue;
+  box-shadow: 0 0 0 2px white, 0 0 0 3px skyblue;
 }
 
 .action-button-previous:hover,
 .action-button-previous:focus {
-    box-shadow: 0 0 0 2px white, 0 0 0 3px #616161;
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #616161;
 }
 
 .numeri {
-    font-size: 25px;
+  font-size: 25px;
 }
 
 .paragrafi {
-    margin-top: 7%;
+  margin-top: 7%;
 }

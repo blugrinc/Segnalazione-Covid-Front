@@ -1,5 +1,4 @@
 /*form styles*/
-
 #msform {
   text-align: center;
   position: relative;
@@ -12,8 +11,9 @@
   box-shadow: 0 2px 4px 7px rgba(0, 0, 0, 0.2);
   padding: 0px 15px 15px 15px;
   box-sizing: border-box;
-  width: 94%;
+  width: 100%;
   margin: 0 3% 20px 3%;
+
   /*stacking fieldsets above each other*/
   position: relative;
 }
@@ -26,12 +26,12 @@
   width: 100%;
   margin: 0;
   padding-bottom: 20px;
+
   /*stacking fieldsets above each other*/
   position: relative;
 }
 
 /*Hide all except first fieldset*/
-
 #msform fieldset:not(:first-of-type) {
   display: none;
 }
@@ -69,12 +69,23 @@ label {
   box-shadow: none !important;
   border: none;
   font-weight: bold;
-  border-bottom: 2px solid #d1f89f;
+  border-bottom: 2px solid #e00c0c;
+  border-left: 2px solid #e00c0c;
   outline-width: 0;
 }
 
-/*Blue Buttons*/
+@media screen and (max-width: 992px) {
+  .dropDown {
+    width: 600px;
+  }
+}
+@media screen and (max-width: 770px) {
+  .dropDown {
+    width: 400px;
+  }
+}
 
+/*Blue Buttons*/
 #msform .action-button {
   font-family: "Inter", sans-serif;
   width: 100px;
@@ -84,50 +95,17 @@ label {
   border: 0 none;
   border-radius: 0px;
   cursor: pointer;
-  padding: 10px 5px;
+  padding: 10px 19px;
   margin: 10px 5px;
 }
 
 #msform .action-button:hover,
 #msform .action-button:focus {
-  box-shadow: 0 0 0 2px white, 0 0 0 3px skyblue;
-}
-
-/*Previous Buttons*/
-
-#msform .action-button-previous {
-  width: 100px;
-  background: #616161;
-  font-weight: bold;
-  color: white;
-  border: 0 none;
-  border-radius: 0px;
-  cursor: pointer;
-  padding: 10px 5px;
-  margin: 10px 5px;
-}
-
-#msform .action-button-previous:hover,
-#msform .action-button-previous:focus {
-  box-shadow: 0 0 0 2px white, 0 0 0 3px #616161;
-}
-
-/*Dropdown List Exp Date*/
-
-select.list-dt {
   border: none;
-  outline: 0;
-  border-bottom: 1px solid #ccc;
-  padding: 2px 5px 3px 5px;
-  margin: 2px;
-}
-
-select.list-dt:focus {
-  border-bottom: 2px solid skyblue;
+  box-shadow: 0 0 0 2px rgb(16, 16, 16), 0 0 0 3px #020202;
 }
 
 /*The background card*/
-
 .card {
   z-index: 0;
   border: none;
@@ -136,30 +114,24 @@ select.list-dt:focus {
 }
 
 /*FieldSet headings*/
-
 .fs-title {
   padding-top: 10px;
   font-size: 25px;
   color: #000000;
-  margin-bottom: 10px;
+  margin-bottom: 38px;
   font-weight: bold;
-  text-align: left;
+  text-align: center;
   font-family: "Vidaloka", serif;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-/*progressbar*/
-
+/*PROGRESS BAR*/
 #progressbar {
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
   overflow: hidden;
   color: lightgrey;
-}
-
-#progressbar .active {
-  color: #000000;
 }
 
 #progressbar li {
@@ -171,49 +143,38 @@ select.list-dt:focus {
 }
 
 /*Icons in the ProgressBar*/
-
-#progressbar #account:before {
-  font-family: FontAwesome;
-  content: "\f023";
+#progressbar #stepOne:before {
+  content: "1";
 }
 
-#progressbar #personal:before {
-  font-family: FontAwesome;
-  content: "\f007";
+#progressbar #stepTwo:before {
+  content: "2";
 }
 
-#progressbar #payment:before {
-  font-family: FontAwesome;
-  content: "\f09d";
-}
-
-#progressbar #confirm:before {
-  font-family: FontAwesome;
-  content: "\f00c";
+#progressbar #stepThree:before {
+  content: "3";
 }
 
 /*ProgressBar before any progress*/
-
 #progressbar li:before {
   width: 50px;
   height: 50px;
   line-height: 45px;
   display: block;
   font-size: 18px;
-  color: #ffffff;
-  background: lightgray;
+  color: #121111;
+  background: rgb(143, 142, 142);
   border-radius: 50%;
   margin: 0 auto 10px auto;
   padding: 2px;
 }
 
 /*ProgressBar connectors*/
-
 #progressbar li:after {
   content: "";
   width: 100%;
   height: 2px;
-  background: lightgray;
+  background: rgb(143, 142, 142);
   position: absolute;
   left: 0;
   top: 25px;
@@ -221,56 +182,18 @@ select.list-dt:focus {
 }
 
 /*Color number of the step and the connector before it*/
-
 #progressbar li.active:before,
 #progressbar li.active:after {
   background: skyblue;
 }
 
-/*Imaged Radio Buttons*/
-
-.radio-group {
-  position: relative;
-  margin-bottom: 25px;
-}
-
-.radio {
-  display: inline-block;
-  width: 204;
-  height: 104;
-  border-radius: 0;
-  background: lightblue;
-  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
-  box-sizing: border-box;
-  cursor: pointer;
-  margin: 8px 2px;
-}
-
-.radio:hover {
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
-}
-
-.radio.selected {
-  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1);
-}
-
-/*Fit image in bootstrap div*/
-
-.fit-image {
-  width: 100%;
-  object-fit: cover;
-}
-
-.principale {
+.container {
   background-color: #f8ffee;
-  margin-top: 13vh;
-  margin-bottom: 3vh;
-  min-height: 76vh;
   padding: 2.5rem;
   border-radius: 15px;
-  border: 1px solid #d7e5c3;
-}
 
-select {
-  width: 100%;
+  z-index: 0;
+  border: none;
+  border-radius: 0.5rem;
+  position: relative;
 }

@@ -17,8 +17,8 @@ export class ComponentService {
   person!: Person;
 
   report: Report = {
-    idPerson: "",
-    reportDate: new Date(),
+    idPerson: 1,
+    reportingDate: new Date(),
 
     triage: false,
     abstention: false,
@@ -50,8 +50,8 @@ export class ComponentService {
     answer8: "",
   }
 
-  sendSurvey(item: Survey) {
-    this.set_ReportIdPerson();
+  async sendSurvey(item: Survey) {
+
     if (item.typeOfReport === "SONO_POSITIVO_AD_UN_TEST_DIAGNOSTICO") {
       this.report.typeOfReport = item.typeOfReport;
       this.report.question1 = item.question1;
@@ -71,7 +71,7 @@ export class ComponentService {
       this.report.answer6 = item.answer6;
       this.report.answer7 = item.answer7;
       this.report.answer8 = item.answer8;
-      this.report.reportDate = new Date();
+      this.report.reportingDate = new Date();
     }
     if (item.typeOfReport === "AGGIORNAMENTO_PER_RICHIESTA_FINE_ASTENSIONE") {
       this.report.typeOfReport = item.typeOfReport;
@@ -89,8 +89,9 @@ export class ComponentService {
       this.report.answer5 = item.answer5;
       this.report.answer6 = item.answer6;
 
-      this.report.reportDate = new Date();
+      this.report.reportingDate = new Date();
     }
+    await this.setReportIdPerson()
     this.setOtherValueSurvey();
     this.navigatePathControll();
     return this.postSurvey(this.report);
@@ -118,7 +119,7 @@ export class ComponentService {
     } else this.report.newClassification = "MANTIENE_LA_PRECEDENTE";
 
     //ABSTENTION DATE
-    if (this.report.typeOfReport === "SONO_POSITIVO_AD_UN_TEST_DIAGNOSTICO") {
+    if (this.report.typeOfReport === "SONO_POSITIVO_AD_UN_TEST_DIAGNOSTICO" && this.report.answer2 !== "") {
       const abstentionDate = new Date(this.report.answer2);
       this.report.proposedAbstentionDate = new Date(abstentionDate.setDate(abstentionDate.getDate() + 14));
 
@@ -215,15 +216,17 @@ export class ComponentService {
       this.router.navigate([ '/path25' ]);
     }
   }
-  set_ReportIdPerson() {
-    this.authService.user$.subscribe(res => this.user = res);
-    this.getPerson(this.user!.user.fiscalCode).subscribe((res) => {
-      this.report.idPerson = res.idPerson;
-    });
+  async setReportIdPerson() {
+    return new Promise((resolve) => {
+      this.authService.user$.subscribe(res => this.user = res);
+      this.getPerson(this.user!.user.fiscalCode).subscribe((res) => {
+        resolve(this.report.idPerson = +res.idPerson)
+      });
+    })
   }
 
-  postSurvey(item: Report) {
-    return this.http.post<Report>(`${environment.pathApi}report/add`, item)
+  postSurvey(item: any) {
+    return this.http.post<any>(`${environment.pathApi}report/add`, item)
       .subscribe(res => console.log("ADD_REPORT", res))
   }
 

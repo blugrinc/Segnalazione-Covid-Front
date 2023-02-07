@@ -13,14 +13,11 @@ h2 {
   margin: 0;
 }
 
-.principale {
+.container {
   background-color: #f8ffee;
-  margin-top: 13vh;
-  margin-bottom: 3vh;
-  min-height: 76vh;
   padding: 2.5rem;
   border-radius: 15px;
-  border: 1px solid #d7e5c3;
+  min-height: calc(80vh - 100px);
 }
 
 form {
@@ -36,41 +33,6 @@ form {
   margin-bottom: 0.5rem;
   background-color: #fff;
   border: 1px solid #16510d;
-}
-
-.form-check-input {
-  padding: 0.25rem;
-  border: 1px solid #16510d;
-}
-
-.form-select {
-  border: 1px solid #16510d;
-  margin-bottom: 1rem;
-  width: 20vw;
-}
-
-.containerButton {
-  margin-top: 1.5rem;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-/*Previous Buttons*/
-.action-button-previous {
-  height: 50px;
-  width: 150px;
-
-  background: #616161;
-  font-weight: bold;
-  color: white;
-  border: 0 none;
-  border-radius: 0px;
-  cursor: pointer;
-}
-
-.action-button-previous:hover,
-.action-button-previous:focus {
-  box-shadow: 0 0 0 2px white, 0 0 0 3px #616161;
 }
 
 .text-start:hover {

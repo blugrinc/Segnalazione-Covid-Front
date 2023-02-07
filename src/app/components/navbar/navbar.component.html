@@ -1,28 +1,27 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid d-flex justify-content-around">
+  <div class="container-fluid header">
     <div>
-      <img width="300" alt="IntesaSanPaolo Logo" src="../assets/IMG/logo-intesasanpaolo.png" />
-    </div>
-    <div class="spacer">
-      <h2> Modulo Segnalazione Covid-19</h2>
-    </div>
-    <div>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item" *ngIf="!checkIfLogged()">
-          <a class="nav-link" aria-current="page" [routerLink]="['/introPage']" routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact: true}">Home</a>
-        </li>
-        <li class="nav-item" *ngIf="!checkIfLogged()">
-          <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">Login</a>
-        </li>
-        <li class="nav-item" *ngIf="!checkIfLogged()">
-          <a class="nav-link" [routerLink]="['/signup']" routerLinkActive="active">Registrati</a>
-        </li>
-        <li class="nav-item" *ngIf="checkIfLogged()" (click)="logout()">
-          <a class="nav-link" [routerLink]="['/introPage']" routerLinkActive="active">Log-out</a>
-        </li>
-      </ul>
+      <img class="img" width="400" alt="IntesaSanPaolo Logo" src="../assets/IMG/logo-intesasanpaolo.png"
+        [routerLink]="['/']" />
     </div>
 
+    <div class="dropdown">
+      <h2> SEGNALAZIONE A "MEDICINA DEL LAVORO"</h2>
+
+      <div class="mannaggia">
+        <button class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+          Codice identificativo: 000000000
+        </button>
+
+        <div class="dropdown-menu">
+          <li class="dropdown-item" *ngIf="!checkIfLogged()" [routerLink]="['/login']" routerLinkActive="active">Login
+          </li>
+          <li class="dropdown-item" *ngIf="!checkIfLogged()" [routerLink]="['/signup']" routerLinkActive="active">
+            Registrati</li>
+          <li class="dropdown-item logout" *ngIf="checkIfLogged()" (click)="logout()" [routerLink]="['/introPage']"
+            routerLinkActive="active">Log-out</li>
+        </div>
+      </div>
+    </div>
   </div>
 </nav>
