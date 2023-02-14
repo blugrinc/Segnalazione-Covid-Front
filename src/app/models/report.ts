@@ -34,7 +34,10 @@ export interface Report {
   answer6: string;
   answer7: string;
   answer8: string;
+
   //Variables for export Page
   idReport?: number;
   person?: Person;
+  matricola?: string;
+  status?: string; //Status: VALIDO : SCADUTO
 }

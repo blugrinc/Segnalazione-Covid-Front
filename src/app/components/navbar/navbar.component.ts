@@ -5,24 +5,34 @@ import { AuthService } from 'src/app/auth/auth.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: [ './navbar.component.scss' ]
 })
 export class NavbarComponent implements OnInit {
 
   isExpanded: boolean = false;
+  serialNumber!: any;
 
-  constructor(private authService: AuthService, private router: Router) { }
 
-  ngOnInit(): void {
+  constructor(private authService: AuthService) { }
+
+  ngOnInit() {
     this.authService.checkLocalStorage();
     this.checkIfLogged();
+    this.getMatricola();
   }
 
-  checkIfLogged(){
+  getMatricola() {
+    if (this.authService.isLoggedIn$) {
+      this.serialNumber = this.authService.matricola;
+      console.log(this.serialNumber);
+    }
+  }
+
+  checkIfLogged() {
     return this.authService.isLoggedIn$;
   }
 
-  logout(){
+  logout() {
     this.authService.logout();
   }
 

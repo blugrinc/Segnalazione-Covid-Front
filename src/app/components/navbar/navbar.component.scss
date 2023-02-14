@@ -29,28 +29,21 @@ h2 {
   color: #d9d9d9;
 }
 
-.nav-link,
-.nav-link.active {
-  color: #fff;
-}
-.nav-link.active {
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-    1px 1px 0 #000;
-}
-
 .header {
   display: flex;
   justify-content: space-around;
 }
 
 .btn {
+  font-family: "Inter", sans-serif;
+  font-style: italic;
+  color: #d9d9d9;
   margin-top: 8px;
 }
 
 .dropdown-menu {
   text-align: center;
-  margin-top: -23px;
-  margin-left: 273px;
+  margin-top: 17px;
 }
 
 .dropdown-menu a {
@@ -58,14 +51,16 @@ h2 {
   text-decoration: none;
 }
 
-.logout {
+.dropdown-item {
+  background-color: rgb(196, 196, 196);
+}
+.dropdown-item:hover {
   cursor: pointer;
-  background-color: #fff;
-  color: #000;
+  color: #070707;
 }
 
-.dropdown-item {
-  border-bottom: #000 1px solid;
+.dropdown-item.active {
+  background-color: #148b12;
 }
 
 .img {

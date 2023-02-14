@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/env';
+import { Report } from '../models/report';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MedicoService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   URL = environment.pathApi;
 

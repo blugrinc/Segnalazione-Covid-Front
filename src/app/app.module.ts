@@ -4,15 +4,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
-import { IntroPage } from './auth/introProgect/intro';
+import { IntroPage } from './pages/home-page/intro';
 import { LoginComponent } from './auth/login/login.component';
 import { RegistrationComponent } from './auth/registration/registration.component';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 
 import { surveyPath_01 } from './components/report-type-1/surveyPath_01';
 import { surveyPath_02 } from './components/report-type-2/surveyPath_02';
 
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { ExportPageComponent } from './components/export-page/export-page.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { ExportPageComponent } from './pages/export-page/export-page.component';
 
 import { Path1Component } from './components/path/path1/path1.component';
 import { Path2Component } from './components/path/path2/path2.component';
@@ -33,6 +34,7 @@ import { FooterComponent } from './components/footer/footer.component';
     FooterComponent,
     LoginComponent,
     RegistrationComponent,
+    AdminPageComponent,
 
     AppComponent,
     surveyPath_01,

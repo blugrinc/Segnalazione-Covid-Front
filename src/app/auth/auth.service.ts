@@ -22,7 +22,6 @@ export interface AuthData {
   providedIn: 'root',
 })
 export class AuthService {
-  user: any;
   //BehaviorSubject
   private authSub = new BehaviorSubject<AuthData | null>(null);
   //Observable
@@ -30,6 +29,7 @@ export class AuthService {
 
   timeoutRef: any;
   isLoggedIn$: boolean = false;
+  matricola: number = 0;
 
   constructor(private http: HttpClient, private router: Router) {
     this.restore();
@@ -44,6 +44,8 @@ export class AuthService {
           this.isLoggedIn$ = true;
           localStorage.setItem('UTENTE', JSON.stringify(data));
           this.authSub.next(data);
+          this.matricola = this.createMatricola();
+          console.log('Matricola:', this.matricola);
           this.router.navigate([ '/introPage' ])
         }),
         catchError(this.errors)
@@ -59,6 +61,7 @@ export class AuthService {
           this.isLoggedIn$ = true;
           localStorage.setItem('UTENTE', JSON.stringify(data));
           this.authSub.next(data);
+          this.matricola = this.createMatricola();
           this.router.navigate([ '/introPage' ])
         }),
         catchError(this.errors)
@@ -87,6 +90,14 @@ export class AuthService {
     localStorage.removeItem('UTENTE');
     localStorage.clear();
     this.router.createUrlTree([ '/introPage' ]);
+  }
+
+  createMatricola() {
+    return Math.floor(Math.random() * 1000000);
+  }
+
+  getMatricola() {
+    return this.matricola;
   }
 
   private errors(err: any) {

@@ -216,6 +216,7 @@ export class ComponentService {
       this.router.navigate([ '/path25' ]);
     }
   }
+
   async setReportIdPerson() {
     return new Promise((resolve) => {
       this.authService.user$.subscribe(res => this.user = res);

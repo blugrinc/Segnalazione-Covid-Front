@@ -4,8 +4,7 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import {
   FormBuilder,
   FormControl,
-  FormGroup,
-  Validators,
+  FormGroup
 } from '@angular/forms';
 import { Person } from 'src/app/models/person';
 import { Report } from 'src/app/models/report';
@@ -29,8 +28,6 @@ export class ExportPageComponent implements OnInit {
   reports!: Report[];
   dataReports!: any;
   intervalReports!: any;
-
-  persons!: Person;
   page!: any;
 
   filter!: FormGroup;

@@ -8,17 +8,19 @@
     <div class="dropdown">
       <h2> SEGNALAZIONE A "MEDICINA DEL LAVORO"</h2>
 
-      <div class="mannaggia">
+      <div>
         <button class="btn" data-bs-toggle="dropdown" aria-expanded="false">
-          Codice identificativo: 000000000
+          {{serialNumber === undefined ? "OPTION" : "Numero Indentificativo: " + serialNumber }}
         </button>
+
+
 
         <div class="dropdown-menu">
           <li class="dropdown-item" *ngIf="!checkIfLogged()" [routerLink]="['/login']" routerLinkActive="active">Login
           </li>
           <li class="dropdown-item" *ngIf="!checkIfLogged()" [routerLink]="['/signup']" routerLinkActive="active">
             Registrati</li>
-          <li class="dropdown-item logout" *ngIf="checkIfLogged()" (click)="logout()" [routerLink]="['/introPage']"
+          <li class="dropdown-item" *ngIf="checkIfLogged()" (click)="logout()" [routerLink]="['/introPage']"
             routerLinkActive="active">Log-out</li>
         </div>
       </div>

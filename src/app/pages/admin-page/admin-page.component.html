@@ -1,0 +1,61 @@
+<div class="container">
+  <div>
+    <h2>ADMIN</h2>
+    <div class="buttonFilter">
+      <select (change)="handleSelectChange($event)">
+        <option value="option1">Visualizza tutti Dipendenti</option>
+        <option value="option2">Visualizza tutti Dipendenti Guariti</option>
+        <option value="option3">Visualizza tutti Dipendenti In Quarantena</option>
+      </select>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Codice Fiscale</th>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Ruolo</th>
+        <th>N° Report</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let person of persons">
+        <td>{{person.idPerson}}</td>
+        <td>{{person.fiscalCode}}</td>
+        <td>{{person.name}}</td>
+        <td>{{person.surname}}</td>
+        <!--
+          ngIf con ngTemplate
+          <td *ngIf="person.role === 'role_dipendente'; then dipendenteBlock else medicoBlock"></td>
+
+          <ng-template #dipendenteBlock>Dipendente</ng-template>
+          <ng-template #medicoBlock>Medico</ng-template>
+         -->
+        <!--  Con espressione condizionale -->
+        <td>
+          {{person.role === 'ROLE_DIPENDENTE' ? 'Dipendente' : 'Medico'}}
+        </td>
+
+        <td>
+          {{ person.reportList.length === 0 ? 'Vuoto' : '{{person.reportList.length}}'}}
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3">
+          <button (click)="previousPage()" [disabled]="page === 0">Precedente</button>
+          <button (click)="nextPage()" [disabled]="page === totalPages - 1">Successivo</button>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <!-- <input type="button" name="previous" class="previous action-button-previous" value="Indietro" [routerLink]="['/']"
+    routerLinkActive="active" />
+  <input type="button" name="next" class="next action-button" value="Scarica" /> -->
+
+</div>

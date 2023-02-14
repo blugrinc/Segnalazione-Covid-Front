@@ -33,7 +33,7 @@
           <ng-template #content let-close="close">
             <div class="header">
               <h2>{{report.person?.name}} {{report.person?.surname}}</h2>
-              <p>Report n°{{report.idReport}} effettuato in data {{report.reportingDate}}</p>
+              <p>Report n° {{report.idReport}} effettuato in data {{report.reportingDate}} ({{report.status}}) </p>
               <p>Tipologia: {{report.typeOfReport}} </p>
             </div>
             <div class="body">
@@ -89,7 +89,8 @@
             <ng-template #content let-close="close">
               <div class="header">
                 <h2>{{report.person?.name}} {{report.person?.surname}}</h2>
-                <p>Report n°{{report.idReport}} effettuato in data {{report.reportingDate}}</p>
+                <p>Report n°{{report.idReport}} effettuato in data {{report.reportingDate}} ({{report.status}})
+                </p>
                 <p>Tipologia: {{report.typeOfReport}} </p>
               </div>
               <div class="body">
@@ -150,7 +151,8 @@
             <ng-template #content let-close="close">
               <div class="header">
                 <h2>{{report.person?.name}} {{report.person?.surname}}</h2>
-                <p>Report n°{{report.idReport}} effettuato in data {{report.reportingDate}}</p>
+                <p>Report n°{{report.idReport}} effettuato in data {{report.reportingDate}} ({{report.status}})
+                </p>
                 <p>Tipologia: {{report.typeOfReport}} </p>
               </div>
               <div class="body">

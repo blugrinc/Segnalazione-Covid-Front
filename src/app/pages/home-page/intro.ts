@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { async, asyncScheduler } from 'rxjs';
 import { ComponentService } from 'src/app/service/components.service';
-import { AuthData, AuthService } from '../auth.service';
+import { AuthData, AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-introduction',

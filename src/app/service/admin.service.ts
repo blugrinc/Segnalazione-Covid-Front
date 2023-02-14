@@ -6,23 +6,31 @@ import { environment } from '../environments/env';
   providedIn: 'root',
 })
 export class AdminService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   URL = environment.pathApi;
-
+  //GET FOR REPORT
   getReportList() {
     return this.http.get<any>(`${this.URL}report/getAll`);
   }
-
   getReportByReportingDate(date: Date) {
     return this.http.get<any>(
       `${this.URL}report/getByReportingDate?reportingDate=${date}`
     );
   }
-
   getReportBetweenDate(minDate: Date, maxDate: Date) {
     return this.http.get<any>(
       `${this.URL}report/getByDateBetween?start=${minDate}&end=${maxDate}`
     );
   }
+  getMatricola(matricola: string) {
+    return this.http.get<any>(
+      `${this.URL}report / getByMatricola / ${matricola}`
+    );
+  }
+  //GET DIPENDENTI
+  getAllPerson(page: number) {
+    return this.http.get<any>(`${this.URL}person/getAll?page=${page}&size=10`);
+  }
+
 }
