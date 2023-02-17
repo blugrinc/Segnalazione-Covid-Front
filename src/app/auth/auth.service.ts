@@ -44,8 +44,6 @@ export class AuthService {
           this.isLoggedIn$ = true;
           localStorage.setItem('UTENTE', JSON.stringify(data));
           this.authSub.next(data);
-          this.matricola = this.createMatricola();
-          console.log('Matricola:', this.matricola);
           this.router.navigate([ '/introPage' ])
         }),
         catchError(this.errors)
@@ -61,7 +59,6 @@ export class AuthService {
           this.isLoggedIn$ = true;
           localStorage.setItem('UTENTE', JSON.stringify(data));
           this.authSub.next(data);
-          this.matricola = this.createMatricola();
           this.router.navigate([ '/introPage' ])
         }),
         catchError(this.errors)

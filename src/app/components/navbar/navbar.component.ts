@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class NavbarComponent implements OnInit {
 
   isExpanded: boolean = false;
-  serialNumber!: any;
+  serialNumber!: number;
 
 
   constructor(private authService: AuthService) { }
@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
 
   getMatricola() {
     if (this.authService.isLoggedIn$) {
-      this.serialNumber = this.authService.matricola;
+      this.serialNumber = Math.floor(Math.random() * 1000000);
       console.log(this.serialNumber);
     }
   }
