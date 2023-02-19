@@ -15,7 +15,6 @@ export class AdminPageComponent implements OnInit {
   //Person
   persons!: Person[];
 
-
   //Report
   reports!: Report[];
   dataReports!: any;
@@ -23,34 +22,62 @@ export class AdminPageComponent implements OnInit {
 
   //Page
   page: number = 0;
-  totalPages: number = 0;
+  totalPages: number = 10;
 
   /*   filter!: FormGroup; */
   selectedOption!: string;
 
-  ngOnInit(): void {
-    /*  this.adminService.getReportList().subscribe((res) => {
-       console.log('GetAllReport', res);
-       this.page = res;
-       this.reports = res.content;
-     }); */
-
+  ngOnInit() {
     this.adminService.getAllPerson(this.page).subscribe((res) => {
       console.log("GetAllPerson", res);
-      this.totalPages = res.totalPages;
       this.persons = res.content;
     })
+  }
+
+  get paginationPersons() {
+    if (this.persons) {
+      const startIndex = (this.page) * this.totalPages;
+      const endIndex = startIndex + this.totalPages;
+      return this.persons.slice(startIndex, endIndex);
+    } else return this.persons
+  }
+
+
+  get personReportStatus() {
+    this.persons.forEach(singlePerson => {
+      if (singlePerson.reportList.length != 0) {
+        singlePerson.reportList.some(report => {
+          if (report.status === 'VALIDO') {
+            return "green"
+          }
+          return "red"
+        })
+      }
+    })
+    return 'yellow'
+  }
+
+  get personReportText() {
+    this.persons.forEach(singlePerson => {
+      if (singlePerson.reportList.length != 0) {
+        singlePerson.reportList.some(report => {
+          if (report.status === 'VALIDO') {
+            return "GUARITO"
+          }
+          return "QUARANTENA"
+        })
+      }
+    })
+    return "PENDING"
   }
 
 
   previousPage() {
     this.page = this.page - 1
-    return this.ngOnInit();
   }
 
   nextPage() {
     this.page = this.page + 1
-    return this.ngOnInit();
   }
 
   handleSelectChange(event: Event) {
@@ -59,9 +86,15 @@ export class AdminPageComponent implements OnInit {
       case 'option1':
         return this.ngOnInit();
       case 'option2':
-        return console.log("ciao oprzione 2");
+        return this.adminService.getAllRecovered(this.page).subscribe((res) => {
+          console.log("getAllRecovered", res);
+          this.persons = res.content;
+        })
       case 'option3':
-        return console.log("ciao oprzione 3");
+        return this.adminService.getAllPositive(this.page).subscribe((res) => {
+          console.log("getAllPositive", res);
+          this.persons = res.content;
+        })
     }
   }
 }

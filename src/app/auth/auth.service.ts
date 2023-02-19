@@ -17,6 +17,9 @@ export interface AuthData {
   };
   token: string;
 }
+export interface Matricola {
+  matricola: number;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -27,9 +30,11 @@ export class AuthService {
   //Observable
   user$ = this.authSub.asObservable();
 
+  private matricola = new BehaviorSubject<Matricola | null>(null)
+
   timeoutRef: any;
   isLoggedIn$: boolean = false;
-  matricola: number = 0;
+
 
   constructor(private http: HttpClient, private router: Router) {
     this.restore();
@@ -44,6 +49,7 @@ export class AuthService {
           this.isLoggedIn$ = true;
           localStorage.setItem('UTENTE', JSON.stringify(data));
           this.authSub.next(data);
+
           this.router.navigate([ '/introPage' ])
         }),
         catchError(this.errors)

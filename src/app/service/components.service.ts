@@ -94,6 +94,7 @@ export class ComponentService {
     await this.setReportIdPerson()
     this.setOtherValueSurvey();
     this.navigatePathControll();
+    console.log("REPORT COMPLETO", this.report)
     return this.postSurvey(this.report);
   }
 
@@ -221,6 +222,7 @@ export class ComponentService {
     return new Promise((resolve) => {
       this.authService.user$.subscribe(res => this.user = res);
       this.getPerson(this.user!.user.fiscalCode).subscribe((res) => {
+        console.log("ID_Person", res);
         resolve(this.report.idPerson = +res.idPerson)
       });
     })

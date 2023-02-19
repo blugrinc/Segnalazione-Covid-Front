@@ -10,23 +10,46 @@
     </div>
   </div>
 
-  <table>
-    <thead>
+  <table class="table align-middle mb-0 bg-white">
+    <thead class="bg-light">
       <tr>
-        <th>ID</th>
-        <th>Codice Fiscale</th>
         <th>Nome</th>
-        <th>Cognome</th>
         <th>Ruolo</th>
-        <th>N° Report</th>
+        <th>Status</th>
+        <th>Report</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let person of persons">
-        <td>{{person.idPerson}}</td>
-        <td>{{person.fiscalCode}}</td>
-        <td>{{person.name}}</td>
-        <td>{{person.surname}}</td>
+      <tr *ngFor="let person of paginationPersons">
+        <td>
+          <div class="d-flex align-items-center">
+            <img src="https://mdbootstrap.com/img/new/avatars/{{person.idPerson}}.jpg" alt=""
+              style="width: 45px; height: 45px" class="rounded-circle" />
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{person.name}} {{person.surname}}</p>
+              <p class="text-muted mb-0">{{person.fiscalCode}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">{{person.role}}</p>
+          <p class="text-muted mb-0">IT department</p>
+        </td>
+
+
+        <td>
+          <span [ngStyle]="{'background-color': personReportStatus, 'color': 'black'}"
+            class="badge rounded-pill d-inline">
+            {{personReportText}}
+          </span>
+        </td>
+
+        <td>
+          <button type="button" class="btn btn-link btn-sm btn-rounded">
+            Edit: {{person.reportList.length}}
+          </button>
+        </td>
+
         <!--
           ngIf con ngTemplate
           <td *ngIf="person.role === 'role_dipendente'; then dipendenteBlock else medicoBlock"></td>
@@ -35,27 +58,24 @@
           <ng-template #medicoBlock>Medico</ng-template>
          -->
         <!--  Con espressione condizionale -->
-        <td>
-          {{person.role === 'ROLE_DIPENDENTE' ? 'Dipendente' : 'Medico'}}
-        </td>
 
-        <td>
+        <!--  <td>
           {{ person.reportList.length === 0 ? 'Vuoto' : '{{person.reportList.length}}'}}
-        </td>
+        </td> -->
       </tr>
     </tbody>
     <tfoot>
       <tr>
         <td colspan="3">
           <button (click)="previousPage()" [disabled]="page === 0">Precedente</button>
-          <button (click)="nextPage()" [disabled]="page === totalPages - 1">Successivo</button>
+          <button (click)="nextPage()">Successivo</button>
         </td>
       </tr>
     </tfoot>
   </table>
 
-  <!-- <input type="button" name="previous" class="previous action-button-previous" value="Indietro" [routerLink]="['/']"
-    routerLinkActive="active" />
-  <input type="button" name="next" class="next action-button" value="Scarica" /> -->
+  <!-- <input type=" button" name="previous" class="previous action-button-previous" value="Indietro"
+            [routerLink]="['/']" routerLinkActive="active" />
+          <input type="button" name="next" class="next action-button" value="Scarica" /> -->
 
 </div>

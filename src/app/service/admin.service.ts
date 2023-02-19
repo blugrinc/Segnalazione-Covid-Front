@@ -25,12 +25,19 @@ export class AdminService {
   }
   getMatricola(matricola: string) {
     return this.http.get<any>(
-      `${this.URL}report / getByMatricola / ${matricola}`
+      `${this.URL}report/getByMatricola/${matricola}`
     );
   }
   //GET DIPENDENTI
   getAllPerson(page: number) {
-    return this.http.get<any>(`${this.URL}person/getAll?page=${page}&size=10`);
+    return this.http.get<any>(`${this.URL}person/getAllEmployees`);
+  }
+  getAllRecovered(page: number) {
+    return this.http.get<any>(`${this.URL}person/getAllRecovered`);
+  }
+  getAllPositive(page: number) {
+    return this.http.get<any>(`${this.URL}person/getAllPositive`);
   }
 
 }
+

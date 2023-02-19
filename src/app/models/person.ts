@@ -1,6 +1,6 @@
 import { Report } from "./report";
 export interface Person {
-  idPerson: string;
+  idPerson: number;
   fiscalCode: string;
   name: string;
   surname: string;

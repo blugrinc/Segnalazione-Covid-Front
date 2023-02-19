@@ -18,8 +18,9 @@ export class IntroPage implements OnInit {
 
   ngOnInit(): void {
     this.authService.checkLocalStorage();
-    this.checkIfLogged();
     this.getUser();
+    this.checkIfLogged();
+
   }
 
   getUser() {

@@ -17,8 +17,8 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.authService.checkLocalStorage();
-    this.checkIfLogged();
     this.getMatricola();
+    this.checkIfLogged();
   }
 
   getMatricola() {
